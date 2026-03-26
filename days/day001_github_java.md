@@ -14,8 +14,18 @@ JAVA_HOME : C:\Program Files\Java\jdk-11.0.30
 
 path      : %JAVA_HOME%\bin
 
+Q1. java버전 바꾸고 싶으면 JAVA_HOME만 변경하면 됨.
+
 5. java 확인
 cmd 
 java -version
 
 ■2. eclipse
+1. eclipse.org
+2. 다운로드
+3. 워크스페이스 - [깃허브저장소] - track003_java
+
+## part003
+- 숙제 안내 (개별카톡 보내기)
+1. 집에서 github 연동 - git clone                ※스크린샷 제출
+2. 
