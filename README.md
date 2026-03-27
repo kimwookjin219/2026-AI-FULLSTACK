@@ -53,34 +53,41 @@
     ○ Python → 자료구조, 알고리즘, 데이터 분석
 
     ○ Django → MTV 패턴, 보안 및 인증 시스템 구축
-    
+
     ○ Flutter → 크로스 플랫폼 앱 개발 및 위젯 트리 이해
 
 - **5개월차**
 
     ○ Frontend (React) → Virtual DOM, 상태 관리, 컴포넌트 기반 설계
+
     ○UI/UX 개선 및 비동기 통신(AJAX, API 연동) 경험
+
     ○ AWS + EC2 → 클라우드 서버 운영, 배포 자동화, 네트워크 구성(VPC, 보안 그룹) 실습
 
 - **4개월차**
 
     ○ Spring → IoC/DI, AOP 등 아키텍처 개념 이해
+
     ○ Spring Boot → 자동 설정, 서버 최적화, MSA 기반 서비스 설계
 
 - **3개월차**
 
     ○ MyBatis / JPA → 데이터 모델링과 ORM 활용
+
     ○ 트랜잭션, 인덱스, 정규화 등 DB 심화 학습
 
 - **2개월차**
 
     ○ JSP → 서버-클라이언트 구조와 동적 페이지 구현
+
     ○ DB 기초 (Oracle / MySQL) → 데이터베이스 기본 문법과 활용
 
 - **1개월차**
 
     ○ Git & GitHub → 버전 관리와 협업 흐름 이해
+
     ○ Java → 객체지향 프로그래밍과 웹 서버 구조 학습
+    
     ○ HTML / CSS / JS → 웹 기본기와 DOM 구조 이해
 
 ---
