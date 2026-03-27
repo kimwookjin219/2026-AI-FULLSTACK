@@ -40,7 +40,7 @@ day002
 3. Java
 Hi2 를 3가지 버전으로 출력하시오.
 
-System.out.print("Hi2");
+System.out.print("Hi2\n");
 System.out.println("Hi2");
 System.out.printf("%s%d" , "Hi" , 2 );
 
