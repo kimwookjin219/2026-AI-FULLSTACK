@@ -19,7 +19,10 @@ day002
 2) bankproject 안에
    com.the703.v1
 
-   
+---
+
+## part003
+
 - 복습문제
   
 1. 다음에 해당하는 git 명령어를 쓰시오.
@@ -52,4 +55,4 @@ System.out.printf("%s%d" , "Hi" , 2 );
 5. 다음을 10 + 3 = 13으로 출력하시오.
 int a = 10; , b = 3;  
 
-System.out.println( a + " + " + b " = " + ( a + b ) );
+System.out.println( a + " + " + b + " = " + ( a + b ) );
