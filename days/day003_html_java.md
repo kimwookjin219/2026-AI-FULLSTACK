@@ -63,6 +63,17 @@ System.out.printf("%d+%d=%d", a, b, a+b);
 
 ### ■3. Todo 2 : java 자료형/ 입력
 
+1. 자료형의 구분
+- 기본형 : 실제 값 저장 (1 : int)
+- 참조형 : 주소 값 저장 ("abc" : String)
+
+2. 기본자료형
+- 논리형 : boolean (true/false)
+- 정수형 : byte(1byte) - short(2) - ★int(4) - long(8 : 4L) 소수점X (10, 1, 2)
+- 실수형 : float(4 : 3.14f) - ★double(8 : 3.14) 소수점O (1.1 , 3.14)
+
+★ 정수 < 실수
+
 ---
 
 ### ■4. 복습문제
