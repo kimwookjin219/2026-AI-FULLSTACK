@@ -81,7 +81,7 @@ System.out.printf("%d+%d=%d", a, b, a+b);
 - 1. html/css/js 역할
   - 1) html :  구조
   - 2) css  :  꾸미기
-  - 3) js   :  동작
+  - 3) js(자바스크립트)   :  동작
 
 - 2. 태그
     - <></> : 브라우저에게 명령
