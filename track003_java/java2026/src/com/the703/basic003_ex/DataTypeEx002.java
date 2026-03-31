@@ -19,3 +19,12 @@ public class DataTypeEx002 {
 
 	}
 }
+/*
+연습문제2)
+패키지명 : com.the703.basic003_ex
+클래스명 : DataTypeEx002
+출력내용 :  Scanner이용해서 나이 입력받고 출력하시오.
+    좋아하는 수(정수)   입력하시오 > _입력받기
+    좋아하는 숫자는 ** 입니다.
+
+*/

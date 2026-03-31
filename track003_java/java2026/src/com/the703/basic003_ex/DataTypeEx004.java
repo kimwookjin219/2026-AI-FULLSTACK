@@ -29,3 +29,11 @@ public class DataTypeEx004 {
 		System.out.println(10f/3);// 실수/정수 = 실수
 	}
 }
+/*
+연습문제4)
+패키지명 : com.the703.basic003_ex
+클래스명 : DataTypeEx004
+출력내용 :  Scanner이용해서 파이값을 입력받고 출력하시오. 
+     파이값을 입력하시오 > _입력받기    3.141592    ( 자료형선택 )
+     파이값은 **입니다.
+*/
