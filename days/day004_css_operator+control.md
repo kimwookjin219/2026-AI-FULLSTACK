@@ -10,15 +10,16 @@
 8. 가로 : width / 세로 : height
 9. 바깥쪽 여백 : margin
 10. 안쪽 여백 : padding
-11. 선 : boder
-12. 둥근모서리 : boder-radius
+11. 선 : border
+12. 둥근모서리 : border-radius
 13. 그림자효과 : box-shadow
 
 ---
 
-### ■2. Todo2: JAVA 자료형2/연산자/제어문
+### ■2. Todo2: Java 기본형/연산자
 
-자료형2
+
+
 
 ---
 
