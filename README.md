@@ -13,7 +13,7 @@
 ## 📌 Contact & Links
 
 <img src="me.png" alt="개구리짱구"
-     style="width:150px" />
+     style="width:150px" /> 
 |||
 |-|-|
 |NAME|	김욱진|

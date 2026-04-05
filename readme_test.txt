@@ -20,7 +20,7 @@ GITHUB	https://github.com/sally03915/fullstack_20250825
 📌 Goals
 GitHub의 핵심 기능 이해 및 실습
 Markdown을 활용한 문서화 능력 향상
-협업을 위한 GitHub 워크플로우 익히기
+협업을 위한 GitHub 워크플로우 익히기 
 AI 도구와 함께하는 개발환경 체험
 기술스택	연결된 CS 역량 및 실무 활용 능력
 JAVA	객체지향 프로그래밍(OOP) 원리와 JVM 메모리 관리 이해. 대규모 시스템 설계 및 유지보수 역량.
