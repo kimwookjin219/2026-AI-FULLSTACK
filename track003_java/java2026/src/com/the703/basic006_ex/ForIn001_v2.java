@@ -14,19 +14,19 @@ public class ForIn001_v2 {
 			System.out.print("학번 입력 > "); no=sc.next();
 			for(;;) {
 				//if (국어점수의 범위가 아니라면) {
-				if(kor==-1) { 
+				if(kor<0 || kor>100) { 
 				//1. 입력받기
 				System.out.print("국어점수 입력 > "); kor=sc.nextInt();
 				//2.건너뛰기
 				continue;
 				 }
 				
-				if(eng==-1) { 
+				if(eng<0 || eng>100) { 
 				System.out.print("영어점수 입력 > "); eng=sc.nextInt();
 				continue;
 				 }
 				
-				if(math==-1) {
+				if(math<0 || eng>100) {
 				System.out.print("수학점수 입력 > "); math=sc.nextInt();				
 				
 				continue;
