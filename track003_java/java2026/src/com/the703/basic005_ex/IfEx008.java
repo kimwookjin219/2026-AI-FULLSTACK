@@ -19,7 +19,7 @@ public class IfEx008 {
 		total = kor + eng + math;
 		avg = (double)total/3;
 		//pass = avg>=60 && kor<40? "불합격": (eng<40? "불합격" : ( math<40? "불합격" : "합격" ) ) ;
-		pass = avg<60? "불합격" : (kor<40 || eng<40 || math<40? "불합격" : "합격") ;
+		pass = avg<60? "불합격" : (kor<40 || eng<40 || math<40)? "불합격" : "합격" ;
 		//                      (kor>=40 && eng>=40 && math>=40 )
 		
 		//3. 평균이 60점이상이고  각과목이 40점 미만이 아니라면 합격/ 아니면 불합격

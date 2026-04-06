@@ -2,11 +2,12 @@ package com.the703.v1;
 
 import java.util.Scanner;
 
-public class Bankprojectv1 {
+
+public class Bank_욱진 {		
 	public static void main(String[] args) {
 		//변수
 		int num1=-1;
-		int id = -1, pass = -1 , balance=-1 ;
+		int id = -1, pass = -1 , balance=-1 ,in=-1,out=-1;
 		Scanner sc = new Scanner(System.in);
 		//입력
 		for(;;) {		
@@ -28,27 +29,30 @@ public class Bankprojectv1 {
 				System.out.print("[3]금액  입력> "); balance = sc.nextInt();				
 				} // if( num1==1 ) end
 			
-			else if( num1==2 ) {
-				System.out.println("2.조회 \n"); 
+			else if( num1==2 ) { 
+				///////////////////////////////////
 				//변수
 				int tid=-1,tpass=-1;
 				//입력 (임시공간에 아이디와 비밀번호 입력받기)
 				System.out.print("[1]ID   입력> "); tid = sc.nextInt();
 				System.out.print("[2]PASS 입력> "); tpass = sc.nextInt();
 				//처리+출력
-				if( id==tid && pass==tpass ) { System.out.println("잔액 : " + balance + "\n"); }
+				if( id==tid && pass==tpass ) {  
+					///////////////////////////////////
+					System.out.println("잔액 : " + balance + "\n"); }
 				else                         { System.out.println("비밀번호를 확인해주세요!\n"); }
 				} // num1==2 end
 			
-			else if( num1==3 ) {
-				System.out.println("3.입금 \n"); 
+			else if( num1==3 ) { 
+				///////////////////////////////////
 				//변수
-				int tid=-1,tpass=-1,in=-1;;
+				int tid=-1,tpass=-1;
 				//입력
 				System.out.print("[1]ID   입력> "); tid = sc.nextInt();
 				System.out.print("[2]PASS 입력> "); tpass = sc.nextInt();
 				//처리+출력
 				if( id==tid && pass==tpass ) { 
+					///////////////////////////////////
 					System.out.print("입금 : "); in = sc.nextInt();
 					System.out.println("==입금완료");
 					System.out.print("잔액 : " + (balance+in) );
@@ -58,14 +62,15 @@ public class Bankprojectv1 {
 				} // num1==3 end
 			
 			else if( num1==4 ) {
-				System.out.println("4.출금 \n"); 
+				///////////////////////////////////
 				//변수
-				int tid=-1,tpass=-1,out=-1;
+				int tid=-1,tpass=-1;
 				//입력
 				System.out.print("[1]ID   입력> "); tid = sc.nextInt();
 				System.out.print("[2]PASS 입력> "); tpass = sc.nextInt();
 				//처리+출력
 				if( id==tid && pass==tpass ) { 
+					///////////////////////////////////
 						System.out.print("출금 : "); out = sc.nextInt();
 						System.out.println("==출금완료");
 						System.out.println("잔액 : " + (balance-out));						
@@ -75,7 +80,7 @@ public class Bankprojectv1 {
 				} // num1==4 end
 			
 			else if( num1==5 ) {
-				System.out.println("5.삭제 \n"); 
+				///////////////////////////////////
 				//변수
 				int tid =-1,tpass =-1;
 				//입력
@@ -83,6 +88,7 @@ public class Bankprojectv1 {
 				System.out.print("[2]PASS 입력> "); tpass = sc.nextInt();
 				//처리+출력
 				if (id==tid && pass==tpass) {
+					///////////////////////////////////
 						id = -1;  
 					    pass = -1;
 				      }
@@ -98,6 +104,9 @@ public class Bankprojectv1 {
 			
 	} // end main
 } // end class 
+
+//menu 2~5번까지 공통되는사항 줄이기
+
 /*
   Q1. 메뉴판나오게 만들고 사용자가 메뉴 선택시
       1을 입력하면 추가기능입니다. 출력구문까지만
