@@ -11,6 +11,7 @@ public class ForEx003 {
 		for(int i=1;i<=10;i++) { hap=hap+i; }
 		
 		System.out.println(hap);
+		
 	}
 }
 /*
