@@ -5,6 +5,8 @@ import java.util.Scanner;
 public class ForIn001 {
 	public static void main(String[] args) {
 		//변수
+		//자료형 : 기본형 / 참조형(String)
+		//기본형 : 정수 byte-short/char-int-long / 실수 float-double  /boolean 빼고 강제타입변환 가능!
 		int kor=-1,eng=-1,math=-1,total=-1;
 		double avg=-1;
 		String no=" ",pass=" ",level=" ",jang=" ";
@@ -12,7 +14,8 @@ public class ForIn001 {
 		for(;;) {
 		//입력
 			System.out.print("학번 입력 > "); no=sc.next();
-			for(;;) {
+			//문자열 next() / 정수형 nextInt() / 실수형 nextDouble() / 문자 next().charAt(0)
+			for(;;) { //for ( ; !(kor>=0 && kor<=100) ;)
 				System.out.print("국어점수 입력 > "); kor=sc.nextInt();
 				if(kor>=0 && kor<=100) { break;}
 			}
@@ -24,15 +27,25 @@ public class ForIn001 {
 				System.out.print("수학점수 입력 > "); math=sc.nextInt();
 				if(math>=0 && math<=100) { break;}
 			}		
-			//처리
+			//처리 - 연산자 먼저 ()  값(++, --, 산술) 비교(> , <) 조건( && || ?: )  대입(=)
+			//   -  제어문 ( if / switch )  반복 ( for , while , do while )
 			total = kor+eng+math;
-			avg = (double)total/3;
+			avg = (double)total/3;  // 강제형변환
 			pass = avg<60? "불합격" : (kor<40 || eng<40 || math<40)?  "불합격" : "합격";
 			jang = avg>=95? "장학생" : "X";
 			level = avg>=90? "수"
 					: avg>=80? "우"
 					: avg>=70? "미"
-					: avg>=60? "양" : "가";		
+					: avg>=60? "양" : "가";	
+			/*
+			 switch((int)avg/10) {
+			 	case 10: case 9: level="수" break;
+			 	case 8: level="우" break;
+			 	case 7: level="미" break;
+			 	case 6: level="양" break;
+			 	default: level="가" break;
+			 } 
+			 */
 			//출력
 			System.out.println("====================================================================");
 			System.out.println("학번\t국어\t영어\t수학\t총점\t평균\t합격여부\t레벨\t장학생");

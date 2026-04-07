@@ -5,20 +5,20 @@ import java.util.Scanner;
 public class ForIn001_v2 {
 	public static void main(String[] args) {
 		//변수
-		int kor=-1,eng=-1,math=-1,total=-1;         // 초기값 0~100사이가 아니게
-		double avg=-1;
+		int kor=-1,eng=-1,math=-1,total=-1;         // step1. 초기값 0~100사이가 아니게
+		double avg=-1;                              
 		String no=" ",pass=" ",level=" ",jang=" ";
 		Scanner sc = new Scanner(System.in);
 		for(;;) {
 		//입력			
 			System.out.print("학번 입력 > "); no=sc.next();
-			for(;;) {
-				//if (국어점수의 범위가 아니라면) {
-				if(kor<0 || kor>100) { 
+			for(;;) {// step5. 다시 검색
+				//if (국어점수의 범위가 아니라면) { // step2. kor = -1
+				if(kor<0 || kor>100) {   // !(kor>=0 && kor<=100) : 0~100사이가 아니면
 				//1. 입력받기
-				System.out.print("국어점수 입력 > "); kor=sc.nextInt();
+				System.out.print("국어점수 입력 > "); kor=sc.nextInt(); // step3
 				//2.건너뛰기
-				continue;
+				continue; //step4
 				 }
 				
 				if(eng<0 || eng>100) { 
@@ -26,7 +26,7 @@ public class ForIn001_v2 {
 				continue;
 				 }
 				
-				if(math<0 || eng>100) {
+				if(math<0 || math>100) {
 				System.out.print("수학점수 입력 > "); math=sc.nextInt();				
 				
 				continue;
