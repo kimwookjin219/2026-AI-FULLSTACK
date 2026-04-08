@@ -52,11 +52,11 @@ layout
 
 ■ 1. html + css
 ```
-    1. 레이아웃잡는방법은? (     ,       ,      )
-    2. box를 왼쪽, 오른쪽에 붙이는 방법은?
+    1. 레이아웃잡는방법은? (   float  ,   position    ,  display    )
+    2. box를 왼쪽, 오른쪽에 붙이는 방법은?                         .box { float:left; }   .box { float:right; }
     3. 다음박스를 왼쪽 오른쪽에 배치하려고 한다. 들어가야하는 코드는?
     <style>
-      .left{}     .right{}    .clear{}
+      .left{ float:left; }     .right{ float:right; }    .clear{  clear:both;  }
     </style>
     <div class="box">
       <div class="left">LEFT</div>
@@ -66,17 +66,17 @@ layout
 
     4. 다음li를 왼쪽으로 붙이려고한다. 코드는?
     <style>
-      ul{}    li{}
+      ul{ overflow:hidden; padding:10px; }    li{ float:left; }
     </style>
     <ul>
       <li>ONE </li><li>TWO</li><li>THREE</li>
     </ul>
 
     5. 내가 원하는 위치에 top, right, bottom, left 속성을 줘서 원하는 위치에 배치하는 방법은?
-     - 부모박스에  (    )코드를 사용해   기준점을 잡고
-     - 자식콘텐츠로  (     )를 사용해 배치한다.
+     - 부모박스에  (  relative  )코드를 사용해   기준점을 잡고
+     - 자식콘텐츠로  (   absolute  )를 사용해 배치한다.
 
-    6.  스크롤할 때 상단에 계속 붙어 있도록 만드는 방법은?  
+    6.  스크롤할 때 상단에 계속 붙어 있도록 만드는 방법은?  position:sticky; top:0;
 ```    
 
 ■ 2. java
