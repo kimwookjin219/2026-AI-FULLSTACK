@@ -2,8 +2,11 @@ package com.the703.basic006_ex;
 
 public class ForEx003_1 {
 	public static void main(String[] args) {
+		int hap=0;
 		
-
+		for(int i=1;i<=10;i++) { System.out.print( (i==1? "": "+" ) + i + (i==10? "=":""));  }
+		for(int i=1;i<=10; i++) {hap=hap+i;}		
+		System.out.print(hap);
 	}
 
 }
