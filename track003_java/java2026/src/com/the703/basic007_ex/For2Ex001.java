@@ -1,0 +1,40 @@
+package com.the703.basic007_ex;
+
+public class For2Ex001 {
+	public static void main(String[] args) {
+		
+		//ver1
+		
+		System.out.print("#"); System.out.print("#"); System.out.print("#"); System.out.print("#"); System.out.println();
+		System.out.print("#"); System.out.print("#"); System.out.print("#"); System.out.print("#"); System.out.println();
+		System.out.print("#"); System.out.print("#"); System.out.print("#"); System.out.print("#"); System.out.println();
+		System.out.print("#"); System.out.print("#"); System.out.print("#"); System.out.print("#"); System.out.println();
+		
+		System.out.println();
+		
+		//ver2
+		for(int i=1;i<=4;i++){ System.out.print("#"); } System.out.println();
+		for(int i=1;i<=4;i++){ System.out.print("#"); } System.out.println();
+		for(int i=1;i<=4;i++){ System.out.print("#"); } System.out.println();
+		for(int i=1;i<=4;i++){ System.out.print("#"); } System.out.println();
+		
+		System.out.println();
+		
+		//ver3
+		for(int ch=1;ch<=4;ch++){ for(int i=1;i<=4;i++){ System.out.print("#"); } System.out.println(); }
+		
+		
+		
+
+	}
+
+}
+/*
+패키지명 : ccom.the703.basic007
+클래스명 :  For2Ex001
+
+####
+####
+####
+####
+*/
