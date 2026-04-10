@@ -44,7 +44,8 @@
     .banner {
       display: flex;
       justify-content: center;     
-      line-height: 300px;
+      align-items: center;
+      height: 300px;
       background-color: #00ff6a;
       color: white;
       font-size: 30px;
@@ -55,13 +56,15 @@
       flex-wrap: wrap;
       gap: 20px;
       width: 80%;
-      margin: auto;
-      margin-top: 40px;
-      margin-bottom: 40px;
+      margin: 40px auto;     
     }
     /* Q9. .card : flex 1 1 calc(33% - 20px), 배경 흰색, 모서리둥글게 8px, 그림자 효과, 안쪽여백 20px, 중앙정렬(text-align center) */
     .card {     
-      flex: 1 1 calc(33% - 20px);
+      flex: 1 1 calc(33% - 60px); 
+      /* 1 :카드가 남으면 커질수도 있어(flex:grow) 
+         1: 공간부족하면 줄어들 수 있어   
+         calc(33% - 20px) 카드의 기본크기 33% - 60px(왼쪽 패딩,오른쪽패딩, 갭)(여백 padding margin gap)
+      */
       background-color: rgb(169, 252, 61);
       border-radius: 8px;
       box-shadow: 0 0 10px rgba(0,0,0,0.5);
@@ -72,20 +75,18 @@
     .layout {
       display: flex;
       width: 80%;
-      margin: auto;
       gap: 20px;
-      margin-top:40px;
-      margin-bottom:40px;
+      margin:40px auto;
     }
     /* Q11. .sidebar : flex 1, 배경 #eee, 안쪽여백 20px */
     .sidebar {
-      flex: 1;
+      flex: 1;    /* 전체공간(4칸)에서 1칸 사용해 */
       background-color: #55f7dc;
       padding: 20px;
     }
     /* Q12. .content : flex 3, 배경 흰색, 안쪽여백 20px, 그림자 효과 */
     .content {
-      flex: 3;
+      flex: 3;   /* 전체공간(4칸)에서 3칸 사용해 */
       background-color: rgb(169, 252, 61);
       padding: 20px;
       box-shadow: 0 0 10px rgba(0,0,0,0.5);
