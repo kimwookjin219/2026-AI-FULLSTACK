@@ -6,8 +6,7 @@ public class ArrayEx010 {
 		int rank=1;
 		
 		for(int i=0;i<su.length;i++) {
-			
-			
+
 		}
 		
 		
