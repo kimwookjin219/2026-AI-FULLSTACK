@@ -4,12 +4,6 @@ public class ArrayEx010 {
 	public static void main(String[] args) {
 		int [] su = {-3,-5,-1,-9,-7}; // 0 1 2 3 4
 		int rank=1;
-		
-		for(int i=0;i<su.length;i++) {
-
-		}
-		
-		
 
 	}
 }
