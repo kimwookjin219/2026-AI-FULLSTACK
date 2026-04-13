@@ -7,7 +7,7 @@ public class Bankproject_while {
 	public static void main(String[] args) {
 		//변수
 		int menu=-1;
-		int id = -1, pass = -1 , balance=-1 ,in=-1,out=-1;
+		int id = -1, pass = -1 , balance=-1;
 		char ch = '\u0000';
 		Scanner sc = new Scanner(System.in);
 		
