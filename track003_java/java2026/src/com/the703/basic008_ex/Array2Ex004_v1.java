@@ -15,24 +15,23 @@ public class Array2Ex004_v1 {
 		for (int ch = 0; ch < datas.length; ch++) {
 			for (int kan = 0; kan < datas[ch].length; kan++) {
 				result[ch][kan] += datas[ch][kan];
-				result[ch][4] += result[ch][kan];
-				result[3][kan] += result[ch][kan];
-				result[3][4] += result[ch][kan];
-				
-			}
-		}
-		
+				result[ch][result.length] += result[ch][kan];
+				result[datas.length][kan] += result[ch][kan];
+				result[datas.length][result.length] += result[ch][kan];	
+			} 
+			System.out.println();
+		}	
 		//		result[0][4]=result[0][0]+result[0][1]+result[0][2]+result[0][3]
 		//		result[1][4]=result[1][0]+result[1][1]+result[1][2]+result[1][3]
 		//		result[2][4]=result[2][0]+result[2][1]+result[2][2]+result[2][3]
 		//		result[3][4]=result[3][0]+result[3][1]+result[3][2]+result[3][3]
 				
-		
-		System.out.println(Arrays.toString(result[0]));
-		System.out.println(Arrays.toString(result[1]));
-		System.out.println(Arrays.toString(result[2]));
-		System.out.println(Arrays.toString(result[3]));
-		
+		for(int ch=0;ch<result.length;ch++) { 
+			for(int kan=0; kan<result[ch].length; kan++) {
+			System.out.printf("%d\t",result[ch][kan]);
+				} 
+			System.out.println();
+			}
 		
 
 	}

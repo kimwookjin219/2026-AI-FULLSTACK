@@ -15,8 +15,24 @@
 
 #demo img{ object-fit: contain; }
 
-h3 {
-    text-decoration: underline;
+
+/* 배경 body fixed 하고 원하는 배경 부분만 투명하게 */
+.mybg {
+    background-color: transparent;
 }
 
+body { 
+    background-image:url(../img/bada.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: bottom;
+    background-attachment: fixed;
+}
 
+/* transform + transition */
+h3 {
+    text-decoration: underline;
+    transition: all 0.3s;
+}
+
+h3:hover { transform: translateY(-10px); }
