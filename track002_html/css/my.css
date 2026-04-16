@@ -31,7 +31,8 @@ body {
 
 /* transform + transition */
 h3 {
-    text-decoration: underline;
+    font-weight: bold;
+    color: white;
     transition: all 0.3s;
 }
 
