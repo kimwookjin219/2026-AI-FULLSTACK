@@ -22,7 +22,6 @@
 }
 
 body { 
-    background-image:url(../img/bada.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: bottom;
@@ -32,8 +31,43 @@ body {
 /* transform + transition */
 h3 {
     font-weight: bold;
-    color: white;
     transition: all 0.3s;
 }
 
 h3:hover { transform: translateY(-10px); }
+
+.fontbold { font-weight: bold; }
+
+.bubble {
+   position: fixed;
+   bottom: -100px;
+   border-radius: 50%;
+   width: 50px;
+   height: 50px;
+   background-color: rgba(0,121,107,0.4);
+   animation: rise 8s infinite ease; 
+   z-index: -20;
+}
+
+.index { z-index: 10; }
+
+@keyframes rise {
+   0%   { transform: translateY(0)       scale(1);   opacity: 0.5; }       /* from = 0% */
+   50%  { transform: translateY(-300px)  scale(1.2); opacity: 1; }       /* 50% */
+   100% { transform: translateY(-600px)  scale(0.8); opacity: 0; } 
+}
+
+.bubble:nth-of-type(1) { left:10%; animation-delay:0s; }
+.bubble:nth-of-type(2) { left:25%; animation-delay:2s; width: 35px; height: 35px; }
+.bubble:nth-of-type(3) { left:40%; animation-delay:4s; width: 45px; height: 45px; }
+.bubble:nth-of-type(4) { left:60%; animation-delay:1s; width: 38px; height: 38px; }
+.bubble:nth-of-type(5) { left:75%; animation-delay:3s; width: 42px; height: 42px; }
+
+@keyframes fadeInUp {
+   from { opacity: 0; transform: translateY(20px) }
+   to   { opacity: 1; transform: translateY(0); }
+}
+
+.fadein { 
+    animation:    fadeInUp     0.8s       ease         forwards ;
+} 

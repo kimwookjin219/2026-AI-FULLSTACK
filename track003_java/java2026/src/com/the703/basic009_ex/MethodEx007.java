@@ -25,7 +25,5 @@ public class MethodEx007 {
 
 }//end class
 /*
- a>b && a>c  a가 최대값    for(int i=1; i<=2; i++) { a>b && a>c =  a가 최대값   }
- b>a && b>c  b가 최대값
- c>a && c>b  c가 최대값
+
 */

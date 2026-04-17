@@ -15,25 +15,25 @@
     <!-- Q1. h1 내용 바꾸고 / a태그에 들어가있는 Logo / nav 좋아하는 색상으로 바꾸기 -->
     <header>
         <h1 class="myhidden">김욱진 포트폴리오</h1>    <!-- h1 : 로고 -->                 
-        <nav class="navbar navbar-expand-sm navbar-dark" style="background-color: skyblue;">
+        <nav class="navbar navbar-expand-sm navbar-light" >
             <h2 class="myhidden">주메뉴</h2> <!-- h2 : gnb bar 글로벌 내비게이션 바 -->
             <div class="container-fluid">
-                <a class="navbar-brand" href="javascript:void(0)">Full-Stack Developer</a>
+                <a class="navbar-brand fontbold" href="javascript:void(0)" style="font-family:'Trebuchet MS'">Kim wookjin</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
                 <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="mynavbar">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                    <a class="nav-link" href="javascript:void(0)">포트폴리오</a>
+                    <a class="nav-link fontbold" href="javascript:void(0)">포트폴리오</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link" href="javascript:void(0)">About Me</a>
+                    <a class="nav-link fontbold" href="javascript:void(0)">About Me</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item fontbold">
                     <a class="nav-link" href="javascript:void(0)">Gallery</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item fontbold">
                     <a class="nav-link" href="javascript:void(0)">Contact</a>
                     </li>
                 </ul>
@@ -78,22 +78,31 @@
     </section>
 
     <!-- info -->
-    <section class="mybg">  
+    <section class="p-5 mybg fadein">  
         <div class="container">
             <h3 class="p-5 text-center">About Me</h3>
-            <div class="container p-5 bg-white rounded">
+            <div class="container p-5 rounded shadow-lg">
                 <div class="row">
-                    <div class="col-sm-4">
+
+                    <div class="col-sm-6">
                         <p><img src="./img/six.png" class="w-50" alt="프로필사진"></p>
-                        <h4>Kim Wook Jin (Roy Kim)</h4>
-                        <ul>
-                            <li>heros219@naver.com</li>
-                            <li><a href="https://github.com/kimwookjin219/2026-AI-FULLSTACK" title="깃허브 포트폴리오 바로가기" target="_blank">깃허브 포트폴리오</a></li>
-                        </ul>
+
                     </div>
-                    <div class="col-sm-4">
+
+                    <div class="col-sm-6">
+                        <h4>김욱진(Roy Kim)</h4>
+                        <ul class="fontbold" style="list-style: none;">
+                            <li>📧heros219@naver.com</li>
+                            <li>📍인천(Incheon), Korea</li>
+                            <li>
+                                <a href="https://github.com/kimwookjin219/2026-AI-FULLSTACK" title="깃허브 포트폴리오 바로가기" target="_blank"  style="color:black; text-decoration: none;">
+                                🔗깃허브 포트폴리오
+                                </a>
+                            </li>
+                        </ul>
+
                         <h4>Education</h4>
-                        <ul>
+                        <ul style="list-style: none;">
                             <li>AI활용 풀스택(프론트엔드,백엔드)부트캠프(자바,파이썬,플러터) (26.03.26~26.10.08)</li>
                         </ul>
                         <h4>Keyword</h4>
@@ -104,46 +113,71 @@
                             <li class="btn btn-success m-1">성실</li>
                         </ul>
                     </div>
-                    <div class="col-sm-4">
-                        <h4>SKILL</h4>
-                            <!-- JAVA -->
-                            <div class="progress my-3">
-                            <div class="progress-bar progress-bar-striped progress-bar-animated" style="width:50%;">JAVA 50%</div>
-                            </div>
-
-                            <!-- SPRING -->
-                            <div class="progress my-3">
-                            <div class="progress-bar bg-success progress-bar-striped progress-bar-animated" style="width:10%">SPRING</div>
-                            </div>
-
-                            <!-- ORACLE -->
-                            <div class="progress my-3">
-                            <div class="progress-bar bg-info progress-bar-striped progress-bar-animated" style="width:10%">ORACLE</div>
-                            </div>
-
-                            <!-- REACT -->
-                            <div class="progress my-3">
-                            <div class="progress-bar bg-warning progress-bar-striped progress-bar-animated" style="width:10%">REACT</div>
-                            </div>
-
-                            <!-- AWS -->
-                            <div class="progress my-3">
-                            <div class="progress-bar bg-danger progress-bar-striped progress-bar-animated" style="width:10%">AWS</div>
-                            </div>
-                    </div>
+                    
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- SKILL -->
+    <section class="p-5 mybg fadein">
+        <div>
+            <h3 class="p-5 text-center" >SKILL</h3>
+                <div class="container">
+                    
+                    <div class="d-flex align-items-center">
+                        <span class="me-2" style="width: 50px">JAVA</span>
+                        <div class="progress my-3 fontbold flex-grow-1" style="height:40px">
+                        <div class="progress-bar rounded" style="width:50%;">JAVA 50%</div>
+                        </div>
+                    </div>
+                  
+                    
+
+                    <!-- SPRING -->
+                    <div class="d-flex align-items-center">
+                        <span class="me-2" style="width: 50px">SPRING</span>
+                        <div class="progress my-3 fontbold flex-grow-1" style="height:40px">
+                        <div class="progress-bar bg-success rounded" style="width:10%">SPRING</div>
+                        </div>
+                    </div>
+
+                    <!-- ORACLE -->
+                    <div class="d-flex align-items-center">
+                        <span class="me-2" style="width: 50px">ORACLE</span>
+                        <div class="progress my-3 fontbold flex-grow-1" style="height:40px">
+                        <div class="progress-bar bg-info rounded" style="width:10%">ORACLE</div>
+                        </div>
+                    </div>
+
+                    <!-- REACT -->
+                    <div class="d-flex align-items-center">
+                        <span class="me-2" style="width: 50px">REACT</span>
+                        <div class="progress my-3 fontbold flex-grow-1" style="height:40px">
+                        <div class="progress-bar bg-warning rounded" style="width:10%">REACT</div>
+                        </div>
+                    </div>
+
+                    <!-- AWS -->
+                    <div class="d-flex align-items-center">
+                        <span class="me-2" style="width: 50px">AWS</span>
+                        <div class="progress my-3 fontbold flex-grow-1" style="height:40px">
+                        <div class="progress-bar bg-danger rounded" style="width:10%">AWS</div>
+                        </div>
+                    </div>
+   
+                </div>
+        </div>
+    </section>
+
     <!-- portfolio -->
-    <section class="p-5 mybg">    
+    <section class="p-5 mybg fadein">    
             <h3 class="text-center m-5">Portfolio</h3>
             <div class="container p-5 bg-white rounded shadow-lg">
                 <div class="row">
                         <h4 class="myhidden">포트폴리오 동영상</h4>
                         <!-- 동영상 -->
-                    <div class="col-sm-4">
+                    <div class="col-sm-6 text-center">
                          <iframe class="w-100 no-border"
                          src="https://www.youtube.com/embed/l-H4QHLC-Uc?si=qCXl90UU1VYixWbt" 
                          title="YouTube video player" frameborder="0" 
@@ -153,7 +187,7 @@
 
                         <button class="btn btn-success"><a href="https://github.com/kimwookjin219/2026-AI-FULLSTACK" title="포트폴리오 더보기" target="_blank" style="text-decoration: none; color: white;">포트폴리오 더보기</a></button>
                     </div>
-                    <div class="col-sm-4">
+                    <div class="col-sm-6">
                         <h4>spring boot + jpa + react portfolio</h4>
                         <ul>
                             <li> <strong>spring Boot + JPA</strong> 기반의 백엔드와 데이터 처리 로직 구현</li>
@@ -161,28 +195,63 @@
                             <li> <strong>JWT 인증</strong>과 <strong>CI/CD 자동 배포</strong>로 보안성과 효율성 강화</li>
                         </ul>
                     </div>
-                    <div class="col-sm-4">
-                        <h4>기술스택</h4>
+                </div>
+            </div>  
+
+            <div class="container my-5 p-5 bg-white rounded shadow-lg">
+                <div class="row">
+                        <h4 class="myhidden">포트폴리오 동영상</h4>
+                        <!-- 동영상 -->
+                    <div class="col-sm-6 text-center">
+                         <iframe class="w-100 no-border"
+                         src="https://www.youtube.com/embed/l-H4QHLC-Uc?si=qCXl90UU1VYixWbt" 
+                         title="YouTube video player" frameborder="0" 
+                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                         referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+                        </iframe>
+
+                        <button class="btn btn-success"><a href="https://github.com/kimwookjin219/2026-AI-FULLSTACK" title="포트폴리오 더보기" target="_blank" style="text-decoration: none; color: white;">포트폴리오 더보기</a></button>
+                    </div>
+                    <div class="col-sm-6">
+                        <h4>spring boot + jpa + react portfolio</h4>
                         <ul>
-                            <li>Spring Boot 2.7.14</li>
-                            <li>Spring Security 5.7x</li>
-                            <li>Spring Data JPA 2.7x</li>
-                            <li>Hibernate 5.6x</li>
-                            <li>Oracle 11</li>
-                            <li>React 18.x</li>
-                            <li>Axios 1.x</li>
-                            <li>React Router v6</li>
-                            <li>JWT</li>
-                            <li>Git & GitHub</li>
-                            <li>GitHub Actions</li>
+                            <li> <strong>spring Boot + JPA</strong> 기반의 백엔드와 데이터 처리 로직 구현</li>
+                            <li> <strong>React</strong>를 활용한 사용자 중심의 프론트엔드 UI 개발</li>
+                            <li> <strong>JWT 인증</strong>과 <strong>CI/CD 자동 배포</strong>로 보안성과 효율성 강화</li>
                         </ul>
                     </div>
                 </div>
-            </div>  
+            </div> 
+
+
+            <div class="container p-5 bg-white rounded shadow-lg">
+                <div class="row">
+                        <h4 class="myhidden">포트폴리오 동영상</h4>
+                        <!-- 동영상 -->
+                    <div class="col-sm-6 text-center">
+                         <iframe class="w-100 no-border"
+                         src="https://www.youtube.com/embed/l-H4QHLC-Uc?si=qCXl90UU1VYixWbt" 
+                         title="YouTube video player" frameborder="0" 
+                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                         referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+                        </iframe>
+
+                        <button class="btn btn-success"><a href="https://github.com/kimwookjin219/2026-AI-FULLSTACK" title="포트폴리오 더보기" target="_blank" style="text-decoration: none; color: white;">포트폴리오 더보기</a></button>
+                    </div>
+                    <div class="col-sm-6">
+                        <h4>spring boot + jpa + react portfolio</h4>
+                        <ul>
+                            <li> <strong>spring Boot + JPA</strong> 기반의 백엔드와 데이터 처리 로직 구현</li>
+                            <li> <strong>React</strong>를 활용한 사용자 중심의 프론트엔드 UI 개발</li>
+                            <li> <strong>JWT 인증</strong>과 <strong>CI/CD 자동 배포</strong>로 보안성과 효율성 강화</li>
+                        </ul>
+                    </div>
+                </div>
+            </div> 
     </section>
 
     <!-- contact -->
-    <section class="p-4 mybg">
+    <section class="p-4 mybg fadein">
         <h3 class="p-4 text-center">Contact Me</h3> 
             <div class="container bg-white shadow p-5 rounded">     
                 <form action="/action_page.php" >
@@ -194,19 +263,24 @@
                         <label for="comment">Comments:</label>
                         <textarea class="form-control" rows="5" id="comment" name="text"></textarea>
                     </div>
-                    <button type="submit" class="btn btn-success">메일보내기</button>
+                    <div class="text-end">
+                        <button type="submit" class="btn btn-success">메일보내기</button>
+                    </div>
                 </form>
             </div>  
     </section>
 
     <!-- footer -->
     <!-- 글자를 페이지 정중앙 / 배경색 좋아하는 색으로 -->
-    <footer class="text-center mt-3 p-2 text-white" style="background-color: skyblue;">
+    <footer class="text-end mt-3 p-2">
         © copyrights Roy Kim 2026 all. rights reserved
     </footer>
 
-
-
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
 </body>
 </html>
 

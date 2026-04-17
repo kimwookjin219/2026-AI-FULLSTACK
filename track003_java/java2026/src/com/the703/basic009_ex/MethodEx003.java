@@ -11,9 +11,22 @@ public class MethodEx003 {
 	public static String jangsu() { return "★★★★★"; }
 	
 	public static int myadd(int a , int b) { return a+b; }
+	//변수
+	// int result = 0;
+	//입력 x
+	//처리
+	//result = a+b;
+	//출력
+	//return = result;
 	
 	public static String myban(char c) 
 	{ 
+		/*
+		 if     (c=='A') { return "노랑조"; }
+		 else if(c=='B') { return "주황조"; }
+		 else            { return ""; } 	 else 안쓰면 오류남	 
+		 */
+		
 		return ((c=='A')? "노랑"	: "주황") ;		
 	}
 	
