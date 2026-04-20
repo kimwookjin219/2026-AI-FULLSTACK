@@ -46,7 +46,7 @@ h3:hover { transform: translateY(-10px); }
    height: 50px;
    background-color: rgba(0,121,107,0.4);
    animation: rise 8s infinite ease; 
-   z-index: -20;
+   z-index: -999;
 }
 
 .index { z-index: 10; }
@@ -71,3 +71,8 @@ h3:hover { transform: translateY(-10px); }
 .fadein { 
     animation:    fadeInUp     0.8s       ease         forwards ;
 } 
+
+.top-section {
+  position: relative;
+  z-index: 999;
+}
