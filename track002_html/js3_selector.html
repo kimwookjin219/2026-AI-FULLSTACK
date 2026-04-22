@@ -174,16 +174,38 @@
       <li id="orange">ORANGE</li>
       <li id="gold">GOLD</li>
     </ul>
+    
     <script>
         //////////////////////////////
+    window.addEventListener("load" , function(){
+      //Q1. #color 선택하기  color라는 변수에 담기
+      //Q2. 안에 있는 li태그들 선택
+      //Q3. 첫번째 RED의 굵게   font-weight="bold"
+       let color = document.querySelector("#color");
+      console.log(color);
+      let clis = color.getElementsByTagName("li");
+      console.log(clis);
+      clis[0].style.fontWeight="bold";
+      });
+    window.addEventListener("load" , function(){  
       // 6. querySelector
- 
+      let color = document.querySelector("#color");  
+      color.style.backgroundColor="aqua"; 
+
       //7. parentElement
- 
-      //8. 제일가까운 상위부모 
+      let orange = document.querySelector("#orange");
+      orange.parentElement.style.border="10px dashed orange";
+      orange.parentElement.style.padding="20px";
+      orange.parentElement.style.borderRadius="20px";
+
+      //8. 제일가까운 상위부모 - 대상을 감싸고 있는 태그만 적용가능!
+      orange.closest("div").style.backgroundColor="black";
+      orange.closest("div").style.color="gold";
 
       //9. 형제요소 
-      
+      orange.previousElementSibling.style.textAlign="center";
+      orange.nextElementSibling.style.textAlign="right";
+    });
     </script>
   </div>
   <!--     -->
@@ -232,8 +254,9 @@
   <div class="card-body">
     <h4>STEP4. value, innerHTML </h4>
     <div class="row">
-      <div class="col"><input type="text"    id="value_target"  class="form-control"
-                         placeholder="input에서는 value"  readonly/></div>
+      <div class="col">
+        <input type="text"    id="value_target"  class="form-control"
+              placeholder="input에서는 value" value="일반텍스트입력" /></div>
       <div class="col"><input type="button"  value="value"  title="value_target"  id="value"  class="btn btn-outline-primary" /></div>
     </div>
     <hr/>
@@ -244,7 +267,24 @@
 
     <script>
         //////////////////////////////
- 
+      window.addEventListener("load" , function(){
+        //#1. value-input
+        let value = document.querySelector("#value");
+        value.addEventListener("click" , function(){
+          let value_target = document.querySelector("#value_target") //대상(input)
+          alert(value_target.value); // input 태그에서 대상을 찾을때 value : 찾기
+          value_target.value = "abc"; // value : 셋팅
+        });
+        //#2. innerHTML - 대상 
+        // inner 버튼 클릭시   div(입력받는 용도가 아닌 태그).inner_target  태그안에 값
+        let inner = document.querySelector("#inner");
+        inner.addEventListener("click" , function(){
+          let inner_target = document.querySelector(".inner_target");
+          console.log(inner_target);
+          inner_target.innerHTML = "HELLO"; // 해당태그에 동작으로 값 넣기 A=B
+          alert(inner_target.innerHTML );   // alert 로 해당값 출력 
+        });
+      });  
     </script>
   </div>
   <!--     -->
@@ -271,8 +311,38 @@
      https://www.w3schools.com/js/js_events.asp
     </pre>
     <script>
-    
+      window.addEventListener("load" , function(){
         //////////////////////////////
+        let test1 = document.querySelector("#test1");
+        test1.onclick = function(){
+          let name = prompt("이름을 입력하시오.")
+          alert(name);
+        };
+
+        let test2 = document.querySelector("#test2");
+        test2.onclick = function(){
+          test2.value = "INPUT";
+        };
+
+        let test3 = document.querySelector("#test3");
+        test3.onclick = function(){
+          let target = document.querySelector(".result_target");
+          alert(target.innerHTML);
+          target.innerHTML = "김욱진";
+          alert(target.innerHTML);
+        }
+
+        document.getElementById("test4").onmouseover = function(){
+          document.querySelector(".result_target").style.backgroundColor="crimson";
+        };
+
+        document.getElementById("test4").onmouseout = function(){
+          document.querySelector(".result_target").style.backgroundColor="black";
+        };
+        
+       
+           
+      });
     </script>
   </div>
 </div>
