@@ -5,7 +5,7 @@ public class Score{    // com.the703.basic010 패키지에 설정해주세요
 	   private int kor, eng, math , total;
 	   private double aver;
 	   private String p  , s  , rank;
-	   public Score() { rank=""; }
+	   public Score() { super(); }
 	   public Score(String name, int kor, int eng, int math) { this.name = name; this.kor = kor; this.eng = eng; this.math = math;}
 	   
 	   public String getName() { return name; }
