@@ -449,6 +449,24 @@
           }
         };
       });
+      /*
+      window.addEventListener("load" , function(){
+        let age = document.getElementById("age");
+        age.addEventListener("click" , function(){
+          agefn();
+        });
+
+        function agefn()
+          let answer = -1;
+          let result = "0~5세 사이가 아닙니다."
+          while( !(answer >=0 && answer<=5) ){
+            answer = prompt("어린이의 나이를 입력하시오.");
+            if(answer>=0 && answer<=5) { result = "어린이의 나이는 " + answer +"세 입니다."; }
+            alert(result);
+          }
+        }
+      });    
+      */
  
     </script>
   </div>
@@ -467,7 +485,7 @@
       +,-,*,/를 입력받지 못하면 무한반복으로 다시 입력받게 하시오.
     4. 각 연산에 맞게 계산기를 구현하시오. (+,-,*,/)
     </pre>
-    <form action="" method="post"  id="calc_form">
+    <form action="#" method="post"  id="calc_form">
       <fieldset>
       <legend class="myhidden"> 계산기 </legend>
           <p class="">
@@ -494,7 +512,9 @@
       </fieldset>
     </form>
     <script>
+      
       window.addEventListener("load" , function(){
+        /*
         document.getElementById("calc").onclick = function(){
           let num1,num2,abc;
 
@@ -527,9 +547,42 @@
             case "*": result.value = Number(num1)*Number(num2); break;
             case "/": result.value = Number(num1)/Number(num2); break;
           }
- 
-
         };
+        */
+        //1. 대상
+        let btn = document.getElementById("calc"); //버튼
+        let targets = document.querySelectorAll("#calc_form input");
+        console.log(targets); // #0 button // 1: num1 , 2: abc, 3: num2, 4: result
+        let num1 = -1 , num2 = -1, op = ' ', result = 0;
+
+        btn.addEventListener("click" , function(){
+        //2. 입력 (0~100사이 무한반복, 빈칸검사)
+        for(;;){ // 초기값 num1 = -1 , num2 = -1, op = ' '
+          if( !(num1>=0 && num1<=100) | num1=="" ){ //0~100사이가 아니거나 빈문자열이 아니라면
+            num1 = prompt("1. 정수 입력 0~100");
+          }
+          else if(!(num2>=0 && num2<=100) | num2=="" ){ 
+            num2 = prompt("2. 정수 입력 0~100");
+          }
+          else if( !(op == '+' || op == '-' || op == '*' || op == '/') ){ 
+            op = prompt("3. 연산자입력 (+,-,*,/)");
+          }
+          else{ break; } 
+        }
+        //3. 처리
+        switch(op){
+         case '+': result = Number(num1) + Number(num2); break;
+         case '-': result = Number(num1) - Number(num2); break;
+         case '*': result = Number(num1) * Number(num2); break;
+         case '/': result = Number(num1) / Number(num2); break;
+        }
+        //4. 각 value에 셋팅
+        targets[1].value = num1;
+        targets[2].value = op;
+        targets[3].value = num2;
+        targets[4].value = op!='/'? result : result.toFixed(2);  // 소수점 2
+        });
+        
       });
     </script>
 </div> <!-- end contianer  -->
