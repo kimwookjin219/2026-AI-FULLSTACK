@@ -45,15 +45,7 @@ public class MapEx003 {
 		System.out.print("지점 이름 입력> "); String name = sc.next();
 		System.out.print("ISBN 입력> "); String num = sc.next();
 		
-		for( Entry<String, BookDTO> l : smap.entrySet() ) { 
-			 String key = l.getKey();
-			 BookDTO value = l.getValue();
-			 
-			if(library.containsKey("서울점")) { 
-				System.out.println( key + " | " + value.getTitle() + " | " + value.getAuthor());
-				}
-		}
-		
+
 		if      (library.equals(name))  { System.out.println("📖 선택한 도서 정보: " + smap.get(num).getTitle() + " / 저자 : " + smap.get(num).getAuthor()); }
 		else  if(library.equals(name))  { System.out.println("📖 선택한 도서 정보: " + bmap.get(num).getTitle() + " / 저자 : " + bmap.get(num).getAuthor()); }
 
