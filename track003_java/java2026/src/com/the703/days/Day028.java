@@ -1,23 +1,131 @@
 package com.the703.days;
 
-public class Day028 {
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Objects;
+import java.util.Set;
 
+class MilkDto{
+	private String mname; private int mprice;
+	// 생성자, toString, hashCode/equals, getters/setters
+	public MilkDto() { super();  }
+	public MilkDto(String mname, int mprice) { super(); this.mname = mname; this.mprice = mprice; }
+	@Override public String toString() { return "MilkDto [mname=" + mname + ", mprice=" + mprice + "]"; }
+	
+	public String getMname() { return mname; }
+	public void setMname(String mname) { this.mname = mname; }
+	public int getMprice() { return mprice; }
+	public void setMprice(int mprice) { this.mprice = mprice; }
+	
+	@Override public int hashCode() { return Objects.hash(mname, mprice); }
+	@Override public boolean equals(Object obj) {
+		if (this == obj) return true;
+		if (obj == null) return false;
+		if (getClass() != obj.getClass()) return false;
+		MilkDto other = (MilkDto) obj;
+		return Objects.equals(mname, other.mname) && mprice == other.mprice;
+	}
+}
+
+public class Day028 {
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		int cnt = 0;
+		List<MilkDto> milks = new ArrayList<>();
+		
+		milks.add(new MilkDto("바나나우유", 1300));
+		milks.add(new MilkDto("메론맛우유", 1800));
+		milks.add(new MilkDto("커피우유", 1500));
+		milks.add(new MilkDto("커피우유", 1500));
+		
+		for(int i=0; i<milks.size(); i++) { 
+			MilkDto dto = milks.get(i);
+			System.out.println(++cnt + "\t" + dto.getMname() + "\t" + dto.getMprice() );
+			//System.out.printf("%d %s %d\n" ,(i+1),milks.get(i).getMname(),milks.get(i).getMprice())
+		}
+		
+		//오름차순
+		System.out.println("\n\n가격순으로 오름차순");
+		
+		//1. 익명적 객체
+//		milks.sort( new Comparator<MilkDto>() {
+//			@Override public int compare(MilkDto o1, MilkDto o2) {  return Integer.compare(o1.getMprice(), o2.getMprice()); }
+//			} 
+//		);
+		
+		//2. 람다식
+		//milks.sort((m1,m2) -> Integer.compare(m1.getMprice(), m2.getMprice()));
+		//@FunctionalInterface public interface Comparator<T> { int compare​(T o1, T o2) }
+		//milks.sort(  (o1,  o2) -> Integer.compare( o1.getMprice(), o2.getMprice() )   );
+		
+		//3. 참조형  Integer 부품객체에 compare라는 기능박스
+		// 리턴값
+		// error : milks.sort(Integer::compare );   // MilkDto 객체에서 가격 꺼내야함
+		milks.sort(Comparator.comparingInt(MilkDto::getMprice)); 
+		
+		
+		cnt=0;
+		for( MilkDto m : milks) { System.out.printf("%d %s %d\n" ,++cnt,m.getMname(),m.getMprice()); }
+		// void java.util.List.sort( Comparator<? super MilkDto> c )
+		// 리턴값 void (안에서 알아서 처리)
+		// Comparator<? super MilkDto> c - 부품객체 비교해주는 부품객체   <? super MilkDto>  MilkDto 포함한 부모객체
+		
+		System.out.println();
+		
+		int cnt1 = 0;
+		
+		Set<MilkDto> sets = new HashSet<>();
+		
+		sets.add(new MilkDto("바나나우유", 1300));
+		sets.add(new MilkDto("메론맛우유", 1800));
+		sets.add(new MilkDto("커피우유", 1500));
+		sets.add(new MilkDto("커피우유", 1500));
+		
+		Iterator<MilkDto> iter = sets.iterator();
+		while(iter.hasNext()) {
+			MilkDto m = iter.next();
+			System.out.printf("%d %s %d\n",++cnt1,m.getMname(),m.getMprice());
+		}
+		
+		//for(MilkDto m : sets) { System.out.println( ++cnt1 + "\t" + m.getMname() + "\t" + m.getMprice()); }
+		
+		System.out.println();
+		
+		int cnt2 = 0;
+		// Map ( 사전 :  key:value(쌍)  )   put, get(key), size, remove, containsKey, containsValue, entrySet, keySet 
+		Map<String, MilkDto> maps = new HashMap<>();
+		
+		maps.put("banana", new MilkDto("바나나우유", 1300));  
+		maps.put("melon", new MilkDto("메론맛우유", 1800));  
+		maps.put("coffee", new MilkDto("커피우유", 1500));  
+		maps.put("coffee2", new MilkDto("커피우유", 1500)); 
+		
+		//for ( String key : maps.keySet() ) { System.out.printf( "%s %s %s\n",maps.get(key),maps.get(key).getMname(), maps.get(key).getMprice()) }
+		
+		for( Entry<String, MilkDto> m : maps.entrySet() ) {// getKey(),getValue();
+			String key = m.getKey();
+			MilkDto value = m.getValue();
+			
+			System.out.println( key + "\t" + value.getMname() + "\t" + value.getMprice());
+		}
 
 	}
-
 }
 
 
 /*
 Q1. 빈칸 채우기
-1.  List는 순서가 [ ] 구조로 데이터를 관리하며, 중복을 []
+1.  List는 순서가 [ o] 구조로 데이터를 관리하며, 중복을 [o]
     - 주요 메서드: add, get, size, remove, contains
-2. Set은 순서가[ ] 구조로 데이터를 관리하며,  중복을 []
-    - 주요 메서드: 
-3. Map은 [____]와 [____]의 쌍으로 데이터를 관리한다. 
-    - 주요 메서드: 
+2. Set은 순서가[ x] 구조로 데이터를 관리하며,  중복을 [x]
+    - 주요 메서드: add, 향상된 for /iterator, size, remove, contains
+3. Map은 [_key__]와 [__value__]의 쌍으로 데이터를 관리한다. 
+    - 주요 메서드: put, get(key), size, remove, containsKey, containsValue, entrySet, keySet 
  
 ---
 
