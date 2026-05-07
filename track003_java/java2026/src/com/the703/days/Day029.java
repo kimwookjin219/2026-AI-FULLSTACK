@@ -1,7 +1,93 @@
 package com.the703.days;
 
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Objects;
+import java.util.Set;
+
+class Player{
+	private String name;
+	private int score;
+	public Player() { super(); }
+	public Player(String name, int score) { super(); this.name = name; this.score = score; }
+	@Override public String toString() { return "Player [name=" + name + ", score=" + score + "]"; }
+	public String getName() { return name; }
+	public void setName(String name) { this.name = name; }
+	public int getScore() { return score; }
+	public void setScore(int score) { this.score = score; }
+	
+	@Override public int hashCode() { return Objects.hash(name, score); }
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Player other = (Player) obj;
+		return Objects.equals(name, other.name) && score == other.score;
+	} 
+	
+}
+
 public class Day029 {
 	public static void main(String[] args) { 
+			
+		System.out.println("ver-List");
+		List<Player> player = new ArrayList<>();
+		
+		player.add(new Player("Mario", 1200));
+		player.add(new Player("Luigi", 1500));
+		player.add(new Player("Peach", 1800));
+		player.add(new Player("Bowser", 900));
+		player.add(new Player("Bowser", 900));
+		
+		//player.sort((m1,m2) -> Integer.compare(m1.getScore(), m2.getScore()));
+		// 익명클래스 (오름차순)
+		//player.sort( new Comparator<Player>() { @Override public int compare(Player o1, Player o2) {  return Integer.compare(o1.getScore(), o2.getScore()); } } );
+		//람다식 (내림차순)
+		//player.sort( (o1,o2) -> Integer.compare(o2.getScore(), o1.getScore()) );
+		//메서드참조 (오름차순)
+		player.sort(Comparator.comparingInt(Player::getScore));
+		for(int i=0;i<player.size();i++) { System.out.printf("%d\t%s\t%d\n" ,(1+i),player.get(i).getName(),player.get(i).getScore()); }
+		
+		System.out.println("ver-Set");
+		Set<Player> setPlayers = new HashSet<>();
+		
+		setPlayers.add(new Player("Mario", 1200));
+		setPlayers.add(new Player("Luigi", 1500));
+		setPlayers.add(new Player("Peach", 1800));
+		setPlayers.add(new Player("Bowser", 900));
+		setPlayers.add(new Player("Bowser", 900));
+		
+		int cnt = 0;
+		
+		Iterator<Player> iter = setPlayers.iterator();
+		while(iter.hasNext()) {
+			Player p = iter.next();
+			System.out.printf("%d\t%s\t%d\n",++cnt,p.getName(),p.getScore());
+		}
+		
+		System.out.println("ver-Map");
+		Map<String,Player> mapPlayers = new HashMap<>();
+		
+		mapPlayers.put("mario", new Player("Mario", 1200));
+		mapPlayers.put("luigi", new Player("Luigi", 1500));
+		mapPlayers.put("peach", new Player("Peach", 1800));
+		mapPlayers.put("bowser", new Player("Bowser", 900));
+		
+		for( Entry<String, Player> p : mapPlayers.entrySet() ) {
+			String key = p.getKey();
+			Player value = p.getValue();
+			System.out.println( key + "\t" + value.getName() + "\t" + value.getScore());
+		}
     }
 }
 
