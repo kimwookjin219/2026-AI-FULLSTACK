@@ -11,12 +11,16 @@ import java.util.Map.Entry;
 import java.util.Objects;
 import java.util.Set;
 
+//1. DTO
 class Player{
 	private String name;
 	private int score;
+	
 	public Player() { super(); }
 	public Player(String name, int score) { super(); this.name = name; this.score = score; }
+	
 	@Override public String toString() { return "Player [name=" + name + ", score=" + score + "]"; }
+	
 	public String getName() { return name; }
 	public void setName(String name) { this.name = name; }
 	public int getScore() { return score; }
@@ -39,7 +43,8 @@ class Player{
 
 public class Day029 {
 	public static void main(String[] args) { 
-			
+		
+		//List : 기차 (순서 o ,중복 o) add,get,size,remove,contains	
 		System.out.println("ver-List");
 		List<Player> player = new ArrayList<>();
 		
@@ -50,14 +55,22 @@ public class Day029 {
 		player.add(new Player("Bowser", 900));
 		
 		//player.sort((m1,m2) -> Integer.compare(m1.getScore(), m2.getScore()));
+		
 		// 익명클래스 (오름차순)
 		//player.sort( new Comparator<Player>() { @Override public int compare(Player o1, Player o2) {  return Integer.compare(o1.getScore(), o2.getScore()); } } );
+		
 		//람다식 (내림차순)
 		//player.sort( (o1,o2) -> Integer.compare(o2.getScore(), o1.getScore()) );
+		
+		//람다식 (오름차순)
+		//player.sort( (o1,o2) -> Integer.compare(o1.getScore(), o2.getScore()) );
+		
 		//메서드참조 (오름차순)
 		player.sort(Comparator.comparingInt(Player::getScore));
+		
 		for(int i=0;i<player.size();i++) { System.out.printf("%d\t%s\t%d\n" ,(1+i),player.get(i).getName(),player.get(i).getScore()); }
 		
+		//Set : 주머니(순서 x, 중복x) add,향상된 for/Iterator,size,remove,contains
 		System.out.println("ver-Set");
 		Set<Player> setPlayers = new HashSet<>();
 		
@@ -69,12 +82,13 @@ public class Day029 {
 		
 		int cnt = 0;
 		
-		Iterator<Player> iter = setPlayers.iterator();
-		while(iter.hasNext()) {
-			Player p = iter.next();
+		Iterator<Player> iter = setPlayers.iterator(); //1. 줄세우기
+		while(iter.hasNext()) { //2. 처리대상 유무
+			Player p = iter.next(); //3. 한 개씩 꺼내오기
 			System.out.printf("%d\t%s\t%d\n",++cnt,p.getName(),p.getScore());
 		}
 		
+		//Map : 사전 (key:value - 쌍-엔트리) put,get(key),size,remove,contains
 		System.out.println("ver-Map");
 		Map<String,Player> mapPlayers = new HashMap<>();
 		
@@ -84,7 +98,7 @@ public class Day029 {
 		mapPlayers.put("bowser", new Player("Bowser", 900));
 		
 		for( Entry<String, Player> p : mapPlayers.entrySet() ) {
-			String key = p.getKey();
+			String key   = p.getKey();
 			Player value = p.getValue();
 			System.out.println( key + "\t" + value.getName() + "\t" + value.getScore());
 		}
@@ -115,7 +129,7 @@ new Player("Bowser", 900)
 4   Bowser   900
 5   Bowser   900
 
-Q3. List에서 출력을 보면 Bowser   900  라는 같은데이터를 넣었는데 2개가 나옴. 이유는?
+Q3. List에서 출력을 보면 Bowser   900  라는 같은데이터를 넣었는데 2개가 나옴. 이유는? List는 중복을 허용하기 때문
 4   Bowser   900
 5   Bowser   900
 
