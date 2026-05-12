@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>Shopping Cart - Button Animation</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    /* 버튼 클릭 애니메이션 */
+    .btn-animate {
+      transition: transform 0.2s ease, background-color 0.3s ease;
+    }
+    .btn-animate:active {
+      transform: scale(0.95) rotate(-2deg);
+      background-color: #0d6efd;
+      color: #fff;
+    }
+
+    /* 카드 hover 효과 */
+    .card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .card:hover {
+      transform: translateY(-5px) scale(1.03);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      cursor: pointer;
+    }
+    .card img {
+      transition: transform 0.3s ease;
+    }
+    .card:hover img {
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+<div class="container my-4">
+  <h3 class="mb-3">🛒 Shopping Cart</h3>
+  <button class="btn btn-outline-primary btn-animate mb-3" onclick="loadCart()">장바구니 불러오기</button>
+  <div class="row" id="cartContainer"></div>
+  <div class="alert alert-info mt-3" id="totalPrice">총합계: 0원</div>
+</div>
+
+<script> 
+function loadCart(){
+  fetch("./data/cart.json")
+  .then(res => res.json())
+  .then(json => {
+    console.log(json);
+    let result = "";
+
+    console.log(json.img);
+
+    for(let c of json){
+      //{ "product": "노트북", "price": 1200000, "qty": 1, "img":"https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=300&h=200&fit=crop" }
+      let product = c.product;
+      let price = c.price;
+      let img = c.img;
+
+      result += `<div class="container card"><a img=>${product}${price}${img}</div>`;
+    }
+
+    document.getElementById("cartContainer").innerHTML = result;
+  })
+  .catch(err => {
+    document.getElementById("cartContainer").innerHTML = err.message;
+  });
+}
+</script>
+</body>
+</html>
