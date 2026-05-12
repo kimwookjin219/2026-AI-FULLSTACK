@@ -22,7 +22,7 @@ class Count extends Thread{
 			
 			System.out.println(i);
 			try { Thread.sleep(1000); }
-			catch (InterruptedException e) {  break; }
+			catch (InterruptedException e) { break; }
 		}
 	}
 }
