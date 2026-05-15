@@ -35,8 +35,8 @@ Todo2 : JAVA
 
 1.  데이터베이스 언어
 -- DDL(  정의어   )  CREATE, ALTER, DROP 
--- DML(   )    ________, ________, ________ , ________ 
--- DCL(   )     ________, ________
+-- DML( 조작어  )    select, insert, update , delete 
+-- DCL( 제어어  )     grant, revoke
 
 
 2. 다음과 같이 테이블준비
@@ -53,6 +53,12 @@ Todo2 : JAVA
 | age   | int          | NO   |     | NULL    |                |
 +-------+--------------+------+-----+---------+----------------+
 3 rows in set (0.00 sec)
+
+create table mbasic(
+    no int not null primary key auto_increment,
+    name varchar(100) not null,
+    age int not null
+);
 
 
 3. 다음을 수정  
