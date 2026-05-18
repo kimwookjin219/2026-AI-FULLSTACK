@@ -15,6 +15,7 @@ class BankDto{
 	public BankDto() { super(); }
 
 	public BankDto(String id, String pass, double balance) { super(); this.id = id; this.pass = pass; this.balance = balance; }
+	public BankDto(String id) { super(); this.id = id; }
 
 	public String getId() { return id; }
 	public void setId(String id) { this.id = id; }
@@ -57,7 +58,7 @@ class Bank{
 	         menu = sc.nextInt();
 	         
 	         if(menu == 1) { add(); }
-	         else          {
+	         else if(menu>=2 && menu<=5)         {
 	        	 BankDto find = login();//로그인 확인
 	        	 if(find == null) { System.out.println("정보를 확인해주세요"); continue; }
 	        	 //각각 메뉴에 맞는 기능 호출
@@ -66,10 +67,11 @@ class Bank{
 	        	 	case 3: deposit(find); break;
 	        	 	case 4: withdraw(find); break;
 	        	 	case 5: delete(find); break;
-	        	 	case 9: exit(); break;
-	        	 	default: System.out.println("잘못된 입력입니다."); break;
+	        	 	//case 9: exit(); break;
+	        	 	//default: System.out.println("잘못된 입력입니다."); break;
 	        	 }
 	         }
+	         else if(menu==9) { exit(); }
 	    }
 	}  
 	
@@ -79,7 +81,7 @@ class Bank{
 		Scanner sc = new Scanner(System.in);
 		//입력 - 사용자에게 정보입력받기
 		System.out.print("[1]ID   입력> ");	String tid=sc.next(); //아이디 중복검사
-		//if(users.contains(tid)) { System.out.println("이미 존재하는 아이디입니다."); }	
+		if(users.contains( new BankDto(tid))) { System.out.println("이미 존재하는 아이디입니다."); return;}	
 		
 		System.out.print("[2]PASS 입력> ");  String tpass=sc.next();
 		System.out.print("[3]금액  입력> ");  double tbalance=sc.nextInt();
