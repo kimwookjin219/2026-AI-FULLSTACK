@@ -1,14 +1,3 @@
-> 복습문제
- 다음의 결과가나오게 조회하시오.
--- emp 테이블에서
--- 추가수당(comm) 이 없고
--- 상급자(mgr)은 존재하며
--- 직책(JOB) 'MANAGER', 'CLERK' 중에서
--- 사원이름(ename)의 두번째 글자가 L이아닌
--- 사원데이터를  조회하시오
-
----
-
 -- 1. 복습문제
 -- 2. CRUD (SELECT ORDER BY , LIMIT)
 -- 3. CRUD (SELECT 연습문제)
@@ -26,6 +15,8 @@
 -- 사원이름(ename)의 두번째 글자가 L이아닌
 -- 사원데이터를  조회하시오
 
+use mbasic;
+select * from emp where comm is null and mgr is not null and job in ('MANAGER', 'CLERK') and ename not like '_L%';
 
 -- SELECT   검색필드1, 검색필드2,,,
 -- FROM    테이블명
@@ -34,9 +25,6 @@
 -- LIMIT offset;
 
 
-
-
- 
 -- 준비 :  userinfo 테이블있는지 확인
 -- userinfo 복사해서 select_userinfo 만들기
 -- mysql> desc select_userinfo;
@@ -48,6 +36,27 @@
 -- | age   | int          | YES  |     | NULL    |                |
 -- +-------+--------------+------+-----+---------+----------------+
 -- 3 rows in set (0.02 sec)
+
+show tables;
+create table select_userinfo select * from userinfo;
+
+SET SQL_SAFE_UPDATES=0;
+
+desc select_userinfo; -- 테이블 구조확인
+alter table select_userinfo modify no int not null auto_increment primary key; 
+
+select * from select_userinfo;
+delete from select_userinfo where no >=5; -- 5번 이상 데이터 삭제
+
+insert into select_userinfo (no,name,age) value (5,'first',55);
+insert into select_userinfo (no,name,age) value (6,'third',66);
+insert into select_userinfo (no,name,age) value (7,'seven',null);
+
+-- update select_userinfo set no=5 , age=55 where no=8 and name='first';
+-- update select_userinfo set no=6 , name='third',age=66 where no=9 and name='first';
+-- update select_userinfo set no=7 , name='seven',age=NULL where no=10 and name='abc';
+-- delete from select_userinfo where no=11 and name='bbb';
+
 
 -- mysql> select * from select_userinfo;
 -- +----+--------+------+
@@ -65,13 +74,42 @@
 
 -- mysql>
 
+-- SELECT   검색필드1, 검색필드2,,,
+-- FROM    테이블명
+-- WHERE where_condition
+-- ORDER BY  기준필드  [ASC 오름차순 | DESC 내림차순]
+-- LIMIT offset;
+
 -- Q1. 나이가 많은 순으로 출력
+select *
+from   select_userinfo
+-- where 생략가능
+order by age desc;  -- 내림차순
+
+select *
+from   select_userinfo
+order by age asc; -- 오름차순
  
 -- Q2. 나이가 많은 순으로 2명 출력
- 
+select no,age
+from select_userinfo
+order by age desc 
+limit 3;
 
+select no,age
+from select_userinfo
+order by age desc 
+limit 2;
 
+select no,age
+from select_userinfo
+order by age desc 
+limit 0,2; -- 어디서부터 , 몇개 ( 최신부터 2개) 66 55
 
+select no,age
+from select_userinfo
+order by age desc 
+limit 1,2; -- 어디서부터 , 몇개  55 44
 
 
 -- 실습 1.  emp테이블을   emp이름으로 복사하시오. (있다면 pass)
@@ -86,9 +124,13 @@
 -- +-------+--------+----------+------+------------+------+------+--------+
 -- 4 rows in set (0.00 sec)
  
+show tables;
+create table select_emp select * from emp;
 
+desc select_emp;
+select * from select_emp;
+select * from select_emp where job = 'SALESMAN';
  
-
 -- 실습 3. emp 테이블에서 ename, mgr, sal  필드를 조회하시오.     
 -- +--------+------+------+
 -- | ename  | mgr  | sal  |
@@ -110,7 +152,7 @@
 -- +--------+------+------+
 -- 14 rows in set (0.00 sec)
           
-
+select ename,mgr,sal from select_emp;
 
 
 -- 실습 4. emp 테이블에서 JOB이 'SALESMAN'인 레코드의  ename, mgr, sal  필드를 조회하시오.     
@@ -124,9 +166,7 @@
 -- +--------+------+------+
 -- 4 rows in set (0.00 sec)
 
-     
-
- 
+select ename,mgr,sal from select_emp where job = 'SALESMAN';
     
 -- 실습 5. emp 테이블에서  급여(SAL)가 높은 순서로  조회하시오.     
 -- +-------+--------+-----------+------+------------+------+------+--------+
@@ -152,7 +192,7 @@
 
  -- sal을 기준으로 내림차순 정렬. 
 
- 
+select * from select_emp order by sal desc; 
 
 -- 실습 6. emp 테이블에서  Job기준으로 올림차순, 같으면 sal을 기준으로 내림차순으로 정렬하시오.
 -- +-------+--------+-----------+------+------------+------+------+--------+
@@ -177,7 +217,7 @@
 
    
  -- Job기준으로 올림차순, 같으면 sal을 기준으로 내림차순정렬 
-
+select * from select_emp order by job asc ,sal desc;
 
 -- 실습 7. emp 테이블에서     sal가 2000이상인 레코드 들중에  ename, sal, empno필드를  empno를 기준으로 내림차순 정렬하시오. 
 -- +-------+------+-------+
@@ -190,10 +230,10 @@
 -- | BLAKE | 2850 |  7698 |
 -- | JONES | 2975 |  7566 |
 -- +-------+------+-------+
-6 rows in set (0.00 sec)
+-- 6 rows in set (0.00 sec)
   -- sal가 2000이상인 레코드 들중에 ename, sal, select_userinfono를
   -- 가져오데 empno를 기준으로 내림차순 정렬 
-
+select  ename,sal,empno from select_emp where sal>=2000  order by empno desc;
     
     
 -- 실습 8. emp 테이블에서    job을 기준으로 중복행은 제거하여 같은것은 한번만 나오게 출력하시오
@@ -207,10 +247,8 @@
 -- | PRESIDENT |
 -- +-----------+
 -- 5 rows in set (0.00 sec)
-    
-    
+select distinct job from select_emp;     
 
-    
 -- 실습 9.  emp 테이블에서    empno ( 사원번호 ) , ename ( 이름) , job ( 담담 업무)  필드를 
 -- 다음과 같이 필드명을 바꿔(별명으로) 출력하시오.
 -- +----------+--------+-----------+
@@ -233,9 +271,8 @@
 -- +----------+--------+-----------+
 -- 14 rows in set (0.00 sec)
 
-
 --  * 컬럼명에 별칭주기(as) 
-
+select  empno '사원번호', ename '이름', job '담당업무' from select_emp; 
  
 
 
@@ -259,11 +296,7 @@
 -- |  7839 | KING   | PRESIDENT | NULL | 1981-11-17 | 5000 | NULL |     10 |
 -- +-------+--------+-----------+------+------------+------+------+--------+
 -- 14 rows in set (0.00 sec)
-
- 
-
-
-
+select * from select_emp order by sal asc;
 
 -- 실습 11 emp 테이블에서 급여를 기준으로 내차순으로 정렬하여 조회하시오.
 -- +-------+--------+-----------+------+------------+------+------+--------+
@@ -286,8 +319,7 @@
 -- +-------+--------+-----------+------+------------+------+------+--------+
 -- 14 rows in set (0.00 sec)
  
-
-
+select * from select_emp order by sal desc;
 
 -- 실습 12 emp테이블에서 1순위는 부서번호를 (deptno)를 기준으로 오차순, 그중에서도 급여를기준으로(sal) 내림차순으로 정렬하시오.
 -- +-------+--------+-----------+------+------------+------+------+--------+
@@ -310,7 +342,7 @@
 -- +-------+--------+-----------+------+------------+------+------+--------+
 -- 14 rows in set (0.00 sec)
  
-
+select * from select_emp order by dept asc , sal desc;
 
 -- 실습 13. 다음의 결과가나오게 조회하시오.
 -- +-------------+---------------+-----------+---------+------------+--------+------------+---------------+
@@ -335,5 +367,18 @@
 
 -- mysql>
  
- 
+select empno 'EMPLOYEE_NO', ename 'EMPLOYEE_NAME', job 'JOB', mgr 'MANAGER', hiredate 'HIREDATE', sal 'SALARY', comm 'COMMISSION', dept 'DEPARTMENT_NO'
+from select_emp
+order by dept desc ,ename asc;
 
+use mbasic;
+show tables;
+desc milk;
+select * from milk;
+alter table milk modify mnum int null;
+alter table milk modify mtotal int null;
+insert into milk (mno,mname,mprice) values(1,'choco',1500);
+insert into milk (mno,mname,mprice) values(2,'mintchoco',2500);
+insert into milk (mno,mname,mprice) values(3,'white',1000);
+SET SQL_SAFE_UPDATES=0;
+delete from milk where mnum=0;

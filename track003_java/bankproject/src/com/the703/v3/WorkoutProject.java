@@ -56,9 +56,9 @@ class WorkoutSystem{
 		Scanner sc = new Scanner(System.in);
 		
 	    while(menu != 9) {
-	        System.out.print("\n\n🏃✨ WELCOME TO WORKOUT RECORD SYSTEM ✨🏃\r\n"
-	                   + "[1] ➕ 회원 등록 [2] 🔍 운동 기록 조회 [3] 🏋️ 운동 기록 추가 [4] 🗑️ 운동 기록 삭제 [5] 🎁 포인트 사용 [9] 종료\r\n"
-	                   + "👉 번호를 선택하세요:");
+	        System.out.print("🏃✨ WELCOME TO WORKOUT RECORD SYSTEM ✨🏃\r\n"
+	        		+"[1] ➕ 회원 등록 \r\n[2] 🔍 운동 기록 조회 \r\n[3] 🏋️ 운동 기록 추가 \r\n[4] 🗑️ 운동 기록 삭제 \r\n[5] 🚪 회원 탈퇴 \r\n[9] 종료\r\n\r\n"
+	        		+ "👉 번호를 선택하세요");
 	         menu = sc.nextInt();
 	         
 	         if(menu == 1) { add(); }
@@ -138,12 +138,12 @@ class WorkoutSystem{
 		else { System.out.println("해당 운동 기록을 찾을 수 없습니다."); }
 	}
 	
-	// 유저삭제(remove) - void delete( BankDto user ){}
+	// 회원 탈퇴(remove) - 
 	public void usePoints(WorkoutDto user) {
 		
-		System.out.print("계좌삭제(Y/N)");  char again = sc.next().charAt(0);
+		System.out.print("회원탈퇴 하시겠습니까?(Y/N)");  char again = sc.next().charAt(0);
 		
-		if(again == 'Y' || again == 'y') { users.remove(user); System.out.println("삭제완료!");  }
+		if(again == 'Y' || again == 'y') { users.remove(user); System.out.println("회원탈퇴 완료! 다음에 또 이용해주세요~");  }
 	}
 	
 	// 종료 - void exit(){}
