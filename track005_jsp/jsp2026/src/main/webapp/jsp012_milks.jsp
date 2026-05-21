@@ -63,7 +63,28 @@
        %>
        	</tbody>
        </table>
-	  
+	   <div class="card-body">
+	   <h2 class="card-header">MILK 찾기</h2>
+	  		<form action="jsp012_search.jsp" method="get" onsubmit="return msearch()">
+	  			<div class="my-3">
+	  				<label for="sono" class="form-label">우유번호</label>
+	  				<input type="number" class="form-control" id="sono" name="ono" placeholder="번호를 입력해주세요!">
+	  			</div>
+	  			<button type="submit" class="btn btn-dark my-3 d-block">milk검색</button>
+	  		</form>
+	  		<script>
+	  			function msearch(){
+	  				let sono = document.getElementById("sono");
+	  				
+	  				if(sono.value.trim()==""){
+	  					alert("번호를 입력해주세요");
+	  					sono.focus();
+	  					return false;
+	  				}
+	  				return true;
+	  			}
+	  		</script>
+	  	</div>	
    </div>
    <!--         메뉴판 테이블       -->
    
