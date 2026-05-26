@@ -1,0 +1,35 @@
+-- mysql>
+-- mysql> desc users;
+-- +----------+--------------+------+-----+-------------------+-------------------+
+-- | Field    | Type         | Null | Key | Default           | Extra             |
+-- +----------+--------------+------+-----+-------------------+-------------------+
+-- | uno      | int          | NO   | PRI | NULL              | auto_increment    |
+-- | nickname | varchar(20)  | NO   |     | NULL              |                   |
+-- | bpass    | varchar(50)  | NO   |     | NULL              |                   |
+-- | email    | varchar(100) | NO   |     | NULL              |                   |
+-- | mobile   | varchar(50)  | NO   |     | NULL              |                   |
+-- | udate    | timestamp    | NO   |     | CURRENT_TIMESTAMP | DEFAULT_GENERATED |
+-- | bip      | varchar(50)  | NO   |     | NULL              |                   |
+-- +----------+--------------+------+-----+-------------------+-------------------+
+-- 7 rows in set (0.00 sec)
+
+-- mysql>
+-- mysql>
+
+show tables;
+desc users;
+select * from users;
+
+set sql_safe_updates=0;
+
+delete from users;
+
+create table users(
+uno int not null auto_increment primary key,
+nickname varchar(20) not null,
+bpass varchar(50) not null,
+email varchar(100) not null,
+mobile varchar(50) not null,
+udate timestamp not null Default current_timestamp,
+bip varchar(50) not null
+);

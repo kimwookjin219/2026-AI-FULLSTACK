@@ -269,7 +269,14 @@ select * from if_userinfo;
 -- |  5 | fifth  |  55 | f    | y    | 수신유지     |
 -- |  6 | sixth  |  66 | m    | n    | 수신거부     |
 -- +----+--------+-----+------+------+--------------+
+select no,name,age,sex,sns, if(sns='y','수신거부','수신유지') `수신여부상태`
+from if_userinfo;
 
+select * , case sns
+			when 'y' then '수신유지'
+            when 'n' then '수신거부'
+            end `수신여부상태`
+from if_userinfo;   
 
 
 -- [question2]나이가 19세 미만이면 미성년자, 성인을 구하시오.
@@ -285,9 +292,8 @@ select * from if_userinfo;
 -- +----+--------+-----+------+------+----------+
 -- 6 rows in set (0.00 sec)
 
-
-
-
+select no,name,age,sex,sns,if(age>19 , '성인', '미성년자')
+from if_userinfo;         
 
 -- [question3]sns의 수신거부 숫자를 구하시오.
 -- +---------------+
@@ -295,7 +301,12 @@ select * from if_userinfo;
 -- +---------------+
 -- |             3 |
 -- +---------------+
+select count(*) `sns수신거부수`
+from if_userinfo
+where sns='n';
 
+select count(if(sns='n',1,null)) `sns수신거부수`
+from if_userinfo;
 
 
 -- == (2) case
@@ -321,7 +332,12 @@ select * from if_userinfo;
 -- +--------+--------+------------+
 -- 14 rows in set (0.00 sec)
 
-
+select  ename, dept, case
+					when dept=10 then 'ACCOUNTING'
+                    when dept=20 then 'RESEARCH'
+                    when dept=30 then 'SALES'
+                    end `부서이름`
+from emp;
 
 
 
@@ -346,4 +362,9 @@ select * from if_userinfo;
 -- | MILLER | CLERK     | 판매원   |
 -- +--------+-----------+----------+
 -- 14 rows in set (0.00 sec)
-
+select ename, job, case
+				when job='CLERK' then '판매원'
+                when job='SALESMAN' then '영업사원'
+                else '사원'
+                end `job2`
+from emp;
