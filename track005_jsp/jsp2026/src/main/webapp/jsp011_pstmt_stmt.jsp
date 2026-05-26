@@ -97,6 +97,9 @@
   		if(conn!=null){ conn.close(); }
       }catch(Exception e){ e.printStackTrace(); }
       %>
+      <!--             pstmt = conn.prepareStatement(sql , 
+                       ResultSet.TYPE_SCROLL_INSENSITIVE, 
+                       ResultSet.CONCUR_READ_ONLY); -->
       
    </div>
 </body>

@@ -5,30 +5,23 @@
 <% 
 request.setCharacterEncoding("UTF-8");
 int bno = Integer.parseInt(request.getParameter("bno"));
-String btitle="", bcontent="" , bpass="" ,bname="";
+String btitle="", bcontent="" ,bname="" , bpass="";
+String sql = "select * from mvcboard1 where bno=?";
 
-try{
-	String sql1 = "select * from mvcboard1 where bno=?";
-	String sql2 = "update mvcboard1 set btitle=? , bcontent=? where bno=? bpass=?";
-	
+try{	
 	Class.forName("com.mysql.cj.jdbc.Driver");
 	Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/mbasic","root","1234");
 	
-	PreparedStatement pstmt = conn.prepareStatement(sql1);
+	PreparedStatement pstmt = conn.prepareStatement(sql);
 	pstmt.setInt(1,bno);
-	ResultSet rset = pstmt.executeQuery();
-	if(rset.next()){
-	    bname = rset.getString("bname");		 
+	ResultSet rset = pstmt.executeQuery(); //표
+	
+	if(rset.next()){ //  줄
+	    bname = rset.getString("bname");  btitle = rset.getString("btitle");	
+	    bcontent = rset.getString("bcontent");   //칸
 	}
 	
-	pstmt = conn.prepareStatement(sql2);	
-	pstmt.setString(1,btitle);
-	pstmt.setString(2,bcontent);
-	pstmt.setInt(3,bno);
-	pstmt.setString(4,bpass);
-	
-	if(pstmt.executeUpdate() > 0){ pstmt.close(); }
-	
+
 	if(rset!= null){rset.close();}
 	if(pstmt!= null){pstmt.close();}
 	if(conn!= null){conn.close();}	
@@ -37,7 +30,7 @@ try{
 
    <div class="container card my-5">
       <h3 class="card-header">QNA 상세보기</h3>
-      <form action="#" method="post" onsubmit="return checkForm()">
+      <form action="edit_action.jsp?bno=<%=bno%>" method="post" onsubmit="return checkForm()">
 		<div class="my-3">
 			<label for="bname" class="form-label">이름</label>
 			<input type="text" class="form-control" value="<%=bname %>" id="bname" name="bname" readonly>
@@ -48,15 +41,15 @@ try{
 		</div>
 		<div class="my-3">
 			<label for="btitle" class="form-label">제목</label>
-			<input type="text" class="form-control" id="btitle" name="btitle">
+			<input type="text" class="form-control" value="<%=btitle %>" id="btitle" name="btitle">
 		</div>
 		<div class="my-3">
 			<label for="bcontent" class="form-label">내용</label>
-			<textarea class="form-control" id="bcontent" name="bcontent"></textarea>
+			<textarea class="form-control" id="bcontent"  name="bcontent"><%=bcontent %></textarea>
 		</div>
 		<div class="my-3 text-end">
-			<a href="list.jsp" class="btn btn-primary" title="글수정">수정</a>
-			<a href="list.jsp" class="btn btn-primary" title="수정취소">취소</a>
+			<button type="submit"  class="btn btn-primary"  title="글수정">글수정</button>
+			<button type="reset"   class="btn btn-primary"  title="글수정취소">취소</button>
 			<a href="list.jsp" class="btn btn-primary" title="목록보기">목록보기</a>
 		</div>        
       </form>

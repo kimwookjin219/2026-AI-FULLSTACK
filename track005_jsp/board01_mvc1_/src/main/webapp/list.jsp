@@ -23,21 +23,32 @@
 						Connection conn = null; PreparedStatement pstmt = null; ResultSet rset = null;
 						String url = "jdbc:mysql://localhost:3306/mbasic";
 						String id = "root" , pass = "1234";
-						String sql = "select * from mvcboard1 order by bno desc";
-						
+						//String sql1 = "select count(*) from mvcboard1 order by bno desc";
+						String sql = "select b.* ,(select count(*) from mvcboard1) `cnt`  from mvcboard1 b order by bno desc";
+						//                      sql 구문 안에 sql 구문 : 서브쿼리
 						Class.forName("com.mysql.cj.jdbc.Driver");
 						conn = DriverManager.getConnection(url,id,pass);
 						pstmt = conn.prepareStatement(sql);
+			            pstmt = conn.prepareStatement(sql , 
+			                       ResultSet.TYPE_SCROLL_INSENSITIVE, 
+			                       ResultSet.CONCUR_READ_ONLY);
 
-						rset = pstmt.executeQuery();
-						
-						while(rset.next()){
-							out.print("<tr><td>"+ rset.getInt("bno") 
+						rset = pstmt.executeQuery(); // 표
+						//1) 먼저 전체글 갯수 출력
+						int cnt = -1;
+						//줄
+						if(rset.next()){							
+							cnt = rset.getInt("cnt"); //칸
+							rset.beforeFirst();       //다시 처음으로 표부터 처리
+						} 
+						//2) 						
+						while(rset.next()){ //줄
+							out.print("<tr><td>"+ cnt-- 
 							          +"</td><td><a href='detail.jsp?bno="+ rset.getInt("bno") +"'>"
 									  + rset.getString("btitle") 
 							          +"</a></td><td>"+ rset.getString("bname") 
 							          +"</td><td>"+ rset.getString("bdate") 
-							          +"</td><td>"+ rset.getInt("bhit") +"</td></tr>");
+							          +"</td><td>"+ rset.getInt("bhit") +"</td></tr>"); //칸
 						}
 						if(rset!=null) { rset.close(); }
 						if(pstmt!=null) { pstmt.close(); }
