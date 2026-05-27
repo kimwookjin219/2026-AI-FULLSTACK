@@ -19,23 +19,20 @@
         <nav class="navbar navbar-expand-sm navbar-dark" style="background-color: skyblue;">
             <h2 class="myhidden">주메뉴</h2>
             <div class="container-fluid">
-                <a class="navbar-brand" href="javascript:void(0)">R</a>
+                <a class="navbar-brand" href="list.jsp">R</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
                 <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="mynavbar">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
-                        <a class="nav-link" href="javascript:void(0)">BOARD</a>
+                        <a class="nav-link" href="login.jsp">Login</a>
                         </li>
                         <li class="nav-item">
-                        <a class="nav-link" href="javascript:void(0)">REPLY</a>
+                        <a class="nav-link" href="join.jsp">Join</a>
                         </li>
                         <li class="nav-item">
-                        <a class="nav-link" href="javascript:void(0)">PAGING</a>
-                        </li>
-                        <li class="nav-item">
-                        <a class="nav-link" href="javascript:void(0)">GALLERY</a>
+                        <a class="nav-link" href="mypage.jsp">Mypage</a>
                         </li>
                     </ul>
                 </div>

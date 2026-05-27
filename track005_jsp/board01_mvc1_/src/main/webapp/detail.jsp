@@ -55,7 +55,7 @@ try{
       	</div>
       	<div class="my-3 text-end">
 			<a href="edit.jsp?bno=<%=bno %>" class="btn btn-primary" title="수정">수정</a>
-			<a href="delete.jsp?bno=<%=bno %>" class="btn btn-primary" title="삭제">삭제</a>
+			<a href="delete.jsp?bno=<%=bno %>" class="btn btn-outline-primary" title="삭제">삭제</a>
 			<a href="list.jsp" class="btn btn-primary" title="목록보기">목록보기</a>
 		</div>
       </form>

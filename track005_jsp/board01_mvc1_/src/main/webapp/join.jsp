@@ -4,7 +4,7 @@
 
    <div class="container card my-5">
       <h3 class="card-header">회원가입</h3>
-      <form action="user_action.jsp" method="post" onsubmit="return checkform()">
+      <form action="join_action.jsp" method="post" onsubmit="return checkform()">
       	<div class="my-3">
       		<label for="bnickname" class="form-label">닉네임</label>
       		<input type="text" class="form-control" id="bnickname" name="bnickname">
@@ -23,7 +23,7 @@
       	</div>
       	<div class="my-3 text-end">
 	      <button type="submit" class="btn btn-primary" title="가입하기">가입하기</button> 
-	      <a href="list.jsp" class="btn btn-primary" title="취소">취소</a>
+	      <a href="list.jsp" class="btn btn-outline-primary" title="취소">취소</a>
         </div>
       </form>
       

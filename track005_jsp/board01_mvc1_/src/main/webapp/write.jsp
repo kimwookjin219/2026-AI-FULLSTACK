@@ -23,7 +23,7 @@
 		</div>
 		<div class="my-3 text-end">
 			<button type="submit" class="btn btn-primary" title="압력">입력</button>
-			<button type="reset" class="btn btn-primary" title="취소">취소</button>
+			<button type="reset" class="btn btn-outline-primary" title="취소">취소</button>
 			<a href="list.jsp" class="btn btn-primary" title="목록보기">목록보기</a>
 		</div>        
       </form>

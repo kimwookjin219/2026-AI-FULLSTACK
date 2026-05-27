@@ -13,9 +13,9 @@
       		<label for="bpass" class="form-label">비밀번호</label>
       		<input type="password" class="form-control" id="bpass" name="bpass">
       	</div>
-      	<div>
+      	<div class="my-3 text-end">
       		<button type="submit" class="btn btn-primary" title="로그인">로그인</button>
-      		<a href="list.jsp" class="btn btn-primary" title="취소">취소</a>
+      		<a href="list.jsp" class="btn btn-outline-primary" title="취소">취소</a>
       	</div>
       </form>
       <script>
