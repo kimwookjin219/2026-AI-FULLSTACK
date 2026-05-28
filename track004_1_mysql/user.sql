@@ -33,3 +33,6 @@ mobile varchar(50) not null,
 udate timestamp not null Default current_timestamp,
 bip varchar(50) not null
 );
+
+insert into users(nickname,bpass,email,mobile,bip) 
+		values ('first','1111','first@gmail.com','010-1111-1111','127.0.0.1');
