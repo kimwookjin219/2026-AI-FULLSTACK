@@ -15,6 +15,7 @@
 
 -- mysql>
 -- mysql>
+use mbasic;
 
 show tables;
 desc users;
