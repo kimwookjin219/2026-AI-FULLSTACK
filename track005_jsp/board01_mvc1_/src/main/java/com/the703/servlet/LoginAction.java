@@ -42,6 +42,7 @@ public class LoginAction extends HttpServlet {
 		response.setContentType("text/html; charset=UTF-8");
 		String email = request.getParameter("email");
 		String bpass = request.getParameter("bpass");
+		
 		PrintWriter out = response.getWriter();     // 출력 구문
 		HttpSession session = request.getSession(); //HttpSession - 서버에 저장
 		//2. sql처리 ( 드 커 프 리)

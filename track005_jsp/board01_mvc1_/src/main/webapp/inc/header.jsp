@@ -20,7 +20,7 @@
         <nav class="navbar navbar-expand-sm navbar-dark" style="background-color: skyblue;">
             <h2 class="myhidden">주메뉴</h2>
             <div class="container-fluid">
-                <a class="navbar-brand" href="list.jsp">R</a>
+                <a class="navbar-brand" href="${pageContext.request.contextPath}/LoginAction">R</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
                 <span class="navbar-toggler-icon"></span>
                 </button>
