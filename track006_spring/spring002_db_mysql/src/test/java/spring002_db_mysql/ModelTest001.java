@@ -30,10 +30,10 @@ public class ModelTest001 {
 		//1. 전체검색
 		System.out.println(userinfo.selectAll()); 
 		//2. 삽입
-		//UserInfoDto dto = new UserInfoDto(); dto.setEmail("hi@gmail.com"); dto.setAge(10);
-		//System.out.println(userinfo.insert(dto));
+//		UserInfoDto dto = new UserInfoDto(); dto.setEmail("hi@gmail.com"); dto.setAge(10);
+//		System.out.println(userinfo.insert(dto));
 		//3. 한명검색
-		System.out.println(userinfo.select(2));
+		//System.out.println(userinfo.select(2));
 		//4. 수정
 		//UserInfoDto dto = new UserInfoDto(); dto.setEmail("hello@gmail.com"); dto.setAge(22); dto.setNo(2);
 		//System.out.println(userinfo.update(dto));

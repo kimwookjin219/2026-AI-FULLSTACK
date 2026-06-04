@@ -24,3 +24,4 @@ create table mvcboard2(
 );
 
 desc mvcboard2;
+select * from mvcboard2;
