@@ -11,8 +11,13 @@
 	 	update mvcboard2 set btitle= #{btitle}, bcontent= #{bcontent} where bno= #{bno}
 	 </update>
 	 
+	 <update id="uphit" parameterType="BoardDto" >
+	 	update mvcboard2 set bhit=bhit+1 where bno= #{bno} 
+	 </update>
+	 
+	 
 	 <delete id="delete" parameterType="int" >
-	 	delete from mvcboard2 where bno= #{bno}
+	 	delete from mvcboard2 where bno= #{bno} and bpass=#{bpass}
 	 </delete>
 	 
 	 <select resultType="BoardDto" id="selectAll">

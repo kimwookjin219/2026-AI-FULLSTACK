@@ -11,6 +11,7 @@ public interface BoardMapper {
 	public int delete(int bno);
 	public List<BoardDto> selectAll();
 	public BoardDto select(int bno);
+	public int uphit(int bno);
 }
 /*
 mysql> desc mvcboard2;
