@@ -60,7 +60,7 @@ window.addEventListener("load",function(){
             			<a href="?pstartno=${i}" class="page-link">${i}</a>
             		</li>
             	</c:forEach>
-            	<!-- 다음 -->
+            	<!-- 다음 --> 
             	<c:if test="${paging.current < paging.pagetotal}">
             		<li class="page-item">
             			<a href="?pstartno=${paging.current+1}" class="page-link">다음</a>
