@@ -9,13 +9,17 @@ window.addEventListener("load",function(){
 	let result = '${result}' // el
 	console.log(result);
 	 
-	if(result=="글쓰기 실패"){ alert(result); history.go(-1); } // 알림창, 뒤로가기
+	if(result=="글쓰기 실패" || result=="비밀번호 확인"){ alert(result); history.go(-1); } // 알림창, 뒤로가기
 	else if(result.length != 0) { alert(result); } 
 });
 </script>
     <!--  content -->
     <section class="container  my-5">
         <h3> MultiBoard </h3>
+        <pre>
+        페이징 : ${paging}
+        전체 리스트 : ${list}
+        </pre>
         <table  class="table  table-striped  table-bordered table-hover">
             <caption> BOARD 목록 </caption>
             <thead>
@@ -30,7 +34,7 @@ window.addEventListener("load",function(){
             <tbody>
 				<c:forEach var="dto" items="${list}" varStatus="status">
 					<tr>
-						<td>${list.size() - status.index}</td>
+						<td>${dto.bno}</td>
 						<td>
 						<a href="${pageContext.request.contextPath}/board/detail.do?bno=${dto.bno}" style="text-decoration: none;">
 						${dto.btitle}
@@ -42,6 +46,28 @@ window.addEventListener("load",function(){
 					</tr>	
 				</c:forEach>
             </tbody>
+            <tfoot><tr><td colspan="5">
+            	<ul class="pagination  justify-content-center"> 
+            	<!-- 이전 -->
+            	<c:if test="${paging.current > 1}">
+            		<li class="page-item">
+            			<a href="?pstartno=${paging.current-1}" class="page-link">이전</a>
+            		</li>
+            	</c:if>
+            	<!-- 1,2,3,4,5,6,7,8,9,10 -->
+            	<c:forEach var="i" begin="${paging.start}" end="${paging.end}">
+            		<li class="page-item <c:if test="${i == paging.current}"> active </c:if>">
+            			<a href="?pstartno=${i}" class="page-link">${i}</a>
+            		</li>
+            	</c:forEach>
+            	<!-- 다음 -->
+            	<c:if test="${paging.current < paging.pagetotal}">
+            		<li class="page-item">
+            			<a href="?pstartno=${paging.current+1}" class="page-link">다음</a>
+            		</li>
+            	</c:if>
+            	</ul></td></tr>
+            </tfoot>
         </table>
 
         <div  class="text-end">
@@ -49,6 +75,20 @@ window.addEventListener("load",function(){
         </div>
 
     </section>
+<%--<c:forEach var="dto" items="${list}" varStatus="status">
+		<tr>
+			<td>${list.size() - status.index}</td>
+			<td>
+			<a href="${pageContext.request.contextPath}/board/detail.do?bno=${dto.bno}" style="text-decoration: none;">
+			${dto.btitle}
+			</a>
+			</td>
+			<td>${dto.bname}</td>
+			<td>${dto.bdate}</td>
+			<td>${dto.bhit}</td>
+		</tr>	
+	</c:forEach> --%>    
+    
 
  
 <!-- 	footer		 -->
