@@ -37,3 +37,31 @@ insert into mvcboard2 (bname,bpass, btitle, bcontent, bip, bfile)
 select * from mvcboard2 order by bno desc limit 0,10;
 select * from mvcboard2 order by bno desc limit 10,10;    
 select count(*) from mvcboard2;
+
+use mbasic;
+show tables;
+desc users;
+select * from users;
+delete from users where uno=11;
+
+create table authorities(
+email varchar(50) not null,
+auth varchar(50) not null
+);
+
+desc authorities;
+
+insert into authorities(email,auth) values ('first@gmail.com' ,'ROLE_MEMBER');
+insert into authorities(email,auth) values ('first@gmail.com' ,'ROLE_ADMIN');
+
+set sql_safe_updates=0;
+
+select * from authorities;
+delete from authorities where auth='ROLE_MEMBER';
+
+select u.email,u.bpass,a.auth
+from users u left join authorities a
+on u.email=a.email
+where u.email='first@gmail.com'; 
+
+alter table users   modify  bpass varchar(500) not null;

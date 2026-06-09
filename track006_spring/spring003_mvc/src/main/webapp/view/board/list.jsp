@@ -33,12 +33,13 @@ window.addEventListener("load",function(){
             </thead>
             <tbody>
 				<c:forEach var="dto" items="${list}" varStatus="status">
-					<tr>
-						<td>${dto.bno}</td>
+					<tr> <!-- 1) 전체개수 - 1 
+							  2) 전체개수 - 0 / 전체개수 - 10 / 전체개수 - 20 -->
+						<td>${paging.listtotal - paging.pstartno - status.index}</td>
 						<td>
-						<a href="${pageContext.request.contextPath}/board/detail.do?bno=${dto.bno}" style="text-decoration: none;">
-						${dto.btitle}
-						</a>
+							<a href="${pageContext.request.contextPath}/board/detail.do?bno=${dto.bno}" style="text-decoration: none;">
+							${dto.btitle}
+							</a>
 						</td>
 						<td>${dto.bname}</td>
 						<td>${dto.bdate}</td>
@@ -49,9 +50,9 @@ window.addEventListener("load",function(){
             <tfoot><tr><td colspan="5">
             	<ul class="pagination  justify-content-center"> 
             	<!-- 이전 -->
-            	<c:if test="${paging.current > 1}">
+            	<c:if test="${paging.start > paging.bottomlist}">
             		<li class="page-item">
-            			<a href="?pstartno=${paging.current-1}" class="page-link">이전</a>
+            			<a href="?pstartno=${paging.start-1}" class="page-link">이전</a>
             		</li>
             	</c:if>
             	<!-- 1,2,3,4,5,6,7,8,9,10 -->
@@ -60,10 +61,10 @@ window.addEventListener("load",function(){
             			<a href="?pstartno=${i}" class="page-link">${i}</a>
             		</li>
             	</c:forEach>
-            	<!-- 다음 --> 
-            	<c:if test="${paging.current < paging.pagetotal}">
+            	<!-- 다음  --> 
+            	<c:if test="${paging.end < paging.pagetotal}">
             		<li class="page-item">
-            			<a href="?pstartno=${paging.current+1}" class="page-link">다음</a>
+            			<a href="?pstartno=${paging.end+1}" class="page-link">다음</a>
             		</li>
             	</c:if>
             	</ul></td></tr>
