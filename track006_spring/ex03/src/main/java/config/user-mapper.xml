@@ -20,6 +20,11 @@
   	select email from users where email=#{email}
   </select>
   
+  <select id="findByEmailUserInfo" resultType="UserDto" parameterType="String">
+  	select * from users where email=#{email}
+  </select>
+  
+  <!-- authorities -->
   <!-- authorities -->
   <insert id="insertAuth" parameterType="AuthDto">
   	insert into authorities(email,auth) values (#{email} ,#{auth})
@@ -30,6 +35,8 @@
   	from users u left join authorities a on u.email=a.email 
   	where u.email=#{email}
   </select>
+  
+  
   <resultMap  id="authListMap" type="AppUserAuthDto">
   	<result property="email" column="email" />
   	<result property="bpass" column="bpass" />

@@ -26,8 +26,13 @@ public class ModelTest2 {
 	@Autowired @Qualifier("passwordEncoder") PasswordEncoder pwencoder;
 	//import org.springframework.security.crypto.password.PasswordEncoder;
 	
+	@Test public void test4() {
+		AuthDto dto2 = new AuthDto(); dto2.setEmail("a@a"); 
+		System.out.println(service.readAuth(dto2));
+	} 
+	
 	/* security */
-	@Test public void test3() {
+	@Ignore @Test public void test3() {
 		
 		/* 로그인시 인가 */
 		AuthDto dto2 = new AuthDto(); dto2.setEmail("a@a");

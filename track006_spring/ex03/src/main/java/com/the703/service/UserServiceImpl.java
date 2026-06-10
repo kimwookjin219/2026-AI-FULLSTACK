@@ -9,6 +9,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.the703.dao.UserMapper;
+import com.the703.dto.AuthDto;
+import com.the703.dto.AuthListDto;
 import com.the703.dto.UserDto;
 
 @Service
@@ -19,31 +21,21 @@ public class UserServiceImpl implements UserService{
 	
 	@Override 
 	public int insert(UserDto dto) {
-		// 회원가입
+		AuthDto adto = new AuthDto(); adto.setEmail(dto.getEmail()); adto.setAuth("ROLE_MEMBER"); 
+		dao.insertAuth(adto);// 권한추가
+		//  3 세팅       2 암호화          1 사용자가 입력한 값 가져오기
+		dto.setBpass(pwencoder.encode(dto.getBpass())); // 암호화
+		
 		try { dto.setBip(InetAddress.getLocalHost().getHostAddress()); }
-		catch (UnknownHostException e) { e.printStackTrace(); }
-		
-		//dto.setBpass(pwencoder.encode(dto.getBpass()));
-		
+		catch (UnknownHostException e) { e.printStackTrace(); }				
 		return dao.insert(dto);
 	}
 
-	@Override
-	public String findByEmail(String email) {
-		//중복검사
-		return dao.findByEmail(email);
-	}
+	@Override public String findByEmail(String email) {  return dao.findByEmail(email); }
+	@Override public int findLogin(UserDto dto) {  return dao.findLogin(dto); }
+	@Override public UserDto findByUno(int uno) {  return dao.findByUno(uno); }
+	@Override public AuthListDto readAuth(AuthDto dto) {  return dao.readAuth(dto); }
 
-	@Override
-	public int findLogin(UserDto dto) {
-		//로그인
-		return dao.findLogin(dto);
-	}
-
-	@Override
-	public UserDto findByUno(int uno) {
-		//마이페이지
-		return dao.findByUno(uno);
-	}
+	@Override public UserDto findByEmailUserInfo(String email) { return dao.findByEmailUserInfo(email); }
 
 }
