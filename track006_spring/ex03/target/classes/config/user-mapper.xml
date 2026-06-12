@@ -8,13 +8,13 @@
   	insert into users (nickname,bpass,email,mobile,bip) values (#{nickname},#{bpass},#{email},#{mobile},#{bip})
   </insert>
   
-  <select id="findLogin" resultType="int" parameterType="UserDto">
-    select count(*) from users where email=#{email} and bpass=#{bpass}
-  </select>
-  
-  <select id="findByUno" resultType="UserDto" parameterType="int">
-  	select * from users where uno = #{uno}
-  </select>
+ <select id="findLogin" resultType="int" parameterType="UserDto">
+   select count(*) from users where email=#{email} and bpass=#{bpass}
+ </select>
+ 
+ <select id="findByUno" resultType="UserDto" parameterType="int">
+ 	select * from users where uno = #{uno}
+ </select>
   
   <select id="findByEmail" resultType="String" parameterType="String">
   	select email from users where email=#{email}
