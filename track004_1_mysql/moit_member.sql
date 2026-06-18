@@ -13,26 +13,11 @@ create table member_type(
     type_name varchar(30) unique not null
 );
 
-insert into member_type(type_name) value('MEMBER');
-insert into member_type(type_name) value('PARTNER');
-insert into member_type(type_name) value('ADMIN');
-insert into member_type(type_name) value('SUPERADMIN');
-
-update member_type 
-set type_name = 'ROLE_MEMBER'
-where member_type_id = 1;
-
-update member_type 
-set type_name = 'ROLE_PARTNER'
-where member_type_id = 2;
-
-update member_type 
-set type_name = 'ROLE_ADMIN'
-where member_type_id = 3;
-
-update member_type 
-set type_name = 'ROLE_SUPERADMIN'
-where member_type_id = 4;
+insert into member_type(type_name) value('ROLE_MEMBER');
+insert into member_type(type_name) value('ROLE_PARTNER');
+insert into member_type(type_name) value('ROLE_ADMIN');
+insert into member_type(type_name) value('ROLE_SUPERADMIN');
+ 
 
 create table member_status(
     status_id int primary key auto_increment,
@@ -43,9 +28,6 @@ insert into member_status (status_id , status_name) values(1,'ACTIVE');
 insert into member_status (status_id , status_name) values(2,'PENDING');
 insert into member_status (status_id , status_name) values(3,'SUSPENDED');
 insert into member_status (status_id , status_name) values(4,'DELETED');
-
-delete from member_status;
-
 
 create table members(
     member_id int auto_increment primary key,
@@ -68,16 +50,14 @@ create table members(
     foreign key(status_id) references member_status(status_id)
 );
 
-ALTER TABLE members
-drop created_by;
-
-ALTER TABLE members
-drop updated_by;
-
+ SET SQL_SAFE_UPDATES=0; 
+delete from members;
 drop table members;
 
 desc members;
 desc member_status;
+desc member_type;
+
 select * from member_type order by member_type_id asc;
 select * from member_status order by status_id asc;
 select * from members;
@@ -89,4 +69,7 @@ select m.email, m.password, mt.type_name
 	    where m.email = "second@gmail.com";
         
 SELECT mt.type_name
-FROM member_type mt;        
+FROM member_type mt;    
+   
+select login_id from members where email='second@gmail.com' and mobile='010-1111-1111' ;
+select password from members where login_id='second02' and mobile='010-1111-1111';
