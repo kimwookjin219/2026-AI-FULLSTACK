@@ -73,3 +73,9 @@ FROM member_type mt;
    
 select login_id from members where email='second@gmail.com' and mobile='010-1111-1111' ;
 select password from members where login_id='second02' and mobile='010-1111-1111';
+
+INSERT INTO members (
+            login_id, mobile, nickname, email, password, member_type_id, status_id
+        ) VALUES (
+            'first', '010-1234-1234', 'first', 'first@gmail.com', '1324', 1, 1 
+        );
