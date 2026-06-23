@@ -19,3 +19,6 @@ track005_jsp/Servers/
 # OS별 임시파일
 *.DS_Store
 Thumbs.db
+
+track004_2_oracle/
+*.zip
