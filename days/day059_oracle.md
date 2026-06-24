@@ -46,3 +46,7 @@ create table dept(
 ```
 
 ## 2. boot
+
+1) spring + jsp
+2) spring boot + thymleaf (권장사항 html)
+3) 
