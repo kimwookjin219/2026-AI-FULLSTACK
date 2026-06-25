@@ -67,6 +67,12 @@ public class Sboard2ServiceImpl implements Sboard2Service{
 		}
 	
 	//7. 삭제기능
-	@Override public int delete(Sboard2Dto dto) { return dao.delete(dto); }
+	@Override public int delete(Sboard2Dto dto) { 
+//		int result = -1;
+//		Sboard2Dto find = dao.selectById(dto);
+//		if(find.getBpass().equals(dto.getBpass())) { result = dao.delete(dto); }
+//		return result; 
+		return dao.delete(dto);
+		}
 
 }

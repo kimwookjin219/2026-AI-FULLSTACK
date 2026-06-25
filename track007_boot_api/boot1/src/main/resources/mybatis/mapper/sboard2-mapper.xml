@@ -29,11 +29,12 @@
   </update>
   
   <update id="update" parameterType="Sboard2Dto">
-     update sboard2 set btitle=#{btitle}, bcontent=#{bcontent}, bfile=#{bfile,jdbcType=VARCHAR} where id=#{id}
+     update sboard2 set btitle=#{btitle}, bcontent=#{bcontent}, bfile=#{bfile,jdbcType=VARCHAR} 
+     where id=#{id} and bpass=#{bpass}
   </update>
   
   <delete id="delete" parameterType="Sboard2Dto">
-     delete from sboard2 where id=#{id}
+     delete from sboard2 where id=#{id} and bpass=#{bpass}
   </delete>
   
 </mapper>
