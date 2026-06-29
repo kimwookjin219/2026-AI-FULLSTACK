@@ -76,3 +76,7 @@
     2) sboard2-mapper.xml
 
     3) sboard2Dao.java
+
+4. security
+
+5. openai api
