@@ -10,10 +10,10 @@ public class ApiScheduledTask {
 //		 System.out.println(".........스케쥴러 실행중 : " + System.currentTimeMillis());
 //	 }
 	// 월 일 시 분 초
-	 @Scheduled(cron = "0 20 11 * * ?") // 초 분 시 일 월 요일
-	 public void runTest1() {
-		 System.out.println(".........스케쥴러 실행중 : " + System.currentTimeMillis());
-	 }
+//	 @Scheduled(cron = "0 20 11 * * ?") // 초 분 시 일 월 요일
+//	 public void runTest1() {
+//		 System.out.println(".........스케쥴러 실행중 : " + System.currentTimeMillis());
+//	 }
 	
 }
 
