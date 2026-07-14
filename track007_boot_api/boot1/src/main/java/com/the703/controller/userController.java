@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -20,6 +22,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.the703.dto.AppUserDto;
 import com.the703.security.CustomUserDetails;
+import com.the703.service.ApiPasswordCheckService;
 import com.the703.service.AppUserService;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -147,4 +150,30 @@ public class userController {
 		model.addAttribute("errorMessage","로그인 실패 : 아이디 또는 비밀번호를 확인해주세요.");
 		return "users/delete";
 	}
+	
+	   ///////////////////16.  PasswordCheckService 
+    @Autowired  ApiPasswordCheckService   passwordCheckService;
+    
+    // 1. GET 요청: 템플릿 페이지 반환 (기존 openai_get 패턴)
+    @GetMapping("/password")
+    public String passwordCheckGet() {
+        return "util/password"; 
+    }
+    
+    // 2. POST 요청: 유출 횟수를 텍스트(String) 형태로 반환 (기존 openai 패턴)
+    // 화면에서 JSON이나 일반 텍스트로 보낸 평문 비밀번호를 받아 처리합니다.
+    @PostMapping(value = "/password", produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public String passwordCheck(@RequestBody String password) {
+        try {
+            // 외부 API를 호출하여 유출 횟수를 가져옴
+            int leakCount = passwordCheckService.checkPasswordLeakCount(password);
+            
+            // 단순 숫자만 반환하거나 필요시 JSON 문자열 형태로 조립하여 반환
+            return String.valueOf(leakCount);
+        } catch (Exception e) {
+            return "ERROR: " + e.getMessage();
+        }
+    }
+   
 }
