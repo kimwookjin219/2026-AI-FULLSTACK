@@ -20,7 +20,7 @@ module.exports = () => {
                     return done(null, false, { message: '존재하지 않는 이메일입니다!' });
                     }  //     에러없음, 인증실패, 실패정보
                     const match = await bcrypt.compare(password, user.PASSWORD); // 비밀번호 해시 비교
-                    if(match){ return done(null , user); }
+                    if(match){ return done(null , user); } 
                     else{      return done(null,   false, {message:'비밀번호가 틀렸습니다.'});      } 
                 }catch(error){
                     console.error('LocalStrategy Error' , error);

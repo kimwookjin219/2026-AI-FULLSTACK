@@ -28,3 +28,12 @@ moit-v2/src/main/resources/application-oauth.properties
 
 *.env
 track008_nodeReact/back/node_modules
+track008_nodeReact/front/node_modules
+
+node_modules/
+.env
+.env.*
+dist/
+build/
+coverage/
+.next
