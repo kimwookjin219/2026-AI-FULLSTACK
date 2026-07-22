@@ -4,7 +4,7 @@
 */
 //1. require
 const express = require('express');
-const passport = require('../passport'); //## passport
+const passport = require('passport'); //## passport
 const { createUser, findUserByEmail, findUserById, 
         verifyUser, getAllUser, updateUserNickname, 
         deleteUser, findUserByNickname } = require('../models/users');
@@ -71,7 +71,7 @@ router.post('/register' , async(req,res) => {
  *         description: 로그인 후 사용
  */
 router.post('/login' , (req,res,next) => {
-    passport.authenticated('local',(err,user,info)=>{ // err , 성공시 반환된 사용자 객체, 실패에러
+    passport.authenticate('local',(err,user,info)=>{ // err , 성공시 반환된 사용자 객체, 실패에러
         if (err) return next(err);
         if (!user) return res.status(401).json({ message: info?.message || '로그인 실패' });
 
@@ -192,6 +192,34 @@ router.delete('/:id' , async(req,res) => {
         console.log('deleteUser' , err);
         res.json({message:'사용자삭제 실패'}); 
     }
+});
+
+// 이메일 중복검사
+// get/user/check-email
+/**
+ * @swagger
+ * /user/check-email:
+ *   get:
+ *     summary: 이메일 중복검사
+ *     description: 입력한 이메일이 이미 존재하는지 확인합니다.
+ *     parameters:
+ *       - in: path
+ *         name: email
+ *         required: true
+ *         schema: { type: string }
+ *     responses:
+ *       200:
+ *         description: 사용가능한 이메일
+ *       401:
+ *         description: 이미 사용중인 이메일
+ */
+router.get('/check-email' , async(req,res) => {
+    try{
+        const { email } = req.query;
+        const user = await findUserByEmail(email);  // 쿼리스트링으로 이메일 받음
+        if(user) { return res.status(409).json({ isAvailable:false , message:'이미 사용중인 이메일입니다.'});}
+        return res.status(200).json({isAvailable:true , message:'사용 가능한 이메일입니다.'});
+    }catch(err){ res.status(500).json({message:'서버오류'});  }
 });
 
 //3. export

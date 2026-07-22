@@ -24,7 +24,7 @@ const client = axios.create({
 // -------------- 로그아웃 --------------------- watchLogout
 //post : /user/logout 
 export function logoutApi(){
-    return client.post( '/user/logout' , data); // http://localhost:3065/user/logout
+    return client.post( '/user/logout' ); // http://localhost:3065/user/logout
 }
 export function* logout(){
     try{

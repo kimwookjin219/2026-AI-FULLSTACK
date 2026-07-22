@@ -4,6 +4,7 @@
  * 로그인  : [local.js] Passport LocalStrategy로 인증 후 세션(serializeUser) 저장
  * 로그아웃: Passport 세션기반으로 사용자 조회(deserializeUser) 후 세션 종료
  */
+const express = require('express');
 const passport = require('passport');
 const local = require('./local');
 const { findUserById } = require('../models/users');
