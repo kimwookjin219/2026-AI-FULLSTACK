@@ -15,6 +15,7 @@ import reducer,{
     LOAD_USERS_REQUEST ,LOAD_USERS_SUCCESS ,LOAD_USERS_FAILURE ,
     UPDATE_NICKNAME_REQUEST ,UPDATE_NICKNAME_SUCCESS ,UPDATE_NICKNAME_FAILURE ,
     DELETE_USER_REQUEST , DELETE_USER_SUCCESS ,DELETE_USER_FAILURE ,
+    CHECK_EMAIL_REQUEST , CHECK_EMAIL_SUCCESS , CHECK_EMAIL_FAILURE ,
 } from '../reducers/user'; // 액션 타입 불러오기
 
 const client = axios.create({
@@ -166,6 +167,25 @@ function* watchDeleteUser(){
     // return { ...state, isLoading: true , error:null };
 }
 
+// -------------- 이메일 중복검사 --------------------- watchCheckEmail
+//get : /user/check-email?email=XXXX
+export function checkEmailApi(email){
+    return client.get(`/user/check-email?email=${email}`);
+}
+export function* checkEmail(action){
+    try{
+        const result = yield call( checkEmailApi , action.data );
+        yield put({type: CHECK_EMAIL_SUCCESS , data: result.data });
+        //return { ...state , emailCheckLoading: false , emailCheckDone: true , 
+        //        isEmailAvailable: action.data.isAvailable };
+    }catch(err){
+        yield put({type: CHECK_EMAIL_FAILURE , error: err.response?.data || err.message });
+    }
+}
+function* watchCheckEmail(){
+    yield takeLatest(CHECK_EMAIL_REQUEST , checkEmail);
+}
+
 
 export default function* userSaga(){
     yield all([       
@@ -174,6 +194,7 @@ export default function* userSaga(){
         fork(watchSignUp) ,
         fork(watchLoadUsers) ,
         fork(watchUpdateNickname) ,
-        fork(watchDeleteUser) , 
+        fork(watchDeleteUser) ,
+        fork(watchCheckEmail) , 
     ]);
 }

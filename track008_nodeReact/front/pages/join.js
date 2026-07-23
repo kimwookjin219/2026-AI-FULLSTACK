@@ -1,7 +1,7 @@
 import { useSelector , useDispatch } from 'react-redux'; // 전역 상태, 상태 알림
 import { useState , useEffect } from 'react'; // 변수상태 변경, 이벤트 변경
 import { useRouter } from 'next/router'; // 경로
-import { SIGN_UP_REQUEST } from '../reducers/user';
+import { SIGN_UP_REQUEST , SIGN_UP_RESET ,CHECK_EMAIL_REQUEST } from '../reducers/user';
 
 // useSelector  - 전역 상태
 // useState     - 변수
@@ -13,7 +13,8 @@ export default function JoinPage(){
     //1. 코드
     const dispatch = useDispatch();
     const router = useRouter();
-    const {me, isLoading , error, signUpDone} = useSelector( (state)=>state.user ); // 1. store : 전역 상태감지 useSelector
+    const {me, isLoading , error, signUpDone ,
+           isEmailAvailable , checkEmailError ,checkEmailLoading} = useSelector( (state)=>state.user ); // 1. store : 전역 상태감지 useSelector
     //     변수    변수셋팅함수
     const [email, setEmail] = useState(''); // let email=''
     const [password, setPassword] = useState('');
@@ -28,6 +29,7 @@ export default function JoinPage(){
         // 2. store : 액션 알림 useDispatch
         dispatch({ type: SIGN_UP_REQUEST  , data:{email,password,nickname} });
     };
+
     //5. 상태변화 감지
     useEffect(()=>{
         if(signUpDone){ // 경로변경
@@ -42,18 +44,33 @@ export default function JoinPage(){
         if(me) router.push('/users');
     },[me,router]);
 
+    //6. 이메일 중복검사
+    const onCheckEmail = (e)=>{
+        e.preventDefault();
+        if(!email.trim()){ alert('이메일을 입력해주세요.'); return; }
+
+        dispatch({type: CHECK_EMAIL_REQUEST , data: email});
+    };
+
     //2. 뷰 - 렌더링 <></> , 공백 , 닫기 태크
     return (
         <div className="container my-4">
             <h3 className="mb-3" >회원가입</h3>
             <form className="w-50 mx-auto" onSubmit={onSubmit}>
             {/* 이메일 입력 */}
-            <div className="mb-3">
+            <div className="mb-3 input-group">
                 <input type="email" className="form-control" placeholder="이메일" title="이메일입력"
                 value={email}
                 onChange={(e)=>{setEmail(e.target.value);}}
                 />
+                <button type="button" className="btn btn-outline-secondary" 
+                        onClick={onCheckEmail} disabled={checkEmailLoading}>
+                    {checkEmailLoading ? '확인중..': '중복확인'}
+                </button>
             </div>
+            {isEmailAvailable===true && <div className='text-success mb-2'>사용가능한 이메일입니다.</div>}
+            {isEmailAvailable===false && <div className='text-danger mb-2'>이미 사용중인 이메일입니다.</div>}           
+
             {/* 비밀번호 입력 */}
             <div className="mb-3">
                 <input type="password" className="form-control" placeholder="비밀번호" title="비밀번호입력"

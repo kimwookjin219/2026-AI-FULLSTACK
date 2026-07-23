@@ -203,14 +203,14 @@ router.delete('/:id' , async(req,res) => {
  *     summary: 이메일 중복검사
  *     description: 입력한 이메일이 이미 존재하는지 확인합니다.
  *     parameters:
- *       - in: path
+ *       - in: query
  *         name: email
  *         required: true
  *         schema: { type: string }
  *     responses:
  *       200:
  *         description: 사용가능한 이메일
- *       401:
+ *       409:
  *         description: 이미 사용중인 이메일
  */
 router.get('/check-email' , async(req,res) => {

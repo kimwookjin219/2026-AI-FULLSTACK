@@ -19,17 +19,25 @@ export const SIGN_UP_REQUEST = 'SIGN_UP_REQUEST'; // 회원가입 요청
 export const SIGN_UP_SUCCESS = 'SIGN_UP_SUCCESS'; // 회원가입 성공
 export const SIGN_UP_FAILURE = 'SIGN_UP_FAILURE'; // 회원가입 실패
 
-export const LOAD_USERS_REQUEST = 'LOG_USERS_FAILURE'; // 사용자 목록 요청
+export const LOAD_USERS_REQUEST = 'LOG_USERS_REQUEST'; // 사용자 목록 요청
 export const LOAD_USERS_SUCCESS = 'LOAD_USERS_SUCCESS'; // 사용자 목록 성공
 export const LOAD_USERS_FAILURE = 'LOAD_USERS_FAILURE'; // 사용자 목록 실패
 
-export const UPDATE_NICKNAME_REQUEST = 'UPDATE_NICKNAME_FAILURE'; // 닉네임 수정 목록
+export const UPDATE_NICKNAME_REQUEST = 'UPDATE_NICKNAME_REQUEST'; // 닉네임 수정 목록
 export const UPDATE_NICKNAME_SUCCESS = 'UPDATE_NICKNAME_SUCCESS'; // 닉네임 수정 성공
 export const UPDATE_NICKNAME_FAILURE = 'UPDATE_NICKNAME_FAILURE'; // 닉네임 수정 실패
 
-export const DELETE_USER_REQUEST = 'DELETE_USER_FAILURE'; // 사용자삭제 목록
+export const DELETE_USER_REQUEST = 'DELETE_USER_REQUEST'; // 사용자삭제 목록
 export const DELETE_USER_SUCCESS = 'DELETE_USER_SUCCESS'; // 사용자삭제 성공
 export const DELETE_USER_FAILURE = 'DELETE_USER_FAILURE'; // 사용자삭제 실패
+
+export const CHECK_EMAIL_REQUEST = 'CHECK_EMAIL_REQUEST'; // 이메일 중복검사 요청
+export const CHECK_EMAIL_SUCCESS = 'CHECK_EMAIL_SUCCESS'; // 이메일 중복검사 성공
+export const CHECK_EMAIL_FAILURE = 'CHECK_EMAIL_FAILURE'; // 이메일 중복검사 실패
+
+export const CHECK_NICKNAME_REQUEST = 'CHECK_NICKNAME_REQUEST'; // 닉네임 중복검사 요청
+export const CHECK_NICKNAME_SUCCESS = 'CHECK_NICKNAME_SUCCESS'; // 닉네임 중복검사 성공
+export const CHECK_NICKNAME_FAILURE = 'CHECK_NICKNAME_FAILURE'; // 닉네임 중복검사 실패
 
 // 2. 초기상태
 export const initialState={
@@ -38,11 +46,17 @@ export const initialState={
     isLoading: false , // api 요청 중 여부
     error: null , // 에러 메세지
     signUpDone: false , // 회원가입 완료여부
+
+    checkEmailLoading: false , // email : api 요청중                           
+    checkEmailDone: false ,   
+    checkEmailError: null ,
+    isEmailAvailable: null ,   // true : 사용가능 , false : 중복  
 };
 
 // 3. reducer 함수
 const reducer = ( state=initialState , action )=>{  // 현재 상태, 요청 액션
     switch( action.type ){
+        //case SIGN_UP_RESET: return { ...state , signUpDone: false };
         // 요청 액션 → 로딩 시작
         case LOG_IN_REQUEST:
         case LOG_OUT_REQUEST:
@@ -50,7 +64,9 @@ const reducer = ( state=initialState , action )=>{  // 현재 상태, 요청 액
         case LOAD_USERS_REQUEST:
         case UPDATE_NICKNAME_REQUEST:
         case DELETE_USER_REQUEST:  
-            return { ...state , isLoading: true , error: null }  
+            return { ...state , isLoading: true , error: null };
+        case CHECK_EMAIL_REQUEST:
+            return { checkEmailLoading: true , checkEmailDone: false , checkEmailError: null , isEmailAvailable: null , };      
         // 성공 액션 → 상태 업데이트
         case LOG_IN_SUCCESS:
             return { ...state , isLoading: false , me: action.data };
@@ -72,6 +88,13 @@ const reducer = ( state=initialState , action )=>{  // 현재 상태, 요청 액
                     me: state.me?.id === action.data.id? null: state.me ,
                     users: state.users.filter( (u) => u.id !== action.data.id )
             };
+        case CHECK_EMAIL_SUCCESS:
+            return { 
+                ...state , 
+                checkEmailLoading: false , 
+                checkEmailDone: true , 
+                isEmailAvailable: action.data.isAvailable , 
+            };    
         // 실패 액션 → 에러 메세지 저장
         case LOG_IN_FAILURE:
         case LOG_OUT_FAILURE:
@@ -80,6 +103,13 @@ const reducer = ( state=initialState , action )=>{  // 현재 상태, 요청 액
         case UPDATE_NICKNAME_FAILURE:
         case DELETE_USER_FAILURE:     
             return { ...state, isLoading: false , error: action.error?.message || action.error };
+        case CHECK_EMAIL_FAILURE:
+            return { 
+                ...state , 
+                checkEmailLoading: false , 
+                checkEmailError: action.error , 
+                isEmailAvailable: false 
+            };    
         // 기본값 → 상태변경 없음
         default :
             return state;
