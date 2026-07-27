@@ -92,3 +92,132 @@ get  저장이름
 - TTL(만료 시간)로 자동 만료처리
 - 로그아웃 시 즉시 삭제  
 
+##### [실습] 3. oracle 유저셋팅
+```sql
+-- cmd
+-- sqlplus
+-- conn  system/1234
+ 
+-- 유저만들기 ( 오라클 12 이상에서 기존방식으로 사용자 생성 허용 )
+ALTER SESSION SET "_ORACLE_SCRIPT" = TRUE;
+create user boot  identified by react;
+
+-- 권한부여
+grant  connect , resource  to boot;
+
+ALTER USER boot DEFAULT TABLESPACE users QUOTA UNLIMITED ON users;    -- 물리적공간이용
+grant  create table to boot;
+
+```
+
+##### [실습] 4. Boot + React - ver1 (기본 게시판 + 회원가입)
+
+1. board
+- 1. project
+- 2. 부품객체 () : gradle - refresh gradle 해야함!!
+  ※ https://mvnrepository.com/
+- 3. application.yml
+```
+spring:
+  datasource:
+    url: jdbc:oracle:thin:@localhost:1521/XE     # jdbc url 설정
+    username: boot                               # 사용자 계정
+    password: react                              # 사용자 암호
+    driver-class-name: oracle.jdbc.OracleDriver  # oracle, mysql...
+
+  jpa:
+    hibernate:
+      ddl-auto: update    # 엔티티 변경사항 : DB테이블 자동으로 변경사항 반영
+                          # update : 수정반영, 기존데이터 유지 / create-drop : 생성후 삭제, 매번 초기화
+                          # 배포할때는 none(기본), validate
+    properties:
+      hibernate:
+        format_sql: true  # 콘솔 및 로그에 출력되는 sql 들여쓰기 속성
+        show_sql: true    # sql 쿼리 문장을 그대로 로그 출력
+
+  servlet:
+    multipart:
+      enabled: true           # 파일 업로드처리 기능 활성화
+      max-file-size: 10MB     # 업로드하는 최대허용 용량
+      max-request-size: 20MB  # 한번에 전송되는 총 용량    
+
+  data:
+    redis:
+      host: localhost   # redis 연결주소 
+      port: 6379        # 서버 포트
+      timeout: 2000     # 서버와 연결 대기시간
+
+  config:
+    import: 
+      - optional:application-oauth.yml   # api 설정관련
+      - optional:file:.env[.properties]  # .env 파일 실제 보관 키
+
+mybatis:
+  config-location: classpath:mybatis-config.xml  # 전역 설정파일
+  mapper-locations: classpath:mapper/**/*.xml    # mapper 경로패턴
+  type-aliases-package: com.thejoa703.domain     # 도매인 설정
+
+jwt:
+  issuer: thejoa703                    # jwt 토큰 발행한 주체자
+  secret: ${JWT_SECRET}                # 사용한 비밀 키
+  access-token-exp-seconds: 900        # 유효시간
+  refresh-token-exp-seconds: 1209600   # 유효시간
+  header: Authorization                # http 토큰 전달시 http 요청헤더 이름 지정
+  prefix: Bearer                       # 토큰 앞에 붙는 이름(접두사)  
+
+file:
+  upload-dir: uploads  # 업로드된 파일 설정 경로
+
+#server:
+#  port: 8484 
+```
+
+  ※ (oracle DB : table) → dto  → mapper → service → controller → view
+- 4. entity (테이블을 객체로 처리)
+  back1
+    ㄴ src/main/java
+      ㄴ com.thejoa703.entity
+        - AppUser
+        - Post
+
+  A. JPA
+  - ORM(Object-Relational Mapping)
+  부품객체(자바클래스)와 RDB(관계형 데이터베이스)의 불일치 해결하려고
+  SQL중심이 아니라 객체 중심으로 데이터를 다룰 수 있게 해주는 기술
+
+  - 1. @Entity  -  DB의 테이블과 mapping 
+  - 테이블 컬럼 변경시 SQL을 일일이 수정할 필요 없이 엔티티 클래스만 수정하면 됨
+  - 데이터베이스 방언(Dialect) 지원 - oracle, mysql 특정데이터에 종속
+
+  - 2. JpaRepository - DB에 접속해서 crud 작업을 처리하는 인터페이스
+  - 3. 외래키 설정
+    > 한 사람이 여러 글을 쓸 수 있다.
+
+    > AppUser
+    @OneToMany
+
+    > Post
+    @ManyToOne
+    ```
+    ```
+    
+- 5. Repository
+back1
+  ㄴ src/main/java
+    ㄴ com.thejoa703.repository
+      - AppUserRepository
+      - PostRepository
+https://docs.spring.io/spring-data/jpa/reference/jpa/query-methods.html  
+
+- 6. Dto
+back1
+  ㄴ src/main/java
+    ㄴ com.thejoa703.dto
+      - UserDto
+      - PostDto 
+
+- 7. Service
+- 8. Controller
+- 9. View   
+
+2. 회원가입
