@@ -9,6 +9,8 @@
 ㄴ BACK  : boot  + jpa  + oracle  + (Mybatis) + jwt + redis
 ㄴ FRONT : react + next + antd
 
+스프링4STS + docker + redis
+
 ### 1. BACK
 1. JAVA 17
 2. SPRING BOOT (gradle)
@@ -283,8 +285,8 @@ front/
 │   │  ├── post.test.js        # 게시판 사가 테스트 코드
 │   │  └── user.test.js        #  유저   사가  테스트 코드
 │   ├── index.js            # 루트 사가
-│   ├── user.js             # 사용자 관련 사가
-│   └── post.js             # 게시판 관련 사가 
+│   ├── authSaga.js             # 사용자 관련 사가
+│   └── postSaga.js             # 게시판 관련 사가 
 ├── store/                  # Redux 스토어 설정 폴더
 │   ├── configureStore.js   # Redux 스토어 설정
 │   └── configureStore.test.js # 스토어 테스트 코드
@@ -317,5 +319,16 @@ step5) view
 
 ##### [실습]  5.   Boot + React + 세션/쿠키  - ver2  (기본게시판 + 회원가입 + 이미지 / 해쉬태그 / 좋아요 / 팔로우)
 ※ entity → repository  → service  →  controller 
+
+- 람다식 참고 p479 (자바책)
+- day028 
+
+■ 과정명   : [취업기업확대]AI활용 풀스택(프론트엔드,백엔드)부트캠프(자바,파이썬,플러터)
+■ 훈련과목 : (비NCS)프로젝트(완성된 웹서비스 플랫폼 프로젝트 리뉴얼)
+
+※ 참고)  PostController  
+      - list 항목가져오기 
+      - 람다식참고 : p479  (자바책)
+      - day028 : https://hi-sally03915.tistory.com/1980
 
 ##### [실습]  6.   Boot + React + jwt+ security+redis  - ver3  (기본게시판 + 회원가입 + 이미지 / 해쉬태그 / 좋아요 / 팔로우 )

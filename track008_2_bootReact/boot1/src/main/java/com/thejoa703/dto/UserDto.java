@@ -17,12 +17,11 @@ public class UserDto {
 		private Integer mbtitype;
 	}
 	
-	// 회원정보 - 응답 Dto
+	// 회원정보 - 응답 Dto - react(front)로 넘김
 	@Getter
 	public static class UserResponseDto{
 		private Long    id;
 		private String  email;
-		private String  password;
 		private String  nickname;
 		private String  mobile;
 		private Integer mbtitype;
