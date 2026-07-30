@@ -325,10 +325,37 @@ step5) view
 
 ■ 과정명   : [취업기업확대]AI활용 풀스택(프론트엔드,백엔드)부트캠프(자바,파이썬,플러터)
 ■ 훈련과목 : (비NCS)프로젝트(완성된 웹서비스 플랫폼 프로젝트 리뉴얼)
+> 
+> python + django
+> flutter
 
 ※ 참고)  PostController  
       - list 항목가져오기 
       - 람다식참고 : p479  (자바책)
       - day028 : https://hi-sally03915.tistory.com/1980
+
+■10주
+> 1. 포트폴리오 완성 ~9월초
+  - boot + security + jwt + redis / jpa(mybatis) + oracle/react + next → aws (9월초까지)
+
+---
+
+<포트폴리오>
+1. 2차 프로젝트를 RestController로 변경
+> 테이블 + Dto + mapper + service + controller(RestController: swagger)
+
+2. 3차 새로 만들것들
+  1) @Entity (새로만들거만) > Repository > Service > RestController
+  2) mybatis는 건들 X, 사용 가능한것들은 사용(그대로 가져가기)
+  3) Security + jwt + redis
+
+--- 
+
+> 2. 이력서 + 회사지원 ~10월
+  - python + django
+  - flutter
+
+  - 리팩토링 개별
+  - backend : jpa + @entity
 
 ##### [실습]  6.   Boot + React + jwt+ security+redis  - ver3  (기본게시판 + 회원가입 + 이미지 / 해쉬태그 / 좋아요 / 팔로우 )

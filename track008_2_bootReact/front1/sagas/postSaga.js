@@ -1,0 +1,84 @@
+// sagas/postSaga.js
+import {all,call,put,takeLatest} from 'redux-saga/effects';
+import axios from 'axios';
+import {fetchPostsRequest, fetchPostsSuccess, fetchPostsFailure,                // 전체글
+              fetchPostDetailRequest, fetchPostDetailSuccess, fetchPostDetailFailure, // 상세글
+              createPostRequest, createPostSuccess, createPostFailure, // 글쓰기
+              updatePostRequest, updatePostSuccess, updatePostFailure, // 글수정
+              deletePostRequest, deletePostSuccess, deletePostFailure, // 글삭제
+              resetPostState // 초기화
+} from '../reducers/postReducer';
+
+const POST_API_BASE = 'http://localhost:8080/api/posts'; 
+// watchFetchPosts       - GET      /api/posts           전체 게시글 조회  
+export const fetchPostsApi = () => axios.get(POST_API_BASE);
+export function* fetchPosts(){
+    try{
+        const result = yield call(fetchPostsApi);
+        yield put(fetchPostsSuccess(result.data));
+    }catch(err){ 
+        yield put(fetchPostsFailure(error.response?.data?.message || err.message)); 
+    }
+}
+
+// watchFetchPostDetail  - GET      /api/posts/{id}      게시글 단건 조회  
+export const fetchPostDetailApi = (id) => axios.get(`${POST_API_BASE}/${id}`); 
+export function* fetchPostDetail(action){
+    try{
+        const result = yield call(fetchPostDetailApi, action.payload); // action.payload: 사용자가 넘겨준 값
+        yield put(fetchPostDetailSuccess(result.data));
+    }catch(err){ 
+        yield put(fetchPostDetailFailure(error.response?.data?.message || err.message)); 
+    }
+}
+
+// watchCreatePost       - POST     /api/posts           게시글 작성
+export const createPostApi = (postData) => axios.post(POST_API_BASE, postData);
+export function* createPost(action){
+    try{
+        const result = yield call(createPostApi, action.payload); // action.payload: 사용자가 넘겨준 값
+        yield put(createPostSuccess(result.data));
+    }catch(err){ 
+        yield put(createPostFailure(error.response?.data?.message || err.message)); 
+    } 
+} 
+
+// watchUpdatePost       - PUT      /api/posts/{id}      게시글 수정       put / patch 차이
+export const updatePostApi = ({postId, dto}) => axios.put(`${POST_API_BASE}/${postId}`, dto);
+export function* updatePost(action){
+    try{
+        const result = yield call(updatePostApi, action.payload); // action.payload: 사용자가 넘겨준 값
+        yield put(updatePostSuccess(result.data));
+    }catch(err){ 
+        yield put(updatePostFailure(error.response?.data?.message || err.message)); 
+    }    
+} 
+
+// watchDeletePost       - DELETE   /api/posts/{id}      게시글 삭제  ##
+export const deletePostApi = (id) => axios.delete(`${POST_API_BASE}/${id}`);
+export function* deletePost(action){
+    //action = { type: , payload:{} }
+    try{
+        yield call(deletePostApi, action.payload); // action.payload: 사용자가 넘겨준 값
+        yield put(deletePostSuccess(action.payload));
+    }catch(err){ 
+        yield put(deletePostFailure(error.response?.data?.message || err.message)); 
+    }
+} 
+
+// --- watch saga ---
+function* watchFetchPosts(){      yield takeLatest( fetchPostRequest.type ,       fetchPosts ); }
+function* watchFetchPostDetail(){ yield takeLatest( FetchPostDetailRequest.type , fetchPostDetail ); }
+function* watchCreatePost(){      yield takeLatest( CreatePostRequest.type ,      createPost ); }
+function* watchUpdatePost(){      yield takeLatest( UpdatePostRequest.type ,      updatePost ); }
+function* watchDeletePost(){      yield takeLatest( DeletePostRequest.type ,      deletePost ); }
+
+export default function* postSaga(){
+    yield all([
+        call(watchFetchPosts),
+        call(watchFetchPostDetail),
+        call(watchCreatePost),
+        call(watchUpdatePost),
+        call(watchDeletePost),
+    ]);
+}
