@@ -17,7 +17,7 @@ export function* fetchPosts(){
         const result = yield call(fetchPostsApi);
         yield put(fetchPostsSuccess(result.data));
     }catch(err){ 
-        yield put(fetchPostsFailure(error.response?.data?.message || err.message)); 
+        yield put(fetchPostsFailure(err.response?.data?.message || err.message)); 
     }
 }
 
@@ -28,7 +28,7 @@ export function* fetchPostDetail(action){
         const result = yield call(fetchPostDetailApi, action.payload); // action.payload: 사용자가 넘겨준 값
         yield put(fetchPostDetailSuccess(result.data));
     }catch(err){ 
-        yield put(fetchPostDetailFailure(error.response?.data?.message || err.message)); 
+        yield put(fetchPostDetailFailure(err.response?.data?.message || err.message)); 
     }
 }
 
@@ -39,7 +39,7 @@ export function* createPost(action){
         const result = yield call(createPostApi, action.payload); // action.payload: 사용자가 넘겨준 값
         yield put(createPostSuccess(result.data));
     }catch(err){ 
-        yield put(createPostFailure(error.response?.data?.message || err.message)); 
+        yield put(createPostFailure(err.response?.data?.message || err.message)); 
     } 
 } 
 
@@ -50,7 +50,7 @@ export function* updatePost(action){
         const result = yield call(updatePostApi, action.payload); // action.payload: 사용자가 넘겨준 값
         yield put(updatePostSuccess(result.data));
     }catch(err){ 
-        yield put(updatePostFailure(error.response?.data?.message || err.message)); 
+        yield put(updatePostFailure(err.response?.data?.message || err.message)); 
     }    
 } 
 
@@ -62,16 +62,16 @@ export function* deletePost(action){
         yield call(deletePostApi, action.payload); // action.payload: 사용자가 넘겨준 값
         yield put(deletePostSuccess(action.payload));
     }catch(err){ 
-        yield put(deletePostFailure(error.response?.data?.message || err.message)); 
+        yield put(deletePostFailure(err.response?.data?.message || err.message)); 
     }
 } 
 
 // --- watch saga ---
-function* watchFetchPosts(){      yield takeLatest( fetchPostRequest.type ,       fetchPosts ); }
-function* watchFetchPostDetail(){ yield takeLatest( FetchPostDetailRequest.type , fetchPostDetail ); }
-function* watchCreatePost(){      yield takeLatest( CreatePostRequest.type ,      createPost ); }
-function* watchUpdatePost(){      yield takeLatest( UpdatePostRequest.type ,      updatePost ); }
-function* watchDeletePost(){      yield takeLatest( DeletePostRequest.type ,      deletePost ); }
+function* watchFetchPosts(){      yield takeLatest( fetchPostsRequest.type ,       fetchPosts ); }
+function* watchFetchPostDetail(){ yield takeLatest( fetchPostDetailRequest.type , fetchPostDetail ); }
+function* watchCreatePost(){      yield takeLatest( createPostRequest.type ,      createPost ); }
+function* watchUpdatePost(){      yield takeLatest( updatePostRequest.type ,      updatePost ); }
+function* watchDeletePost(){      yield takeLatest( deletePostRequest.type ,      deletePost ); }
 
 export default function* postSaga(){
     yield all([

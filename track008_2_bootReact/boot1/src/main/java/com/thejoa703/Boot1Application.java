@@ -11,3 +11,6 @@ public class Boot1Application {
 	}
 
 }
+/*
+http://localhost:8080/
+*/
