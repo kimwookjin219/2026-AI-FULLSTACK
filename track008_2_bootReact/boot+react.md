@@ -375,3 +375,92 @@ step5) view
   - backend : jpa + @entity
 
 ##### [실습]  6.   Boot + React + jwt+ security+redis  - ver3  (기본게시판 + 회원가입 + 이미지 / 해쉬태그 / 좋아요 / 팔로우 )
+
+
+## (1) : 회원가입 + board (crud)
+## (2) : 멤버기능 + board (이미지업로드, 해쉬태그, 좋아요 - crud)
+boot2 - 프로젝트 만들기
+- table    →  mapper     (dto) → service → controller
+- @Entity  →  repository (dto) → service → controller
+
+1) 유저는 많은 글을 쓸 수 있다.
+<AppUser> → <Post>
+```
+<AppUser>
+@OneToMany( mappedBy = "user" ,cascade = CascadeType.ALL, orphanRemoval = true )
+private List<Post> posts = new ArrayList<>(); 
+
+<Post>
+@ManyToOne   //1. 다대일 (테이블의 필드명)
+@JoinColumn(name="APP_USER_ID" , nullable = false)
+private AppUser user; 
+```
+
+2) 글은 많은 이미지를 갖는다.
+<Post> → <Image>
+
+```
+<Post>
+@OneToMany(mappedBy = "post" , cascade = CascadeType.ALL , orphanRemoval = true)
+    private List<Image> images = new ArrayList<>();
+
+<Image>
+@ManyToOne
+	@JoinColumn(name = "POST_ID", nullable = false) // POST_ID 외래키 (FK) POST엔티티의 PK(ID) 참조
+	private Post post;
+```
+
+3) 글은 많은 해쉬태그를 갖는다.  /  해쉬태그는 많은 글을 갖는다.
+  1) 다 : 다
+  2) 중간 테이블 사용
+<Post> → <HashTag> 여러 글은 많은 해쉬태그를 갖는다.
+@ManyToMany
+
+<HashTag> → <Post>  여러 해쉬태그는 많은 글을 갖는다.
+
+<Post>                  <Hashtag>
+content                 1 test123
+deleted                 2 like
+    ↔ <Post_Hashtag> ↔ 
+            1 1
+            1 2
+
+            2 1
+            2 2
+          1번글 test 123
+          1번글 like    
+
+```
+<Post>
+@ManyToMany
+    @JoinTable(name = "POST_HASHTAG",
+    	joinColumns = @JoinColumn(name = "POST_ID"),
+    	inverseJoinColumns = @JoinColumn(name = "HASHTAG_ID")
+    )
+    private List<Hashtag> hashtags = new ArrayList<>();
+
+<Hashtag>
+@ManyToMany(mappedBy = "hashtags")
+	private List<Post> posts = new ArrayList<>();
+
+```  
+
+4) 글은 많은 좋아요를 갖는다.
+하나의 글에 여러 유저가 좋아요를 누를 수 있다.
+<Post>                                     <POST_LIKE>
+@OneToMany   List<POST_LIKE> likes;        @ManyToOne AppUser user;
+@OneToMany   List<POST_LIKE> likes;        @ManyToOne Post    post;
+<AppUser>
+                                          좋아요 번호  글번호  유저번호
+                                          1           1      1
+                                          2           1      2
+                                          3           1      3
+                                          4           2      2
+                                          5           2      3
+       
+
+5) 리트윗
+
+6) 팔로우
+
+front2 - 프로젝트 복사하기
