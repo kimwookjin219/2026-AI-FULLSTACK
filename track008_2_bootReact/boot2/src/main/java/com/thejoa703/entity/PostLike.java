@@ -26,7 +26,7 @@ public class PostLike {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE , generator = "post_like_seq")
 	@SequenceGenerator(name = "post_like_seq", sequenceName = "POSK_LIKE_SEQ", allocationSize = 1)
-	private long id;
+	private Long id;
 	
 	@Column(name = "CREATED_AT", nullable = false)
 	private LocalDateTime createdAt; // 좋아요 누른 시점

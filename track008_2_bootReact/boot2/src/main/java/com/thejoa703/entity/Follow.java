@@ -27,7 +27,7 @@ public class Follow {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "follow_seq")
 	@SequenceGenerator(name = "follow_seq", sequenceName = "FOLLOW_SEQ",allocationSize = 1)
-	private long id;
+	private Long id;
 	
 	@Column(name = "CREATED_AT", nullable = false)
 	private LocalDateTime createdAt;

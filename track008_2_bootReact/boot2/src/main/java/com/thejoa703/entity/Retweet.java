@@ -28,7 +28,7 @@ public class Retweet {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE , generator = "retweet_seq")
 	@SequenceGenerator(name = "retweet_seq" , sequenceName = "RETWEET_SEQ", allocationSize = 1)
-	private long id;
+	private Long id;
 	
 	@Column(name = "CREATED_AT", nullable = false)
 	private LocalDateTime createdAt;

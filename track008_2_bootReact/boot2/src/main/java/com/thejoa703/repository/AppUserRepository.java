@@ -10,6 +10,18 @@ import com.thejoa703.entity.AppUser;
 @Repository                                           // Entity , PK(자료형)
 public interface AppUserRepository extends JpaRepository<AppUser, Long>{
 	Optional<AppUser> findByEmail(String email);
+	
+	// 단건 조회 조건 : findBy email 과 provider로 단건 조회
+	Optional<AppUser> findByEmailAndProvider(String email, String provider);
+	
+	// 닉네임으로 조회 : findBy
+	Optional<AppUser> findByNickname(String nickname);
+	
+	// 닉네임 중복여부
+	boolean existsByNickname(String nickname);
+	
+	// 이메일 중복
+	boolean existsByEmail(String email);
 }
 
 // https://docs.spring.io/spring-data/jpa/reference/jpa/query-methods.html
