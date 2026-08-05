@@ -463,4 +463,27 @@ deleted                 2 like
 
 6) 팔로우
 
+■ 멤버관리
+회원가입 (이메일 중복검사, 닉네임 중복검사) 
+↓
+로그인 
+↓
+마이페이지 (닉네입변경, 프로필 이미지변경, 회원탈퇴, 로그아웃) ※ 팔로워 / 팔로잉
+
+1) UserDto : UserRequestDto / UserResponseDto 
+UserRequestDto  < email, password, nickname, *image(ufile: Multipart 빠짐) / provider, mobile, mbtitype>
+UserResponseDto < email,     role, nickname, ufile / provider >
+
+2) LoginRequest < email, password, provider >
+
+■ 게시글관리
+게시글 작성
+↓
+게시글 목록 ( 전체 글 / 좋아요한 글 / 내 글 + 리트윗 )
+※ 1. 각 세부내용 / 수정 / 삭제 
+
+※ 2. 좋아요, 리트윗, 댓글
+
+[5] RestController
+
 front2 - 프로젝트 복사하기

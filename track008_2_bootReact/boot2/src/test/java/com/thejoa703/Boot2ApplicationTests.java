@@ -217,7 +217,7 @@ class Boot2ApplicationTests {
         deptUserRepository.save(dept2); entityManager.flush(); entityManager.clear();
         
         //Q2. mapper에 있는 찾기 메서드 - findByNameKeyword("영업");
-        List<DeptUser> lists = deptUserMapper.findByNameKeyword("영업");
+        List<DeptUser> lists = deptUserMapper.findByNameKeyword("영업"); 
         
         //Q3. 검증
         assertThat(lists.get(0).getDname()).contains("영업");
