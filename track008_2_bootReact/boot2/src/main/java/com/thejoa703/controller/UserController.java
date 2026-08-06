@@ -86,7 +86,7 @@ public class UserController {
 	// 로그아웃
 	@Operation(summary = "로그아웃" , description = "현재 세션을 만료시켜 로그아웃합니다.")
 	@PostMapping( value = "/logout" )
-	public ResponseEntity<UserResponseDto> logout(HttpSession session){
+	public ResponseEntity<Void> logout(HttpSession session){
 		session.invalidate();
 		return ResponseEntity.noContent().build();
 	}

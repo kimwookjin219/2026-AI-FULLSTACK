@@ -486,4 +486,22 @@ UserResponseDto < email,     role, nickname, ufile / provider >
 
 [5] RestController
 
-front2 - 프로젝트 복사하기
+> Ver2. frontend
+
+1. 프로젝트 만들기
+```
+mkdir front2
+cd front2
+npm init
+```
+
+2. 프로그램 설치
+```
+npm install
+```
+
+3. 개발
+1) reducer
+2) saga
+3) page
+
