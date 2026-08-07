@@ -5,13 +5,17 @@ import { fetchPostsRequest  , updatePostRequest , deletePostRequest}  from "../r
 import { Spin}  from 'antd';
 import PostList from '../components/PostList';
 import EditPostModal from '../components/EditPostModal';
+import {wrapper} from '../store/configureStore';
 
 export   default function Home(){
     const   dispatch = useDispatch();  
+    const {user} = useSelector((state)=>state.auth); //##
     const { posts , loading, error } = useSelector(  (state) => state.post );
 
     //수정모달 :  isEditModalVisible , setIsEditModalVisible
     const [isEditModalVisible , setIsEditModalVisible] = useState(false);
+    const [uploadFiles, setUploadFiles] = useState([]); //##
+
     //수정할글 :  editPost           , setEditPost
     const [editPost , setEditPost] = useState(null);
 
@@ -19,10 +23,20 @@ export   default function Home(){
     const handleEdit = (post)=>{
         setEditPost(post);   // 수정글셋팅
         setIsEditModalVisible(true);  // 수정화면 보이기
+        setUploadFiles([]); // ##
     } 
+
     const hadleEditSubmit=(values)=>{
-        dispatch(  updatePostRequest(   { 
-             postId: editPost.id , dto:{ content:values.content }
+        dispatch(  updatePostRequest(   {
+             userId: user?.id , 
+             postId: editPost.id , 
+             dto:{ 
+                content: values.content,
+                hashtags: Array.isArray(values.hashtags)
+                ? values.hashtags.join(",")
+                : values.hashtags, 
+            },
+            files: uploadFiles
         })  );   // 수정기능 후
         setIsEditModalVisible(false); // 화면안보이기 
         setEditPost(null);
@@ -50,6 +64,8 @@ export   default function Home(){
                 onCancel={()=> setIsEditModalVisible(false)}
                 editPost={editPost}
                 onSubmit={hadleEditSubmit}
+                uploadFiles={uploadFiles}
+                setUploadFiles={setUploadFiles}
             />
         </>
     );

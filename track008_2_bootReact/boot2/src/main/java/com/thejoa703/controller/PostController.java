@@ -3,16 +3,20 @@ package com.thejoa703.controller;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.thejoa703.dto.PostDto.PostRequestDto;
 import com.thejoa703.dto.PostDto.PostResponseDto;
@@ -20,24 +24,28 @@ import com.thejoa703.entity.Post;
 import com.thejoa703.service.PostService;
 
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 
-@Tag(name = "Post Api" , description = "게시글 관련 API")
+@Tag(name = "Post Api" , description = "게시글 관련 API") // swagger
 @RestController
 @RequestMapping("/api/posts")
 @RequiredArgsConstructor
-@CrossOrigin(origins = "*")
 public class PostController {
 	
 	private final PostService postService;
 	
 	// 게시글 작성
 	@Operation(summary = "게시글 작성" , description = "특정유저 ID와 내용을 받아 게시글을 등록합니다.")
-	@PostMapping
-	public ResponseEntity<PostResponseDto> createPost(@RequestBody PostRequestDto requestDto){
-		Post createdpost = postService.createPost(requestDto.getUserId(), requestDto.getContent());
-		return ResponseEntity.ok(new PostResponseDto(createdpost)); // 응답 성공 201
+	@PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE )
+	public ResponseEntity<PostResponseDto> createPost(
+			@Parameter(description = "작성자 사용자 ID") @RequestParam("userId") Long userId,
+			@ModelAttribute PostRequestDto dto ,  // multipart/form-data
+			@Parameter(description = "업로드할 이미지 파일 리스트") // swagger
+			@RequestPart(name = "files", required = false) List<MultipartFile> files
+			){
+		return ResponseEntity.ok(postService.createPost(userId, dto, files)); // 응답 성공 201
 	}
 	
 	// 전체 게시글 조회
@@ -46,7 +54,7 @@ public class PostController {
 	public ResponseEntity<List<PostResponseDto>> getAllPosts(){
 		List<Post> posts = postService.getAllPosts();		
 		List<PostResponseDto> lists = posts.stream()
-										   .map(PostResponseDto::new)     // new PostResponseDto(post)
+										   .map(PostResponseDto::from)     // new PostResponseDto(post)
 										   .collect(Collectors.toList()); // list로 변경
 		
 		return ResponseEntity.ok(lists); // 200
@@ -58,16 +66,21 @@ public class PostController {
 	public ResponseEntity<PostResponseDto> getPost(@PathVariable("id") Long id){
 		Post post = postService.getPostById(id);		
 		
-		return ResponseEntity.ok(new PostResponseDto(post)); // 200
+		return ResponseEntity.ok(PostResponseDto.from(post)); // 200
 	}
 	
-	// 게시글 수정
-	@Operation(summary = "게시글 수정" , description = "게시글 ID로 특정게시글을 수정합니다.") // 수정 put(전체데이터 수정) , patch(데이터 일부만 수정)
-	@PutMapping("/{id}")                            // 주소표시창줄 값 받아오기                     요청
-	public ResponseEntity<PostResponseDto> updatePost(@PathVariable("id") Long id , @RequestBody PostRequestDto requestDto){
-		Post updatedPost = postService.updatePost(id, requestDto.getContent() );
-		
-		return ResponseEntity.ok(new PostResponseDto(updatedPost)); // 200
+	// Patch    /api/posts/{postId}
+	@Operation(summary = "게시글 수정" , description = "게시글 수정시") // 수정 put(전체데이터 수정) , patch(데이터 일부만 수정)
+	@PatchMapping(value= "/{postId}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)  //  Put (리소스의 전체 교체) / Patch (부분 수정)
+	public ResponseEntity<PostResponseDto> getUpdatePost(
+			@Parameter(description = "작성자 사용자 ID") @RequestParam("userId") Long userId,
+			@Parameter(description = "수정할 게시글 ID") @PathVariable(name="postId") Long postId,
+			@ModelAttribute PostRequestDto dto ,  // 게시글 내용 + 댓글 받아오기
+			@Parameter(description = "수정시 업로드할 이미지 파일 리스트") // swagger
+			@RequestPart(name = "files", required = false) List<MultipartFile> files
+			){		
+	
+		return ResponseEntity.ok(postService.updatePost(userId, postId, dto, files)); // 200
 	}
 	
 	// 게시글 삭제
