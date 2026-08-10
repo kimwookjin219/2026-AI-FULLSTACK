@@ -518,7 +518,7 @@ npm install
     ㄴ JwtAuthenticationFilter (4) 출입증 검사
     ㄴ JwtProperties   (1) Jwt 토큰
     ㄴ JwtProvider     (2) 발급
-    ㄴ TokenStore      (3) Redis 보관
+    ㄴ TokenStore      (3) Redis 보관 / RedisConfig / SecurityConfig
 
 
 3) OAuth2 : 소셜 처리 (구글/카카오/네이버 인증)
@@ -526,10 +526,13 @@ npm install
     ㄴ UserInfoOAuth2 (1) 소셜 공통속성 추출
     ㄴ UserInfoGoogle / UserInfoKakao / UserInfoNaver  (2) 각 소셜마다 처리
     ㄴ CustomOAuth2User (3) Security : local + Oauth2 : 소셜 - 유저정보
-    ㄴ OAuth2SuccessHandler (4) 로그인시 - Redis / Jwt 설정
+    ㄴ OAuth2SuccessHandler (4) 로그인시 - Redis / Jwt 설정 (소셜 로그인시 유저저장, 토큰 설정)
 
-4) Service
+4) Service - 기존활용
+  ㄴ AuthUserJwtService (유저정보 활용)
 5) Controller
+  ㄴ UserController (로그인시 - access Token, refresh Token / cookie 설정)
+  ㄴ post에서 AuthUserJwtService 활용해서 가져오기
 6) react 
 
 STEP1)
