@@ -649,6 +649,24 @@ front3
   ㄴ login.js
   ㄴ mypage.js
 
+3. social 개발자 사이트 - 키찾기
+> kakao 개발자, naver 개발자, google 개발자  
+> boot .env 파일 바꾸기
+■boot3
+  ㄴ service : public AppUser saveSocialUser() - @더티체크/security 처리
+
+
+■front3
+  ㄴ public
+    ㄴ images
+      이미지 파일들
+      
+  ㄴ pages
+    ㄴ oauth2
+      ㄴ callback.js
+
+      String targetUrl = redirectUrl + "?accessToken=" + access;
+
 ```
 mkdir front3
 cd front3
