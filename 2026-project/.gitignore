@@ -1,1 +1,5 @@
 /.metadata/
+
+# Environment / OAuth secrets
+back/.env
+back/src/main/resources/application-oauth.yml
