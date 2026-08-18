@@ -3,3 +3,13 @@
 # Environment / OAuth secrets
 back/.env
 back/src/main/resources/application-oauth.yml
+.env
+**/.env
+
+**/.next/
+
+node_modules/
+front/node_modules/
+front/.next/
+front/dist/
+front/build/
