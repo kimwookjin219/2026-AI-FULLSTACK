@@ -13,3 +13,4 @@ front/node_modules/
 front/.next/
 front/dist/
 front/build/
+.env.local
