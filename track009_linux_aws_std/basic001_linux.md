@@ -475,5 +475,3 @@ chmod +x date_log.sh
 
 ./date_log.sh
 ```
-
-## Part002. Aws

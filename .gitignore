@@ -41,3 +41,6 @@ coverage/
 application-oauth.yml
 
 .env.local
+
+*.pem
+*.csv
