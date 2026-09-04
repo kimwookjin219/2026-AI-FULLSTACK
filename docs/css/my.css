@@ -161,16 +161,22 @@ h3:hover { transform: translateY(-10px); }
 }
 
 
-/* 교육 기본 정보 */
+/* 교육 제목 */
 
 .education-top {
+    display: block !important;
     padding-bottom: 25px;
     border-bottom: 1px solid #eee;
 }
 
+.education-title-area {
+    width: 100%;
+}
+
 .education-badge {
     display: inline-block;
-    padding: 5px 11px;
+
+    padding: 6px 12px;
     margin-bottom: 10px;
 
     border-radius: 20px;
@@ -183,40 +189,53 @@ h3:hover { transform: translateY(-10px); }
 
 .education-title {
     margin-bottom: 6px;
+
     font-size: 22px;
     font-weight: 700;
 }
 
 .education-subtitle {
     margin-bottom: 0;
+
     color: #777;
     font-size: 14px;
 }
 
+
+/* =========================
+   교육 기간 / 교육기관
+========================== */
+
 .education-info {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    display: grid !important;
+    grid-template-columns: 1fr 1fr;
+
+    width: 100%;
+
     gap: 15px;
 
     margin-top: 22px;
 }
 
 .education-info-item {
-    display: flex;
+    display: flex !important;
     align-items: center;
+
     gap: 14px;
+
+    width: 100%;
 
     padding: 15px 18px;
 
     background: #f8f9fa;
     border-radius: 10px;
 
-    color: #555;
+    box-sizing: border-box;
 }
 
 .education-info-icon {
-    width: 40px;
-    height: 40px;
+    width: 42px;
+    height: 42px;
 
     display: flex;
     align-items: center;
@@ -231,32 +250,38 @@ h3:hover { transform: translateY(-10px); }
     font-size: 17px;
 }
 
-.education-info-item small {
-    display: block;
+.education-info-text {
+    display: flex;
+    flex-direction: column;
 
-    margin-bottom: 3px;
+    min-width: 0;
+}
+
+.education-info-text span {
+    margin-bottom: 4px;
 
     color: #888;
     font-size: 11px;
     font-weight: 500;
 }
 
-.education-info-item strong {
-    display: block;
-
+.education-info-text strong {
     color: #333;
     font-size: 14px;
     font-weight: 600;
+    line-height: 1.5;
 }
 
 
-/* 교육 분야 */
+/* =========================
+   교육 분야
+========================== */
 
 .education-skills {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
 
+    gap: 15px;
     margin-top: 25px;
 }
 
@@ -300,7 +325,9 @@ h3:hover { transform: translateY(-10px); }
 }
 
 
-/* 프로젝트 경험 */
+/* =========================
+   프로젝트 경험
+========================== */
 
 .education-project {
     display: flex;
@@ -321,6 +348,8 @@ h3:hover { transform: translateY(-10px); }
     align-items: center;
     justify-content: center;
 
+    flex-shrink: 0;
+
     border-radius: 10px;
     background: #f1f3f5;
 
@@ -340,17 +369,14 @@ h3:hover { transform: translateY(-10px); }
 }
 
 
-/* 반응형 */
+/* =========================
+   Mobile
+========================== */
 
 @media (max-width: 768px) {
 
     .education-info {
-        grid-template-columns: 1fr;
-    }
-
-    .education-info {
-        min-width: auto;
-        width: 100%;
+        grid-template-columns: 1fr !important;
     }
 
     .education-skills {
