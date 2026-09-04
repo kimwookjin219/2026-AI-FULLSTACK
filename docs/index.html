@@ -1,165 +1,975 @@
+```html
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Roy's portfolio</title>
-    <!-- Latest compiled and minified CSS -->
+
+    <title>김욱진 | Web Developer Portfolio</title>
+
+    <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Latest compiled JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom CSS -->
     <link href="./css/my.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 </head>
+
+
 <body>
-    <!-- header -->
-    <!-- Q1. h1 내용 바꾸고 / a태그에 들어가있는 Logo / nav 좋아하는 색상으로 바꾸기 -->
+
+    <!-- =========================
+         HEADER
+    ========================== -->
+
     <header>
-        <h1 class="myhidden">김욱진 포트폴리오</h1>    <!-- h1 : 로고 -->                 
-        <nav class="navbar navbar-expand-sm navbar-light" >
-            <h2 class="myhidden">주메뉴</h2> <!-- h2 : gnb bar 글로벌 내비게이션 바 -->
+
+        <h1 class="myhidden">김욱진 웹 개발자 포트폴리오</h1>
+
+        <nav class="navbar navbar-expand-sm navbar-light">
+
+            <h2 class="myhidden">주메뉴</h2>
+
             <div class="container-fluid">
-                <a class="navbar-brand fontbold" href="javascript:void(0)" style="font-family:'Trebuchet MS'">Kim wookjin</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
-                <span class="navbar-toggler-icon"></span>
+
+                <a class="navbar-brand fontbold"
+                    href="#home"
+                    style="font-family:'Trebuchet MS'">
+                    Wook Jin Kim
+                </a>
+
+                <button class="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#mynavbar">
+
+                    <span class="navbar-toggler-icon"></span>
+
                 </button>
+
+
                 <div class="collapse navbar-collapse" id="mynavbar">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                    <a class="nav-link fontbold" href="javascript:void(0)">포트폴리오</a>
-                    </li>
-                    <li class="nav-item">
-                    <a class="nav-link fontbold" href="javascript:void(0)">About Me</a>
-                    </li>
-                    <li class="nav-item fontbold">
-                    <a class="nav-link" href="javascript:void(0)">Gallery</a>
-                    </li>
-                    <li class="nav-item fontbold">
-                    <a class="nav-link" href="javascript:void(0)">Contact</a>
-                    </li>
-                </ul>
+
+                    <ul class="navbar-nav ms-auto">
+
+                        <li class="nav-item">
+                            <a class="nav-link fontbold" href="#about">
+                                About Me
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link fontbold" href="#skills">
+                                Skills
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link fontbold" href="#portfolio">
+                                Portfolio
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link fontbold" href="#contact">
+                                Contact
+                            </a>
+                        </li>
+
+                    </ul>
+
                 </div>
+
             </div>
+
         </nav>
+
     </header>
 
-    <!-- visual -->
-    <section>
+
+
+    <!-- =========================
+         VISUAL
+    ========================== -->
+
+    <section id="home">
+
         <h3 class="myhidden">자기소개</h3>
+
         <div class="container p-5 text-center">
-            <P>안녕하세요.풀스택 개발자 김욱진입니다.</P>
-        </div>
 
-    </section>
+            <h2 class="display-5 fw-bold">
+                안녕하세요.
+            </h2>
 
-    <!-- info -->
-    <section class="p-5 mybg fadein">  
-        <div class="container">
-            <h3 class="p-5 text-center">About Me</h3>
-            <div class="container p-5 rounded shadow-lg">
-                <div class="row">
+            <h3 class="mt-3">
+                웹(앱) 개발자를 준비하고 있는 김욱진입니다.
+            </h3>
 
-                    <div class="col-sm-6">
-                        <p><img src="./img/six.png" class="w-50" alt="프로필사진"></p>
-                    </div>
+            <p class="mt-4">
+                배우는 것에 그치지 않고 직접 구현하고,
+                문제가 발생하면 원인을 찾아 해결하는 개발자가 되겠습니다.
+            </p>
 
-                    <div class="col-sm-6">
-                        <h4 class="myhidden">김욱진(Roy Kim)</h4>
-                        <ul class="m-5" style="list-style: none;">
-                            <li><i>김욱진(Roy Kim)</i></li>
-                            <li><i >1995.02.19</i></li>                        
-                            <li><i >인천(Incheon), Korea</i></li>                           
-                        </ul>
-                    </div>
+            <div class="mt-4">
 
-                    <div>
-                        <h4 class="text-center bold">자격증</h4>
-                        <ul style="list-style: none;">
-                            <li>리눅스마스터2급</li>
-                        </ul>
-                    </div>
-                    
-                </div>
+                <a href="#portfolio"
+                    class="btn btn-dark me-2">
+                    프로젝트 보기
+                </a>
+
+                <a href="#contact"
+                    class="btn btn-outline-dark">
+                    Contact
+                </a>
+
             </div>
+
         </div>
+
     </section>
 
-    <!-- SKILL -->
-    <section class="p-5 mybg fadein">
-        <div>
-            <h3 class="p-5 text-center" >SKILL</h3>
-                <div class="container container p-5 rounded shadow-lg">
-                    <div class="row text-center">
-                        <div col-md-4>
-                            <h4>Frontend</h4>
-                            <p>HTML,CSS,Bootstrap</p>
-                        </div>
 
-                        <div col-md-4>
-                            <div><i class="fa-brands fa-java" style="color: hsl(0, 100%, 50%);"></i></div>                                                   
-                            <h4>Backend</h4>
-                            <p>Java</p>
-                        </div>
 
-                        <div col-md-4>
-                            <h4>DevOps</h4>
-                            <p>Github</p>
-                        </div>
+    <!-- =========================
+         ABOUT ME
+    ========================== -->
+
+    <section id="about" class="p-5 mybg fadein">
+
+        <div class="container">
+
+            <h3 class="p-5 text-center">
+                About Me
+            </h3>
+
+
+            <div class="container p-5 rounded shadow-lg bg-white">
+
+                <div class="row align-items-center">
+
+
+                    <!-- PROFILE -->
+
+                    <div class="col-sm-5 text-center">
+
+                        <img src="./img/KakaoTalk_20260902_091854946.jpg"
+                            class="img-fluid rounded"
+                            style="max-width:250px;"
+                            alt="김욱진 프로필 사진">
 
                     </div>
-                </div>
-        </div>
-    </section>
 
-    <!-- portfolio -->
-    <section class="p-5 mybg fadein">    
-            <h3 class="text-center m-5">Portfolio</h3>
-            <div class="container p-5 bg-white rounded shadow-lg">
-                <div class="row">
-                        <h4 class="myhidden">포트폴리오 동영상</h4>
-                        <!-- 동영상 -->
-                    <div class="col-sm-6 text-center">
-                         <iframe class="w-100 no-border"
-                         src="https://www.youtube.com/embed/l-H4QHLC-Uc?si=qCXl90UU1VYixWbt" 
-                         title="YouTube video player" frameborder="0" 
-                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                         referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
-                        </iframe>
 
-                        <button class="btn btn-success"><a href="https://github.com/kimwookjin219/2026-AI-FULLSTACK" title="포트폴리오 더보기" target="_blank" style="text-decoration: none; color: white;">포트폴리오 더보기</a></button>
-                    </div>
-                    <div class="col-sm-6">
-                        <h4>Bank 프로젝트</h4>
-                        <ul>
-                            <li> <strong>Java</strong> </li>
-                            <li> <strong>은행 입출금,계좌개설,삭제 등 시스템 구현</strong></li>
+                    <!-- INTRO -->
+
+                    <div class="col-sm-7">
+
+                        <h4 class="fw-bold mb-4">
+                            김욱진 (Wook Jin Kim)
+                        </h4>
+
+                        <ul style="list-style:none; padding:0; line-height:2;">
+
+                            <li>
+                                <strong>1995.02.19</strong>
+                            </li>
+
+                            <li>
+                                인천, Korea
+                            </li>
+
+                            <li>
+                                웹(앱) 개발
+                            </li>
+
+                            <li>
+                                Java · Spring Boot · React · Next.js
+                            </li>
+
                         </ul>
+
                     </div>
+
+
                 </div>
-            </div>  
+
+
+                <hr class="my-5">
+
+
+                <!-- INTRODUCTION -->
+
+                <div>
+
+                    <h4 class="fw-bold mb-3">
+                        새로운 환경에서도 제 역할을 만들어왔습니다.
+                    </h4>
+
+                    <p>
+                        저는 처음부터 개발자를 목표로 살아온 사람은 아닙니다.
+                        다양한 경험을 거쳐 31살에 비전공자로 개발 공부를 시작했습니다.
+                    </p>
+
+                    <p>
+                        처음 접하는 Java와 Spring Boot를 단순히 배우는 데 그치지 않고
+                        직접 기능을 구현하며 익혔습니다.
+                        오류가 발생했을 때도 결과만 수정하기보다
+                        로그와 코드를 확인하며 원인을 찾아 해결하는 과정을 반복했습니다.
+                    </p>
+
+                    <p>
+                        팀 프로젝트 MOIT에서는 회원관리 담당으로
+                        회원가입, 이메일·휴대폰 인증, 로그인,
+                        Spring Security와 JWT 인증,
+                        Redis Refresh Token 관리,
+                        회원정보 조회·수정 및 소셜 로그인 등을 구현했습니다.
+                    </p>
+
+                    <p>
+                        또한 React와 Next.js를 사용해 사용자 화면을 구현하고
+                        Redux-Saga와 Axios를 활용하여
+                        백엔드 REST API와 연동했습니다.
+                    </p>
+
+                    <p class="fw-bold mb-0">
+                        모르는 것을 피하기보다 직접 구현하고,
+                        문제가 생기면 끝까지 원인을 찾아 해결하는 개발자가 되겠습니다.
+                    </p>
+
+                </div>
+
+
+                <hr class="my-5">
+
+
+                <!-- EXPERIENCE -->
+
+                <div>
+
+                    <h4 class="fw-bold mb-3">
+                        Experience
+                    </h4>
+
+                    <div class="mb-4">
+
+                        <h5 class="fw-bold">
+                            Starbucks Korea · Supervisor
+                        </h5>
+
+                        <p class="text-muted">
+                            2022.07 ~ 2026.02
+                        </p>
+
+                        <ul>
+
+                            <li>
+                                신입 직원 교육 및 인력 배치
+                            </li>
+
+                            <li>
+                                매장 재고 관리
+                            </li>
+
+                            <li>
+                                업무 우선순위 판단 및 업무 조율
+                            </li>
+
+                            <li>
+                                매장 내 문제 상황 대응
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+
+                    <p>
+                        스타벅스에서 수퍼바이저로 근무하며
+                        사람들과 소통하고 각자의 역할을 조율하는 경험을 쌓았습니다.
+                        이러한 경험은 개발 프로젝트에서도
+                        팀원들과 역할을 맞추고 문제를 공유하며 협업하는 데 도움이 되었습니다.
+                    </p>
+
+                </div>
+
+
+                <hr class="my-5">
+
+
+                <!-- CERTIFICATE -->
+
+                <div>
+
+                    <h4 class="fw-bold mb-3">
+                        Certificate
+                    </h4>
+
+                    <ul>
+
+                        <li>
+                            리눅스마스터 2급
+                        </li>
+
+                        <li>
+                            프로그래밍기능사 실기 - 발표 대기
+                        </li>
+
+                        <li>
+                            ITQ 한글파워포인트 C
+                        </li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </div>
+
     </section>
 
-    <!-- contact -->
-    <section class="p-4 mybg fadein">
-        <h3 class="p-4 text-center">Contact Me</h3> 
-            <div class="container bg-white shadow rounded">    
-                <ul class="m-5 text-center" style="list-style: none;">
-                    <li><i >heros219@naver.com</i></li>
-                    <li><i ><a href="https://github.com/kimwookjin219/2026-AI-FULLSTACK" title="깃허브 포트폴리오 바로가기" target="_blank"  style="color:black; text-decoration: none;">
-                    https://github.com/kimwookjin219/2026-AI-FULLSTACK</a></i></li>
-                </ul>
-            </div>  
+
+
+    <!-- =========================
+         SKILLS
+    ========================== -->
+
+    <section id="skills" class="p-5 mybg fadein">
+
+        <div class="container">
+
+            <h3 class="p-5 text-center">
+                Skills
+            </h3>
+
+
+            <div class="container p-5 rounded shadow-lg bg-white">
+
+                <div class="row text-center">
+
+
+                    <!-- BACKEND -->
+
+                    <div class="col-md-4 mb-5">
+
+                        <h4 class="fw-bold">
+                            Backend
+                        </h4>
+
+                        <hr>
+
+                        <p>
+                            Java 17
+                        </p>
+
+                        <p>
+                            Spring Boot
+                        </p>
+
+                        <p>
+                            Spring Security
+                        </p>
+
+                        <p>
+                            JWT
+                        </p>
+
+                        <p>
+                            JPA · MyBatis
+                        </p>
+
+                        <p>
+                            REST API
+                        </p>
+
+                    </div>
+
+
+                    <!-- FRONTEND -->
+
+                    <div class="col-md-4 mb-5">
+
+                        <h4 class="fw-bold">
+                            Frontend
+                        </h4>
+
+                        <hr>
+
+                        <p>
+                            HTML5 · CSS3 · JavaScript
+                        </p>
+
+                        <p>
+                            React
+                        </p>
+
+                        <p>
+                            Next.js
+                        </p>
+
+                        <p>
+                            Redux
+                        </p>
+
+                        <p>
+                            Redux-Saga
+                        </p>
+
+                        <p>
+                            Ant Design
+                        </p>
+
+                    </div>
+
+
+                    <!-- DATABASE / DEVOPS -->
+
+                    <div class="col-md-4 mb-5">
+
+                        <h4 class="fw-bold">
+                            Database & DevOps
+                        </h4>
+
+                        <hr>
+
+                        <p>
+                            Oracle
+                        </p>
+
+                        <p>
+                            Redis
+                        </p>
+
+                        <p>
+                            Git · GitHub
+                        </p>
+
+                        <p>
+                            GitHub Actions
+                        </p>
+
+                        <p>
+                            AWS EC2
+                        </p>
+
+                        <p>
+                            Nginx
+                        </p>
+
+                    </div>
+
+
+                </div>
+
+
+                <hr>
+
+
+                <div class="text-center mt-4">
+
+                    <h5 class="fw-bold">
+                        Additional
+                    </h5>
+
+                    <p>
+                        Axios · OAuth2 · AI API · Jira · CI/CD
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
     </section>
 
-    <!-- footer -->
-    <!-- 글자를 페이지 정중앙 / 배경색 좋아하는 색으로 -->
-    <footer class="text-end mt-3 p-2">
-        © copyrights Roy Kim 2026 all. rights reserved
+
+
+    <!-- =========================
+         PORTFOLIO
+    ========================== -->
+
+    <section id="portfolio" class="p-5 mybg fadein">
+
+        <div class="container">
+
+            <h3 class="text-center m-5">
+                Portfolio
+            </h3>
+
+
+            <!-- MOIT V3 -->
+
+            <div class="container p-5 bg-white rounded shadow-lg mb-5">
+
+                <div class="row align-items-center">
+
+
+                    <div class="col-md-6 text-center">
+
+                        <h4 class="fw-bold">
+                            MOIT v3
+                        </h4>
+
+                        <p class="text-muted">
+                            목적형 소모임 플랫폼
+                        </p>
+
+                        <p>
+                            Spring Boot + React + Next.js
+                        </p>
+
+
+                        <div class="mt-4">
+
+                            <a href="https://github.com/kimwookjin219/2026-AI-FULLSTACK"
+                                target="_blank"
+                                class="btn btn-dark me-2">
+
+                                GitHub
+
+                            </a>
+
+
+                            <a href="#contact"
+                                class="btn btn-outline-dark">
+
+                                프로젝트 상세
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <h5 class="fw-bold">
+                            프로젝트 소개
+                        </h5>
+
+                        <p>
+                            목적에 맞는 소모임을 탐색하고 참여할 수 있는
+                            소모임 플랫폼입니다.
+                        </p>
+
+                        <ul>
+
+                            <li>
+                                React / Next.js 기반 프론트엔드
+                            </li>
+
+                            <li>
+                                Spring Boot 기반 REST API
+                            </li>
+
+                            <li>
+                                JWT 기반 인증
+                            </li>
+
+                            <li>
+                                Oracle / Redis 데이터 관리
+                            </li>
+
+                            <li>
+                                AWS EC2 / Nginx / GitHub Actions
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- MY PART -->
+
+            <div class="container p-5 bg-white rounded shadow-lg mb-5">
+
+                <h4 class="fw-bold text-center mb-5">
+                    MOIT v3 · 담당 업무
+                </h4>
+
+
+                <div class="row">
+
+
+                    <div class="col-md-6">
+
+                        <h5 class="fw-bold">
+                            회원관리
+                        </h5>
+
+                        <ul>
+
+                            <li>
+                                회원가입 API 및 화면 구현
+                            </li>
+
+                            <li>
+                                이메일·휴대폰 인증
+                            </li>
+
+                            <li>
+                                회원정보 조회 및 수정
+                            </li>
+
+                            <li>
+                                마이페이지 구현
+                            </li>
+
+                            <li>
+                                Header 사용자 정보 연동
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <h5 class="fw-bold">
+                            인증 및 보안
+                        </h5>
+
+                        <ul>
+
+                            <li>
+                                Spring Security
+                            </li>
+
+                            <li>
+                                JWT Access / Refresh Token
+                            </li>
+
+                            <li>
+                                Redis Refresh Token 관리
+                            </li>
+
+                            <li>
+                                일반 로그인 / 소셜 로그인
+                            </li>
+
+                            <li>
+                                보호된 API 접근 제어
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+
+                    <div class="col-md-6 mt-4">
+
+                        <h5 class="fw-bold">
+                            Frontend 연동
+                        </h5>
+
+                        <ul>
+
+                            <li>
+                                React / Next.js
+                            </li>
+
+                            <li>
+                                Redux / Redux-Saga
+                            </li>
+
+                            <li>
+                                Axios API 통신
+                            </li>
+
+                            <li>
+                                Ant Design UI
+                            </li>
+
+                            <li>
+                                로그인 사용자 상태 관리
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+
+                    <div class="col-md-6 mt-4">
+
+                        <h5 class="fw-bold">
+                            AI 및 문제 해결
+                        </h5>
+
+                        <ul>
+
+                            <li>
+                                외부 AI API 연동
+                            </li>
+
+                            <li>
+                                회원가입 행동 분석 기능
+                            </li>
+
+                            <li>
+                                Redux 상태 동기화 문제 해결
+                            </li>
+
+                            <li>
+                                Next.js Hydration 오류 해결
+                            </li>
+
+                            <li>
+                                Git Merge Conflict 해결
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- MOIT V2 / V1 -->
+
+            <div class="row">
+
+
+                <div class="col-md-6 mb-4">
+
+                    <div class="p-4 bg-white rounded shadow-lg h-100">
+
+                        <h4 class="fw-bold">
+                            MOIT v2
+                        </h4>
+
+                        <p>
+                            Spring Boot + Thymeleaf 기반
+                            목적형 소모임 플랫폼
+                        </p>
+
+                        <a href="https://github.com/kimwookjin219/2026-AI-FULLSTACK"
+                            target="_blank"
+                            class="btn btn-outline-dark">
+
+                            GitHub
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-6 mb-4">
+
+                    <div class="p-4 bg-white rounded shadow-lg h-100">
+
+                        <h4 class="fw-bold">
+                            MOIT v1
+                        </h4>
+
+                        <p>
+                            Spring + MyBatis 기반
+                            목적형 소모임 플랫폼
+                        </p>
+
+                        <a href="https://github.com/kimwookjin219/2026-AI-FULLSTACK"
+                            target="_blank"
+                            class="btn btn-outline-dark">
+
+                            GitHub
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         TROUBLESHOOTING
+    ========================== -->
+
+    <section class="p-5 mybg fadein">
+
+        <div class="container">
+
+            <h3 class="text-center mb-5">
+                Troubleshooting
+            </h3>
+
+
+            <div class="container p-5 bg-white rounded shadow-lg">
+
+
+                <div class="mb-5">
+
+                    <h5 class="fw-bold">
+                        01. 소셜 로그인 후 Header 사용자 정보 미반영
+                    </h5>
+
+                    <p>
+                        소셜 로그인 직후 Header에 사용자 정보가 표시되지 않는 문제가 발생했습니다.
+                    </p>
+
+                    <p>
+                        로그인 완료 시점과 Redux 상태가 변경되는 시점의 차이를 확인하고,
+                        로그인 이후 사용자 정보를 다시 조회하여 Redux 상태를 갱신하도록 수정했습니다.
+                    </p>
+
+                    <strong>
+                        → 로그인 직후에도 사용자 정보가 정상적으로 표시되도록 개선
+                    </strong>
+
+                </div>
+
+
+                <div class="mb-5">
+
+                    <h5 class="fw-bold">
+                        02. 회원정보 수정 후 화면에 변경 내용 미반영
+                    </h5>
+
+                    <p>
+                        서버에서는 회원정보가 정상적으로 변경되었지만
+                        Header와 화면에는 기존 정보가 표시되는 문제가 발생했습니다.
+                    </p>
+
+                    <p>
+                        서버 데이터와 Redux 상태가 동기화되지 않는 것을 확인하고,
+                        수정 성공 이후 Redux 상태를 갱신하도록 수정했습니다.
+                    </p>
+
+                    <strong>
+                        → 회원정보 수정 결과가 화면에 즉시 반영되도록 개선
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <h5 class="fw-bold">
+                        03. Next.js Hydration 오류
+                    </h5>
+
+                    <p>
+                        서버 렌더링 결과와 클라이언트 렌더링 결과가 달라
+                        Hydration 오류가 발생했습니다.
+                    </p>
+
+                    <p>
+                        서버와 클라이언트의 렌더링 시점 및 상태 흐름을 확인하고
+                        클라이언트에서 처리해야 하는 로직을 분리하여 문제를 해결했습니다.
+                    </p>
+
+                    <strong>
+                        → 정상적인 페이지 렌더링 구현
+                    </strong>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         CONTACT
+    ========================== -->
+
+    <section id="contact" class="p-5 mybg fadein">
+
+        <div class="container">
+
+            <h3 class="p-4 text-center">
+                Contact Me
+            </h3>
+
+
+            <div class="container bg-white shadow rounded p-5">
+
+                <div class="text-center">
+
+
+                    <h4 class="fw-bold mb-4">
+                        김욱진
+                    </h4>
+
+
+                    <p>
+                        <i class="fa fa-envelope"></i>
+                        heros219@naver.com
+                    </p>
+
+
+                    <p>
+
+                        <i class="fa fa-github"></i>
+
+                        <a href="https://github.com/kimwookjin219/2026-AI-FULLSTACK"
+                            target="_blank"
+                            style="color:black; text-decoration:none;">
+
+                            GitHub Portfolio
+
+                        </a>
+
+                    </p>
+
+
+                    <p class="mt-4">
+                        새로운 기술을 배우고,
+                        직접 구현하며 성장하는 개발자가 되겠습니다.
+                    </p>
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer class="text-center mt-3 p-3">
+
+        © 2026 Wook Jin Kim. All rights reserved.
+
     </footer>
 
-</body>
-</html>
 
-<!-- bootstrap001.html  -->
-<!-- ! + enter          -->
+</body>
+
+</html>
+```
