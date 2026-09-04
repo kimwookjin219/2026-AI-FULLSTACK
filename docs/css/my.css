@@ -164,10 +164,6 @@ h3:hover { transform: translateY(-10px); }
 /* 교육 기본 정보 */
 
 .education-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 30px;
     padding-bottom: 25px;
     border-bottom: 1px solid #eee;
 }
@@ -198,27 +194,59 @@ h3:hover { transform: translateY(-10px); }
 }
 
 .education-info {
-    min-width: 230px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+
+    margin-top: 22px;
 }
 
 .education-info-item {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 14px;
 
-    margin-bottom: 10px;
+    padding: 15px 18px;
+
+    background: #f8f9fa;
+    border-radius: 10px;
 
     color: #555;
+}
+
+.education-info-icon {
+    width: 40px;
+    height: 40px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    background: #fff;
+    border: 1px solid #e9ecef;
+    border-radius: 9px;
+
+    font-size: 17px;
+}
+
+.education-info-item small {
+    display: block;
+
+    margin-bottom: 3px;
+
+    color: #888;
+    font-size: 11px;
+    font-weight: 500;
+}
+
+.education-info-item strong {
+    display: block;
+
+    color: #333;
     font-size: 14px;
-}
-
-.education-info-item:last-child {
-    margin-bottom: 0;
-}
-
-.education-info-item i {
-    width: 18px;
-    text-align: center;
+    font-weight: 600;
 }
 
 
@@ -316,8 +344,8 @@ h3:hover { transform: translateY(-10px); }
 
 @media (max-width: 768px) {
 
-    .education-top {
-        flex-direction: column;
+    .education-info {
+        grid-template-columns: 1fr;
     }
 
     .education-info {
