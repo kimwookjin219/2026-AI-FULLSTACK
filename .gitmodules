@@ -1,0 +1,11 @@
+[submodule "2026-project/2026-tjoeun-projects"]
+    path = 2026-project/2026-tjoeun-projects
+    url = https://github.com/look-93/2026-tjoeun-projects.git
+
+[submodule "moit"]
+    path = moit
+    url = https://github.com/look-93/moit.git
+
+[submodule "track009_aws"]
+    path = track009_aws
+    url = https://github.com/kimwookjin219/track009_aws.git
