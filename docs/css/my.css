@@ -147,6 +147,7 @@ h3:hover { transform: translateY(-10px); }
     font-size: 12px;
     padding: 6px 10px;
 }
+
 /* =========================
    Education & Training
 ========================== */
@@ -154,54 +155,178 @@ h3:hover { transform: translateY(-10px); }
 .education-card {
     background: #fff;
     border: 1px solid #e9ecef;
-    border-radius: 14px;
-    padding: 28px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
 }
 
-.education-header {
+
+/* 교육 기본 정보 */
+
+.education-top {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
     gap: 30px;
-    padding-bottom: 22px;
+    padding-bottom: 25px;
     border-bottom: 1px solid #eee;
 }
 
-.education-period {
+.education-badge {
     display: inline-block;
-    padding: 6px 12px;
+    padding: 5px 11px;
+    margin-bottom: 10px;
+
     border-radius: 20px;
     background: #f1f3f5;
-    font-size: 13px;
-    font-weight: 600;
-}
 
-.education-institute {
+    font-size: 12px;
     font-weight: 600;
     color: #555;
-    white-space: nowrap;
-    padding-top: 8px;
 }
 
-.education-content {
-    padding-top: 24px;
+.education-title {
+    margin-bottom: 6px;
+    font-size: 22px;
+    font-weight: 700;
 }
 
-.education-item {
+.education-subtitle {
+    margin-bottom: 0;
+    color: #777;
+    font-size: 14px;
+}
+
+.education-info {
+    min-width: 230px;
+}
+
+.education-info-item {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     gap: 10px;
-    margin-bottom: 15px;
-    line-height: 1.7;
+
+    margin-bottom: 10px;
+
     color: #555;
+    font-size: 14px;
 }
 
-.education-item:last-child {
+.education-info-item:last-child {
     margin-bottom: 0;
 }
 
-.education-item i {
-    margin-top: 5px;
+.education-info-item i {
+    width: 18px;
+    text-align: center;
+}
+
+
+/* 교육 분야 */
+
+.education-skills {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+
+    margin-top: 25px;
+}
+
+.education-skill-box {
+    padding: 18px;
+
+    background: #f8f9fa;
+    border-radius: 12px;
+}
+
+.education-skill-title {
+    margin-bottom: 12px;
+
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.education-skill-title i {
+    width: 22px;
+    margin-right: 5px;
+    text-align: center;
+}
+
+.education-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+}
+
+.education-tags span {
+    display: inline-block;
+
+    padding: 5px 10px;
+
+    background: #fff;
+    border: 1px solid #e1e5e8;
+    border-radius: 20px;
+
+    font-size: 12px;
+    color: #555;
+}
+
+
+/* 프로젝트 경험 */
+
+.education-project {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    margin-top: 25px;
+    padding: 18px;
+
+    border-top: 1px solid #eee;
+}
+
+.education-project-icon {
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 10px;
+    background: #f1f3f5;
+
+    font-size: 18px;
+}
+
+.education-project strong {
     font-size: 14px;
+}
+
+.education-project p {
+    margin: 4px 0 0;
+
+    color: #666;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+
+/* 반응형 */
+
+@media (max-width: 768px) {
+
+    .education-top {
+        flex-direction: column;
+    }
+
+    .education-info {
+        min-width: auto;
+        width: 100%;
+    }
+
+    .education-skills {
+        grid-template-columns: 1fr;
+    }
+
 }
