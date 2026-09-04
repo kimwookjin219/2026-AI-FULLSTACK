@@ -95,3 +95,55 @@ h3:hover { transform: translateY(-10px); }
     min-width: 130px;
     text-align: left;
 }
+
+/* =========================
+   Certificate
+========================== */
+
+.certificate-card {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+
+    padding: 20px;
+
+    background: #fff;
+    border: 1px solid #e9ecef;
+    border-radius: 12px;
+
+    transition: all 0.2s ease;
+}
+
+.certificate-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+.certificate-icon {
+    width: 50px;
+    height: 50px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #f8f9fa;
+    border-radius: 10px;
+
+    font-size: 22px;
+}
+
+.certificate-info {
+    flex: 1;
+}
+
+.certificate-title {
+    font-size: 17px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.certificate-meta .badge {
+    font-size: 12px;
+    padding: 6px 10px;
+}
