@@ -76,3 +76,22 @@ h3:hover { transform: translateY(-10px); }
   position: relative;
   z-index: 999;
 }
+
+.skill-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 18px;
+    font-size: 17px;
+}
+
+.skill-item i {
+    font-size: 30px;
+    width: 35px;
+}
+
+.skill-item span {
+    min-width: 130px;
+    text-align: left;
+}
