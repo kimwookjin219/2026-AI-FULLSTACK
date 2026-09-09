@@ -9,3 +9,6 @@
 [submodule "track009_aws"]
     path = track009_aws
     url = https://github.com/kimwookjin219/track009_aws.git
+[submodule "moit3"]
+	path = moit3
+	url = https://github.com/kimwookjin219/moit3.git
