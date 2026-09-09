@@ -455,7 +455,7 @@ ALTER USER boot QUOTA UNLIMITED ON USERS;
     ```
     3) duck.sh 쉘스크립트 작성
     ```bash
-    sudo vi duck.sh
+    sudo vi duck.shi
     esc, i
     esc, :wq!
     ```
@@ -545,3 +545,4 @@ https://the703v3.duckdns.org/login/oauth2/code/naver
 https://the703v3.duckdns.org/login/oauth2/code/google
 ```    
 
+ssh -i "MOIT3.pem" ubuntu@ec2-43-201-106-124.ap-northeast-2.compute.amazonaws.com
