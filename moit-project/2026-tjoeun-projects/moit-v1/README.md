@@ -1,4 +1,3 @@
-````markdown
 # 🚀 MOIT (모잇)
 
 ## 📌 프로젝트 소개
@@ -75,7 +74,7 @@
 [MyBatis Mapper]
    ↓
 [MySQL]
-````
+```
 
 사용자의 요청을 **Controller → Service → Mapper → DB** 구조로 처리하며
 Spring MVC 기반의 계층형 웹 애플리케이션 구조를 경험하였습니다.
@@ -138,6 +137,3 @@ Spring MVC 기반의 계층형 웹 애플리케이션 구조를 경험하였습�
 1차 프로젝트에서는 **Spring Framework + MyBatis + MySQL** 환경에서
 회원가입과 로그인 등 기본적인 회원 관리 기능을 구현하였습니다.
 
-
-```
-```

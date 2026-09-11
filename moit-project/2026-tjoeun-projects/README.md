@@ -29,6 +29,7 @@ MOIT는 목적형 모임 커뮤니티 플랫폼으로, 기술 스택을 발전�
 
 * **Tech Stack:** Spring Boot, Gradle, JPA, MyBatis, Oracle, JWT, Redis, React, Next.js, Ant Design
 * **👤 담당 업무 — 회원관리 / 인증·인가**
+
   * *** 회원가입 및 회원관리 ***
   * 일반 회원가입 및 로그인 API 구현
   * 회원정보 조회 및 수정 기능 구현
@@ -36,20 +37,24 @@ MOIT는 목적형 모임 커뮤니티 플랫폼으로, 기술 스택을 발전�
   * 아이디 찾기 및 비밀번호 재설정 기능 구현
   * 회원 상태 및 회원 유형 관리
   * 관리자 회원 조회·검색·상태 관리 기능 구현
+
   * *** 인증·인가 ***
   * Spring Security 기반 인증·인가 구현
   * JWT 기반 Access Token / Refresh Token 인증 구조 구현
   * Access Token 만료 시 Refresh Token을 이용한 재발급 처리
   * Redis 기반 Refresh Token 관리
   * 회원 유형에 따른 접근 권한 제어
+
   * *** 소셜 로그인 ***
   * OAuth2 기반 소셜 로그인 구현
   * 최초 소셜 로그인 사용자의 추가 회원정보 입력 처리
   * 소셜 로그인 이후 회원가입 및 인증 Flow 구성
+
   * *** 회원 보안 ***
   * 이메일 인증 기능 구현
   * 비밀번호 유출 여부 검사 적용
   * 회원정보 및 인증 데이터의 보안 관리
+  
   * *** 프론트엔드 연동 ***
   * Next.js 기반 회원관리 화면 구현
   * Axios를 활용한 회원 관련 REST API 연동

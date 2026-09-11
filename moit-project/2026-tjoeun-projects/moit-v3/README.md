@@ -177,6 +177,7 @@
 
 [Redis]
  └─ Refresh Token / 인증 데이터 관리
+```
 
 ---
 
