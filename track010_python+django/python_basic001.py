@@ -289,14 +289,14 @@ print("\n--- 2. 데이터 탐색 메서드 (head, info, describe) ---")
 # head() : 상단 미리보기 (기본값 : 5개) 
 # info() : 전체 행 갯수, 컬럼 데이터 타입, Null(결측치) 존재 여부 확인 
 # describe() : 평균, 표준편차, 사분위수 등 요약 통계량
-print("\n2-1 상단 미리보기 head")
+print("\n2-1. 상단 미리보기 head")
 print(df.head())
 print(df.head(2))
 
-print("\n2-2 info() 데이터구조 및 타입확인")
+print("\n2-2. info() 데이터구조 및 타입확인")
 df.info()
 
-print("\n2-3 describe 수치형 데이터 기술통계")
+print("\n2-3. describe 수치형 데이터 기술통계")
 print(df.describe())
 
 
