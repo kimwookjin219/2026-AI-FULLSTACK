@@ -1,44 +1,45 @@
 @charset "UTF-8";
 
 /* =========================================================
-   COLOR THEME
+   01. COLOR SYSTEM
 ========================================================= */
 
 :root {
-    /* 전체 배경 */
     --bg-main: #eef1ef;
 
-    /* 카드 */
-    --bg-card: #fdfcf9;
+    --bg-card: #ffffff;
+    --bg-ivory: #fdfcf9;
+    --bg-soft: #f1f4f2;
+    --bg-soft-green: #e5ece9;
 
-    /* 부드러운 내부 배경 */
-    --bg-soft: #f1f3f1;
+    --text-main: #26332f;
+    --text-sub: #4f5c57;
+    --text-muted: #747f7b;
 
-    /* 조금 더 진한 내부 배경 */
-    --bg-soft-dark: #e7ebe8;
-
-    /* 기본 텍스트 */
-    --text-main: #343a40;
-
-    /* 보조 텍스트 */
-    --text-muted: #6c757d;
-
-    /* 포인트 컬러 */
     --point: #405a54;
-
-    /* 포인트 hover */
     --point-dark: #304740;
+    --point-light: #6f8f87;
 
-    /* 테두리 */
-    --border: #dfe4e1;
+    --border: #dce4e0;
+    --border-light: #e8edeb;
 
-    /* 아주 연한 테두리 */
-    --border-light: #e8ecea;
+    --shadow-sm:
+        0 5px 18px rgba(48, 71, 64, 0.06);
+
+    --shadow-md:
+        0 12px 35px rgba(48, 71, 64, 0.09);
+
+    --shadow-lg:
+        0 20px 50px rgba(48, 71, 64, 0.12);
+
+    --radius-sm: 10px;
+    --radius-md: 16px;
+    --radius-lg: 22px;
 }
 
 
 /* =========================================================
-   BASIC
+   02. BASIC
 ========================================================= */
 
 * {
@@ -52,7 +53,23 @@ html {
 body {
     margin: 0;
 
-    background-color: var(--bg-main);
+    background:
+        radial-gradient(
+            circle at 10% 10%,
+            rgba(111, 143, 135, 0.08),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 90% 35%,
+            rgba(64, 90, 84, 0.06),
+            transparent 25%
+        ),
+        var(--bg-main);
+
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: bottom;
+    background-attachment: fixed;
 
     color: var(--text-main);
 
@@ -64,19 +81,30 @@ body {
         Arial,
         sans-serif;
 
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: bottom;
-    background-attachment: fixed;
+    line-height: 1.7;
+}
+
+img {
+    max-width: 100%;
+}
+
+a {
+    text-decoration: none;
+}
+
+::selection {
+    background: var(--point);
+    color: #ffffff;
 }
 
 
 /* =========================================================
-   ACCESSIBILITY
+   03. ACCESSIBILITY
 ========================================================= */
 
 .myhidden {
     position: absolute;
+
     left: -99999px;
 
     width: 1px;
@@ -93,11 +121,12 @@ body {
 
 
 /* =========================================================
-   GENERAL
+   04. GENERAL
 ========================================================= */
 
 #demo {
     height: 300px;
+
     overflow: hidden;
 }
 
@@ -105,68 +134,159 @@ body {
     object-fit: contain;
 }
 
-
-/* Bootstrap bg-white 색상 덮어쓰기 */
 .bg-white {
     background-color: var(--bg-card) !important;
 }
 
-
-/* Section background */
 .mybg {
     background-color: transparent;
 }
 
+.fontbold {
+    font-weight: 700;
+}
+
+hr {
+    border-color: var(--border);
+
+    opacity: 1;
+}
+
 
 /* =========================================================
-   TYPOGRAPHY
+   05. SECTION
 ========================================================= */
 
-h3 {
-    font-weight: bold;
+section {
+    position: relative;
+}
+
+section > .container {
+    position: relative;
+}
+
+
+/* =========================================================
+   06. SECTION TITLE
+========================================================= */
+
+section h3 {
+    position: relative;
+
+    display: inline-block;
+
+    margin-bottom: 50px;
 
     color: var(--text-main);
 
-    transition: all 0.3s;
+    font-size: clamp(28px, 4vw, 42px);
+
+    font-weight: 800;
+
+    letter-spacing: -1.5px;
+
+    transition:
+        transform 0.3s ease,
+        color 0.3s ease;
 }
 
-h3:hover {
-    transform: translateY(-6px);
+section h3::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    bottom: -14px;
+
+    width: 45px;
+    height: 4px;
+
+    background-color: var(--point);
+
+    border-radius: 10px;
+
+    transition:
+        width 0.3s ease,
+        background-color 0.3s ease;
 }
 
-.fontbold {
-    font-weight: bold;
+section h3:hover {
+    transform: translateY(-4px);
+
+    color: var(--point-dark);
+}
+
+section h3:hover::after {
+    width: 80px;
+
+    background-color: var(--point-light);
 }
 
 
 /* =========================================================
-   HEADER / NAVBAR
+   07. NAVBAR
 ========================================================= */
 
 .navbar {
-    background-color: rgba(253, 252, 249, 0.94);
+    background-color: rgba(253, 252, 249, 0.94) !important;
 
-    border-bottom: 1px solid rgba(64, 90, 84, 0.08);
+    border-bottom:
+        1px solid rgba(64, 90, 84, 0.10);
 
-    backdrop-filter: blur(8px);
+    backdrop-filter: blur(12px);
+
+    box-shadow:
+        0 4px 20px rgba(48, 71, 64, 0.04);
 }
 
 .navbar-brand {
     color: var(--point) !important;
 
-    transition: color 0.2s ease;
-}
+    font-weight: 800;
 
-.navbar-brand:hover {
-    color: var(--point-dark) !important;
-}
-
-.nav-link {
-    color: #4f5754 !important;
+    letter-spacing: -0.5px;
 
     transition:
         color 0.2s ease,
         transform 0.2s ease;
+}
+
+.navbar-brand:hover {
+    color: var(--point-dark) !important;
+
+    transform: translateY(-1px);
+}
+
+.nav-link {
+    position: relative;
+
+    color: var(--text-sub) !important;
+
+    font-weight: 500;
+
+    transition:
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.nav-link::after {
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+    bottom: 3px;
+
+    width: 0;
+    height: 2px;
+
+    background-color: var(--point);
+
+    border-radius: 10px;
+
+    transform: translateX(-50%);
+
+    transition: width 0.25s ease;
 }
 
 .nav-link:hover {
@@ -175,10 +295,29 @@ h3:hover {
     transform: translateY(-1px);
 }
 
+.nav-link:hover::after {
+    width: 60%;
+}
+
 
 /* =========================================================
-   BUTTON
+   08. BUTTON
 ========================================================= */
+
+.btn {
+    border-radius: 10px;
+
+    font-weight: 600;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        background-color 0.2s ease;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+}
 
 .btn-dark {
     background-color: var(--point) !important;
@@ -186,6 +325,9 @@ h3:hover {
     border-color: var(--point) !important;
 
     color: #ffffff !important;
+
+    box-shadow:
+        0 5px 15px rgba(64, 90, 84, 0.15);
 }
 
 .btn-dark:hover {
@@ -193,7 +335,8 @@ h3:hover {
 
     border-color: var(--point-dark) !important;
 
-    color: #ffffff !important;
+    box-shadow:
+        0 9px 22px rgba(48, 71, 64, 0.20);
 }
 
 .btn-outline-dark {
@@ -212,30 +355,126 @@ h3:hover {
 
 
 /* =========================================================
-   HERO / HOME
+   09. HOME
 ========================================================= */
 
 #home {
+    position: relative;
+
+    min-height: 85vh;
+
+    display: flex;
+
+    align-items: center;
+
     color: var(--text-main);
+
+    overflow: hidden;
+}
+
+#home::before {
+    content: "";
+
+    position: absolute;
+
+    width: 380px;
+    height: 380px;
+
+    right: -120px;
+    top: 10%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(111, 143, 135, 0.13),
+            transparent 70%
+        );
+
+    border-radius: 50%;
+
+    pointer-events: none;
+}
+
+#home::after {
+    content: "";
+
+    position: absolute;
+
+    width: 280px;
+    height: 280px;
+
+    left: -100px;
+    bottom: 5%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(64, 90, 84, 0.08),
+            transparent 70%
+        );
+
+    border-radius: 50%;
+
+    pointer-events: none;
 }
 
 #home h2 {
-    color: #293633;
+    position: relative;
+
+    z-index: 2;
+
+    margin-bottom: 12px;
+
+    color: var(--point-dark);
+
+    font-size: clamp(44px, 7vw, 78px);
+
+    font-weight: 900;
+
+    letter-spacing: -4px;
+
+    line-height: 1.1;
 }
 
 #home h3 {
-    color: #4a5753;
+    position: relative;
+
+    z-index: 2;
+
+    margin-bottom: 22px;
+
+    color: var(--point);
+
+    font-size: clamp(22px, 3vw, 34px);
+
+    font-weight: 700;
+
+    letter-spacing: -1px;
 }
 
 #home p {
+    position: relative;
+
+    z-index: 2;
+
     color: var(--text-muted);
 
-    line-height: 1.8;
+    line-height: 1.9;
+}
+
+#home strong {
+    color: var(--point);
+}
+
+#home .btn {
+    position: relative;
+
+    z-index: 5;
 }
 
 
 /* =========================================================
-   BACKGROUND ANIMATION
+   10. BACKGROUND ANIMATION
 ========================================================= */
 
 .bubble {
@@ -243,14 +482,19 @@ h3:hover {
 
     bottom: -100px;
 
-    border-radius: 50%;
-
     width: 50px;
     height: 50px;
 
-    background-color: rgba(64, 90, 84, 0.13);
+    border-radius: 50%;
 
-    animation: rise 8s infinite ease;
+    background-color:
+        rgba(64, 90, 84, 0.10);
+
+    animation:
+        rise
+        10s
+        infinite
+        ease;
 
     z-index: -999;
 }
@@ -260,20 +504,27 @@ h3:hover {
 }
 
 @keyframes rise {
-    0% {
-        transform: translateY(0) scale(1);
 
+    0% {
+        transform:
+            translateY(0)
+            scale(1);
+
+        opacity: 0;
+    }
+
+    30% {
+        opacity: 0.5;
+    }
+
+    70% {
         opacity: 0.3;
     }
 
-    50% {
-        transform: translateY(-300px) scale(1.2);
-
-        opacity: 0.6;
-    }
-
     100% {
-        transform: translateY(-600px) scale(0.8);
+        transform:
+            translateY(-650px)
+            scale(1.25);
 
         opacity: 0;
     }
@@ -323,20 +574,23 @@ h3:hover {
 
 
 /* =========================================================
-   FADE IN
+   11. FADE IN
 ========================================================= */
 
 @keyframes fadeInUp {
+
     from {
         opacity: 0;
 
-        transform: translateY(20px);
+        transform:
+            translateY(25px);
     }
 
     to {
         opacity: 1;
 
-        transform: translateY(0);
+        transform:
+            translateY(0);
     }
 }
 
@@ -350,7 +604,7 @@ h3:hover {
 
 
 /* =========================================================
-   Z-INDEX
+   12. Z-INDEX
 ========================================================= */
 
 .top-section {
@@ -361,438 +615,838 @@ h3:hover {
 
 
 /* =========================================================
-   SKILLS
+   13. ABOUT ME
+========================================================= */
+
+#about .bg-white {
+    background:
+        linear-gradient(
+            135deg,
+            #ffffff,
+            #fdfcf9
+        ) !important;
+
+    border:
+        1px solid var(--border-light);
+
+    border-radius:
+        var(--radius-lg);
+
+    box-shadow:
+        var(--shadow-md);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+#about .bg-white:hover {
+    transform:
+        translateY(-5px);
+
+    box-shadow:
+        var(--shadow-lg);
+}
+
+#about h4 {
+    color:
+        var(--point-dark);
+
+    font-size:
+        24px;
+
+    font-weight:
+        800;
+
+    letter-spacing:
+        -0.8px;
+}
+
+#about p,
+#about li {
+    color:
+        var(--text-sub);
+}
+
+#about strong {
+    color:
+        var(--point);
+}
+
+#about h5 {
+    color:
+        var(--point-dark);
+
+    font-weight:
+        700;
+}
+
+#about .border-top {
+    border-color:
+        var(--border) !important;
+}
+
+
+/* =========================================================
+   14. SKILLS
 ========================================================= */
 
 .skill-item {
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    gap: 12px;
-
-    margin-bottom: 18px;
-
-    font-size: 17px;
-
-    color: var(--text-main);
-}
-
-.skill-item i {
-    font-size: 30px;
-
-    width: 35px;
-}
-
-.skill-item span {
-    min-width: 130px;
-
-    text-align: left;
-}
-
-
-/* =========================================================
-   CERTIFICATE
-========================================================= */
-
-.certificate-card {
-    display: flex;
-
-    align-items: center;
-
-    gap: 18px;
-
-    padding: 20px;
-
-    background: var(--bg-card);
-
-    border: 1px solid var(--border);
-
-    border-radius: 12px;
-
-    transition:
-        transform 0.2s ease,
-        box-shadow 0.2s ease,
-        border-color 0.2s ease;
-}
-
-.certificate-card:hover {
-    transform: translateY(-3px);
-
-    box-shadow:
-        0 8px 22px rgba(45, 55, 50, 0.08);
-
-    border-color: #d2dad6;
-}
-
-.certificate-icon {
-    width: 50px;
-    height: 50px;
+    position: relative;
 
     display: flex;
 
     align-items: center;
 
     justify-content: center;
-
-    background: var(--bg-soft);
-
-    border-radius: 10px;
-
-    font-size: 22px;
-
-    color: var(--point);
-}
-
-.certificate-info {
-    flex: 1;
-}
-
-.certificate-title {
-    font-size: 17px;
-
-    font-weight: 700;
-
-    margin-bottom: 8px;
-
-    color: var(--text-main);
-}
-
-.certificate-meta .badge {
-    font-size: 12px;
-
-    padding: 6px 10px;
-}
-
-
-/* =========================================================
-   EDUCATION & TRAINING
-========================================================= */
-
-.education-card {
-    background: var(--bg-card);
-
-    border: 1px solid var(--border);
-
-    border-radius: 16px;
-
-    padding: 30px;
-
-    box-shadow:
-        0 5px 20px rgba(45, 55, 50, 0.06);
-}
-
-
-/* =========================================================
-   EDUCATION TOP
-========================================================= */
-
-.education-top {
-    display: block !important;
-
-    padding-bottom: 25px;
-
-    border-bottom: 1px solid var(--border-light);
-}
-
-.education-title-area {
-    width: 100%;
-}
-
-.education-badge {
-    display: inline-block;
-
-    padding: 6px 12px;
-
-    margin-bottom: 10px;
-
-    border-radius: 20px;
-
-    background: #e8eeeb;
-
-    font-size: 12px;
-
-    font-weight: 600;
-
-    color: var(--point);
-}
-
-.education-title {
-    margin-bottom: 6px;
-
-    font-size: 22px;
-
-    font-weight: 700;
-
-    color: #303a37;
-}
-
-.education-subtitle {
-    margin-bottom: 0;
-
-    color: var(--text-muted);
-
-    font-size: 14px;
-}
-
-
-/* =========================================================
-   EDUCATION INFO
-========================================================= */
-
-.education-info {
-    display: grid !important;
-
-    grid-template-columns: 1fr 1fr;
-
-    width: 100%;
-
-    gap: 15px;
-
-    margin-top: 22px;
-}
-
-.education-info-item {
-    display: flex !important;
-
-    align-items: center;
 
     gap: 14px;
 
-    width: 100%;
+    margin-bottom: 18px;
 
-    padding: 15px 18px;
+    padding: 14px 18px;
 
-    background: var(--bg-soft);
+    background-color:
+        rgba(255, 255, 255, 0.65);
 
-    border-radius: 10px;
+    border:
+        1px solid var(--border-light);
 
-    box-sizing: border-box;
+    border-radius:
+        12px;
+
+    color:
+        var(--text-main);
+
+    transition:
+        transform 0.25s ease,
+        background-color 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.skill-item:hover {
+    transform:
+        translateX(6px);
+
+    background-color:
+        #ffffff;
+
+    border-color:
+        #ccd8d3;
+
+    box-shadow:
+        0 8px 22px rgba(48, 71, 64, 0.08);
+}
+
+.skill-item i {
+    width:
+        38px;
+
+    font-size:
+        30px;
+
+    color:
+        var(--point);
+
+    text-align:
+        center;
+
+    transition:
+        transform 0.25s ease,
+        color 0.25s ease;
+}
+
+.skill-item:hover i {
+    transform:
+        scale(1.12);
+
+    color:
+        var(--point-dark);
+}
+
+.skill-item span {
+    min-width:
+        130px;
+
+    color:
+        var(--text-main);
+
+    font-weight:
+        600;
+
+    text-align:
+        left;
+}
+
+
+/* =========================================================
+   15. CERTIFICATE
+========================================================= */
+
+.certificate-card {
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        18px;
+
+    padding:
+        20px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ffffff,
+            #fdfcf9
+        );
+
+    border:
+        1px solid var(--border);
+
+    border-radius:
+        var(--radius-md);
+
+    box-shadow:
+        var(--shadow-sm);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
+}
+
+.certificate-card:hover {
+    transform:
+        translateY(-5px);
+
+    border-color:
+        #ccd8d3;
+
+    box-shadow:
+        var(--shadow-md);
+}
+
+.certificate-icon {
+    width:
+        52px;
+
+    height:
+        52px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    flex-shrink:
+        0;
+
+    background-color:
+        var(--bg-soft-green);
+
+    border-radius:
+        12px;
+
+    color:
+        var(--point);
+
+    font-size:
+        22px;
+}
+
+.certificate-info {
+    flex:
+        1;
+}
+
+.certificate-title {
+    margin-bottom:
+        7px;
+
+    color:
+        var(--text-main);
+
+    font-size:
+        17px;
+
+    font-weight:
+        700;
+}
+
+.certificate-meta .badge {
+    font-size:
+        12px;
+
+    padding:
+        6px 10px;
+}
+
+
+/* =========================================================
+   16. EDUCATION
+========================================================= */
+
+.education-card {
+    padding:
+        32px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ffffff,
+            #fdfcf9
+        );
+
+    border:
+        1px solid var(--border);
+
+    border-radius:
+        var(--radius-lg);
+
+    box-shadow:
+        var(--shadow-md);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.education-card:hover {
+    transform:
+        translateY(-5px);
+
+    box-shadow:
+        var(--shadow-lg);
+}
+
+
+/* =========================================================
+   17. EDUCATION TOP
+========================================================= */
+
+.education-top {
+    display:
+        block !important;
+
+    padding-bottom:
+        25px;
+
+    border-bottom:
+        1px solid var(--border);
+}
+
+.education-title-area {
+    width:
+        100%;
+}
+
+.education-badge {
+    display:
+        inline-block;
+
+    padding:
+        6px 13px;
+
+    margin-bottom:
+        11px;
+
+    background-color:
+        var(--bg-soft-green);
+
+    border-radius:
+        20px;
+
+    color:
+        var(--point);
+
+    font-size:
+        12px;
+
+    font-weight:
+        700;
+}
+
+.education-title {
+    margin-bottom:
+        6px;
+
+    color:
+        var(--point-dark);
+
+    font-size:
+        23px;
+
+    font-weight:
+        800;
+
+    letter-spacing:
+        -0.7px;
+}
+
+.education-subtitle {
+    margin-bottom:
+        0;
+
+    color:
+        var(--text-muted);
+
+    font-size:
+        14px;
+}
+
+
+/* =========================================================
+   18. EDUCATION INFO
+========================================================= */
+
+.education-info {
+    display:
+        grid !important;
+
+    grid-template-columns:
+        1fr
+        1fr;
+
+    width:
+        100%;
+
+    gap:
+        15px;
+
+    margin-top:
+        22px;
+}
+
+.education-info-item {
+    display:
+        flex !important;
+
+    align-items:
+        center;
+
+    gap:
+        14px;
+
+    width:
+        100%;
+
+    padding:
+        16px 18px;
+
+    background-color:
+        var(--bg-soft);
+
+    border:
+        1px solid rgba(220, 228, 224, 0.7);
+
+    border-radius:
+        12px;
+
+    transition:
+        background-color 0.25s ease,
+        transform 0.25s ease;
+}
+
+.education-info-item:hover {
+    background-color:
+        var(--bg-soft-green);
+
+    transform:
+        translateY(-2px);
 }
 
 .education-info-icon {
-    width: 42px;
-    height: 42px;
+    width:
+        42px;
 
-    display: flex;
+    height:
+        42px;
 
-    align-items: center;
+    display:
+        flex;
 
-    justify-content: center;
+    align-items:
+        center;
 
-    flex-shrink: 0;
+    justify-content:
+        center;
 
-    background: var(--bg-card);
+    flex-shrink:
+        0;
 
-    border: 1px solid var(--border);
+    background-color:
+        #ffffff;
 
-    border-radius: 9px;
+    border:
+        1px solid var(--border);
 
-    font-size: 17px;
+    border-radius:
+        10px;
 
-    color: var(--point);
+    color:
+        var(--point);
+
+    font-size:
+        17px;
 }
 
 .education-info-text {
-    display: flex;
+    display:
+        flex;
 
-    flex-direction: column;
+    flex-direction:
+        column;
 
-    min-width: 0;
+    min-width:
+        0;
 }
 
 .education-info-text span {
-    margin-bottom: 4px;
+    margin-bottom:
+        3px;
 
-    color: #858d89;
+    color:
+        #89938f;
 
-    font-size: 11px;
+    font-size:
+        11px;
 
-    font-weight: 500;
+    font-weight:
+        600;
 }
 
 .education-info-text strong {
-    color: var(--text-main);
+    color:
+        var(--text-main);
 
-    font-size: 14px;
+    font-size:
+        14px;
 
-    font-weight: 600;
-
-    line-height: 1.5;
+    font-weight:
+        700;
 }
 
 
 /* =========================================================
-   EDUCATION SKILLS
+   19. EDUCATION SKILLS
 ========================================================= */
 
 .education-skills {
-    display: grid;
+    display:
+        grid;
 
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns:
+        1fr
+        1fr;
 
-    gap: 15px;
+    gap:
+        15px;
 
-    margin-top: 25px;
+    margin-top:
+        25px;
 }
 
 .education-skill-box {
-    padding: 18px;
+    padding:
+        20px;
 
-    background: var(--bg-soft);
+    background-color:
+        var(--bg-soft);
 
-    border: 1px solid rgba(223, 228, 225, 0.7);
+    border:
+        1px solid rgba(220, 228, 224, 0.8);
 
-    border-radius: 12px;
+    border-radius:
+        13px;
 
     transition:
-        transform 0.2s ease,
-        background-color 0.2s ease;
+        transform 0.25s ease,
+        background-color 0.25s ease,
+        box-shadow 0.25s ease;
 }
 
 .education-skill-box:hover {
-    transform: translateY(-2px);
+    transform:
+        translateY(-4px);
 
-    background-color: #edf1ef;
+    background-color:
+        #ffffff;
+
+    box-shadow:
+        var(--shadow-sm);
 }
 
 .education-skill-title {
-    margin-bottom: 12px;
+    margin-bottom:
+        13px;
 
-    font-size: 15px;
+    color:
+        var(--point-dark);
 
-    font-weight: 700;
+    font-size:
+        15px;
 
-    color: #3b4743;
+    font-weight:
+        800;
 }
 
 .education-skill-title i {
-    width: 22px;
+    width:
+        22px;
 
-    margin-right: 5px;
+    margin-right:
+        5px;
 
-    text-align: center;
-
-    color: var(--point);
+    color:
+        var(--point);
 }
 
 .education-tags {
-    display: flex;
+    display:
+        flex;
 
-    flex-wrap: wrap;
+    flex-wrap:
+        wrap;
 
-    gap: 7px;
+    gap:
+        7px;
 }
 
 .education-tags span {
-    display: inline-block;
+    display:
+        inline-block;
 
-    padding: 5px 10px;
+    padding:
+        5px 11px;
 
-    background: #fdfcf9;
+    background-color:
+        #ffffff;
 
-    border: 1px solid var(--border);
+    border:
+        1px solid var(--border);
 
-    border-radius: 20px;
+    border-radius:
+        20px;
 
-    font-size: 12px;
+    color:
+        var(--text-sub);
 
-    color: #5c6561;
+    font-size:
+        12px;
+
+    font-weight:
+        500;
+
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease;
+}
+
+.education-tags span:hover {
+    background-color:
+        var(--point);
+
+    color:
+        #ffffff;
 }
 
 
 /* =========================================================
-   EDUCATION PROJECT
+   20. EDUCATION PROJECT
 ========================================================= */
 
 .education-project {
-    display: flex;
+    display:
+        flex;
 
-    align-items: center;
+    align-items:
+        center;
 
-    gap: 15px;
+    gap:
+        15px;
 
-    margin-top: 25px;
+    margin-top:
+        25px;
 
-    padding: 18px;
+    padding:
+        20px;
 
-    border-top: 1px solid var(--border-light);
+    background-color:
+        rgba(229, 236, 233, 0.45);
+
+    border-top:
+        1px solid var(--border);
+
+    border-radius:
+        0 0 12px 12px;
 }
 
 .education-project-icon {
-    width: 42px;
-    height: 42px;
+    width:
+        44px;
 
-    display: flex;
+    height:
+        44px;
 
-    align-items: center;
+    display:
+        flex;
 
-    justify-content: center;
+    align-items:
+        center;
 
-    flex-shrink: 0;
+    justify-content:
+        center;
 
-    border-radius: 10px;
+    flex-shrink:
+        0;
 
-    background: #e8eeeb;
+    background-color:
+        var(--bg-soft-green);
 
-    color: var(--point);
+    border-radius:
+        11px;
 
-    font-size: 18px;
+    color:
+        var(--point);
+
+    font-size:
+        18px;
 }
 
 .education-project strong {
-    font-size: 14px;
+    color:
+        var(--point-dark);
 
-    color: var(--text-main);
+    font-size:
+        14px;
 }
 
 .education-project p {
-    margin: 4px 0 0;
+    margin:
+        4px 0 0;
 
-    color: var(--text-muted);
+    color:
+        var(--text-muted);
 
-    font-size: 13px;
+    font-size:
+        13px;
 
-    line-height: 1.6;
+    line-height:
+        1.6;
 }
 
 
 /* =========================================================
-   PORTFOLIO CARD
+   21. PORTFOLIO
 ========================================================= */
 
 #portfolio .bg-white {
-    background-color: var(--bg-card) !important;
+    position:
+        relative;
 
-    border: 1px solid rgba(223, 228, 225, 0.8);
+    overflow:
+        hidden;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ffffff,
+            #fdfcf9
+        ) !important;
+
+    border:
+        1px solid var(--border-light);
+
+    border-radius:
+        var(--radius-lg);
+
+    box-shadow:
+        var(--shadow-sm);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        border-color 0.3s ease;
+}
+
+#portfolio .bg-white::before {
+    content:
+        "";
+
+    position:
+        absolute;
+
+    left:
+        0;
+
+    top:
+        0;
+
+    width:
+        5px;
+
+    height:
+        100%;
+
+    background-color:
+        var(--point);
+
+    transform:
+        scaleY(0);
+
+    transform-origin:
+        bottom;
+
+    transition:
+        transform 0.3s ease;
 }
 
 #portfolio .bg-white:hover {
-    border-color: #d8dfdc;
+    transform:
+        translateY(-8px);
+
+    border-color:
+        #ccd8d3;
+
+    box-shadow:
+        var(--shadow-lg);
 }
 
-
-/* Portfolio title */
+#portfolio .bg-white:hover::before {
+    transform:
+        scaleY(1);
+}
 
 #portfolio h4,
 #portfolio h5 {
-    color: var(--text-main);
+    color:
+        var(--point-dark);
+
+    font-weight:
+        800;
 }
-
-
-/* Portfolio description */
 
 #portfolio p,
 #portfolio li {
-    color: #555f5b;
+    color:
+        var(--text-sub);
 
-    line-height: 1.7;
+    line-height:
+        1.75;
 }
 
-
-/* Portfolio GitHub button */
+#portfolio strong {
+    color:
+        var(--point);
+}
 
 #portfolio .btn {
     transition:
@@ -801,161 +1455,384 @@ h3:hover {
 }
 
 #portfolio .btn:hover {
-    transform: translateY(-2px);
+    transform:
+        translateY(-3px);
 
     box-shadow:
-        0 5px 12px rgba(45, 55, 50, 0.10);
+        0 8px 18px rgba(48, 71, 64, 0.12);
 }
 
 
 /* =========================================================
-   TROUBLESHOOTING
+   22. TROUBLESHOOTING
 ========================================================= */
 
 section h5 {
-    color: var(--text-main);
+    color:
+        var(--point-dark);
+
+    font-weight:
+        800;
 }
 
 section strong {
-    color: #3f504b;
+    color:
+        var(--point);
 }
 
 section p,
 section li {
-    color: #555f5b;
+    color:
+        var(--text-sub);
 
-    line-height: 1.75;
+    line-height:
+        1.75;
 }
-
-
-/* Troubleshooting card */
 
 section:not(#home):not(#about):not(#skills):not(#portfolio):not(#contact)
 .container.bg-white {
-    border: 1px solid rgba(223, 228, 225, 0.8);
+    background:
+        linear-gradient(
+            135deg,
+            #ffffff,
+            #fdfcf9
+        ) !important;
+
+    border:
+        1px solid var(--border-light);
+
+    border-radius:
+        var(--radius-lg);
+
+    box-shadow:
+        var(--shadow-sm);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+section:not(#home):not(#about):not(#skills):not(#portfolio):not(#contact)
+.container.bg-white:hover {
+    transform:
+        translateY(-5px);
+
+    box-shadow:
+        var(--shadow-md);
 }
 
 
 /* =========================================================
-   CONTACT
+   23. CONTACT
 ========================================================= */
 
 #contact .bg-white {
-    background-color: var(--bg-card) !important;
+    background:
+        linear-gradient(
+            135deg,
+            #ffffff,
+            #fdfcf9
+        ) !important;
 
-    border: 1px solid var(--border-light);
+    border:
+        1px solid var(--border-light);
+
+    border-radius:
+        var(--radius-lg);
+
+    box-shadow:
+        var(--shadow-md);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+#contact .bg-white:hover {
+    transform:
+        translateY(-5px);
+
+    box-shadow:
+        var(--shadow-lg);
 }
 
 #contact h4 {
-    color: var(--text-main);
+    color:
+        var(--point-dark);
+
+    font-weight:
+        800;
 }
 
 #contact p {
-    color: var(--text-muted);
+    color:
+        var(--text-muted);
 }
 
 #contact a {
-    color: var(--point) !important;
+    color:
+        var(--point) !important;
 
-    transition: color 0.2s ease;
+    font-weight:
+        600;
+
+    transition:
+        color 0.2s ease;
 }
 
 #contact a:hover {
-    color: var(--point-dark) !important;
+    color:
+        var(--point-dark) !important;
 }
 
 
 /* =========================================================
-   FOOTER
+   24. FOOTER
 ========================================================= */
 
 footer {
-    color: #7a837f;
+    padding-top:
+        25px;
 
-    background-color: rgba(238, 241, 239, 0.7);
+    padding-bottom:
+        25px;
 
-    font-size: 13px;
+    background-color:
+        rgba(238, 241, 239, 0.75);
+
+    border-top:
+        1px solid rgba(64, 90, 84, 0.07);
+
+    color:
+        #7b8581;
+
+    font-size:
+        13px;
 }
 
 
 /* =========================================================
-   SHADOW
+   25. SHADOW
 ========================================================= */
 
 .shadow-lg {
     box-shadow:
-        0 8px 25px rgba(45, 55, 50, 0.07) !important;
+        var(--shadow-lg) !important;
 }
 
 .shadow {
     box-shadow:
-        0 5px 18px rgba(45, 55, 50, 0.06) !important;
+        var(--shadow-sm) !important;
 }
 
 
 /* =========================================================
-   HORIZONTAL RULE
+   26. TOP SECTION
 ========================================================= */
 
-hr {
-    border-color: var(--border);
+.top-section {
+    position:
+        relative;
 
-    opacity: 0.8;
+    z-index:
+        999;
 }
 
 
 /* =========================================================
-   MOBILE
+   27. TABLET
+========================================================= */
+
+@media (max-width: 992px) {
+
+    #home h2 {
+        letter-spacing:
+            -3px;
+    }
+
+    .education-info {
+        grid-template-columns:
+            1fr;
+    }
+}
+
+
+/* =========================================================
+   28. MOBILE
 ========================================================= */
 
 @media (max-width: 768px) {
 
-    .education-info {
-        grid-template-columns: 1fr !important;
+    #home {
+        min-height:
+            75vh;
+
+        padding-top:
+            30px;
+
+        padding-bottom:
+            30px;
     }
 
-    .education-skills {
-        grid-template-columns: 1fr;
+    #home h2 {
+        font-size:
+            48px;
+
+        letter-spacing:
+            -2.5px;
+    }
+
+    #home h3 {
+        font-size:
+            24px;
+    }
+
+    section h3 {
+        margin-bottom:
+            40px;
+
+        font-size:
+            31px;
     }
 
     .education-card {
-        padding: 22px;
+        padding:
+            24px;
+    }
+
+    .education-skills {
+        grid-template-columns:
+            1fr;
     }
 
     .skill-item {
-        font-size: 16px;
+        justify-content:
+            flex-start;
+
+        font-size:
+            16px;
     }
 
     .skill-item i {
-        font-size: 27px;
+        font-size:
+            27px;
     }
 
-    #home {
-        padding-top: 20px;
-        padding-bottom: 20px;
+    #portfolio .bg-white:hover,
+    #about .bg-white:hover,
+    .education-card:hover {
+        transform:
+            translateY(-3px);
     }
 }
 
 
 /* =========================================================
-   SMALL MOBILE
+   29. SMALL MOBILE
 ========================================================= */
 
 @media (max-width: 576px) {
 
+    body {
+        background-attachment:
+            scroll;
+    }
+
+    #home {
+        min-height:
+            70vh;
+
+        padding-top:
+            25px;
+
+        padding-bottom:
+            25px;
+    }
+
+    #home h2 {
+        font-size:
+            42px;
+
+        letter-spacing:
+            -2px;
+    }
+
+    #home h3 {
+        font-size:
+            21px;
+    }
+
+    #home p {
+        font-size:
+            14px;
+    }
+
+    section h3 {
+        font-size:
+            28px;
+
+        letter-spacing:
+            -1px;
+    }
+
+    .education-card {
+        padding:
+            20px;
+    }
+
     .education-title {
-        font-size: 20px;
+        font-size:
+            20px;
     }
 
     .education-project {
-        align-items: flex-start;
+        align-items:
+            flex-start;
     }
 
     .certificate-card {
-        padding: 16px;
+        padding:
+            16px;
+    }
+
+    .skill-item {
+        padding:
+            12px 14px;
     }
 
     .skill-item span {
-        min-width: 120px;
+        min-width:
+            120px;
+    }
+
+    #portfolio .bg-white {
+        border-radius:
+            14px;
+    }
+}
+
+
+/* =========================================================
+   30. REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    html {
+        scroll-behavior:
+            auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration:
+            0.01ms !important;
+
+        animation-iteration-count:
+            1 !important;
+
+        transition-duration:
+            0.01ms !important;
     }
 }
