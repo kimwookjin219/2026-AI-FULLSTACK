@@ -1,29 +1,68 @@
 @charset "UTF-8";
 
-.myhidden{
-    position: absolute;
-    left:-99999px;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-    border: 0;
-    white-space: nowrap;
-    clip:rect(0,0,0,0); /* 요소를 잘라서 시각적으로 완전히 숨김 - 구형 브라우저 호환 */
+/* =========================================================
+   COLOR THEME
+========================================================= */
+
+:root {
+    /* 전체 배경 */
+    --bg-main: #eef1ef;
+
+    /* 카드 */
+    --bg-card: #fdfcf9;
+
+    /* 부드러운 내부 배경 */
+    --bg-soft: #f1f3f1;
+
+    /* 조금 더 진한 내부 배경 */
+    --bg-soft-dark: #e7ebe8;
+
+    /* 기본 텍스트 */
+    --text-main: #343a40;
+
+    /* 보조 텍스트 */
+    --text-muted: #6c757d;
+
+    /* 포인트 컬러 */
+    --point: #405a54;
+
+    /* 포인트 hover */
+    --point-dark: #304740;
+
+    /* 테두리 */
+    --border: #dfe4e1;
+
+    /* 아주 연한 테두리 */
+    --border-light: #e8ecea;
 }
 
-#demo{ height: 300px; overflow: hidden;}
 
-#demo img{ object-fit: contain; }
+/* =========================================================
+   BASIC
+========================================================= */
 
+* {
+    box-sizing: border-box;
+}
 
-/* 배경 body fixed 하고 원하는 배경 부분만 투명하게 */
-.mybg {
-    background-color: transparent;
+html {
+    scroll-behavior: smooth;
 }
 
 body {
+    margin: 0;
+
     background-color: var(--bg-main);
+
     color: var(--text-main);
+
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        "Noto Sans KR",
+        Arial,
+        sans-serif;
 
     background-repeat: no-repeat;
     background-size: cover;
@@ -31,99 +70,361 @@ body {
     background-attachment: fixed;
 }
 
+
+/* =========================================================
+   ACCESSIBILITY
+========================================================= */
+
+.myhidden {
+    position: absolute;
+    left: -99999px;
+
+    width: 1px;
+    height: 1px;
+
+    overflow: hidden;
+
+    border: 0;
+
+    white-space: nowrap;
+
+    clip: rect(0, 0, 0, 0);
+}
+
+
+/* =========================================================
+   GENERAL
+========================================================= */
+
+#demo {
+    height: 300px;
+    overflow: hidden;
+}
+
+#demo img {
+    object-fit: contain;
+}
+
+
+/* Bootstrap bg-white 색상 덮어쓰기 */
 .bg-white {
     background-color: var(--bg-card) !important;
 }
 
-/* transform + transition */
+
+/* Section background */
+.mybg {
+    background-color: transparent;
+}
+
+
+/* =========================================================
+   TYPOGRAPHY
+========================================================= */
+
 h3 {
     font-weight: bold;
+
+    color: var(--text-main);
+
     transition: all 0.3s;
 }
 
-h3:hover { transform: translateY(-10px); }
+h3:hover {
+    transform: translateY(-6px);
+}
 
-.fontbold { font-weight: bold; }
+.fontbold {
+    font-weight: bold;
+}
+
+
+/* =========================================================
+   HEADER / NAVBAR
+========================================================= */
+
+.navbar {
+    background-color: rgba(253, 252, 249, 0.94);
+
+    border-bottom: 1px solid rgba(64, 90, 84, 0.08);
+
+    backdrop-filter: blur(8px);
+}
+
+.navbar-brand {
+    color: var(--point) !important;
+
+    transition: color 0.2s ease;
+}
+
+.navbar-brand:hover {
+    color: var(--point-dark) !important;
+}
+
+.nav-link {
+    color: #4f5754 !important;
+
+    transition:
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.nav-link:hover {
+    color: var(--point) !important;
+
+    transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   BUTTON
+========================================================= */
+
+.btn-dark {
+    background-color: var(--point) !important;
+
+    border-color: var(--point) !important;
+
+    color: #ffffff !important;
+}
+
+.btn-dark:hover {
+    background-color: var(--point-dark) !important;
+
+    border-color: var(--point-dark) !important;
+
+    color: #ffffff !important;
+}
+
+.btn-outline-dark {
+    color: var(--point) !important;
+
+    border-color: var(--point) !important;
+}
+
+.btn-outline-dark:hover {
+    background-color: var(--point) !important;
+
+    border-color: var(--point) !important;
+
+    color: #ffffff !important;
+}
+
+
+/* =========================================================
+   HERO / HOME
+========================================================= */
+
+#home {
+    color: var(--text-main);
+}
+
+#home h2 {
+    color: #293633;
+}
+
+#home h3 {
+    color: #4a5753;
+}
+
+#home p {
+    color: var(--text-muted);
+
+    line-height: 1.8;
+}
+
+
+/* =========================================================
+   BACKGROUND ANIMATION
+========================================================= */
 
 .bubble {
-   position: fixed;
-   bottom: -100px;
-   border-radius: 50%;
-   width: 50px;
-   height: 50px;
-   background-color: rgba(0,121,107,0.4);
-   animation: rise 8s infinite ease; 
-   z-index: -999;
+    position: fixed;
+
+    bottom: -100px;
+
+    border-radius: 50%;
+
+    width: 50px;
+    height: 50px;
+
+    background-color: rgba(64, 90, 84, 0.13);
+
+    animation: rise 8s infinite ease;
+
+    z-index: -999;
 }
 
-.index { z-index: 10; }
+.index {
+    z-index: 10;
+}
 
 @keyframes rise {
-   0%   { transform: translateY(0)       scale(1);   opacity: 0.5; }       /* from = 0% */
-   50%  { transform: translateY(-300px)  scale(1.2); opacity: 1; }       /* 50% */
-   100% { transform: translateY(-600px)  scale(0.8); opacity: 0; } 
+    0% {
+        transform: translateY(0) scale(1);
+
+        opacity: 0.3;
+    }
+
+    50% {
+        transform: translateY(-300px) scale(1.2);
+
+        opacity: 0.6;
+    }
+
+    100% {
+        transform: translateY(-600px) scale(0.8);
+
+        opacity: 0;
+    }
 }
 
-.bubble:nth-of-type(1) { left:10%; animation-delay:0s; }
-.bubble:nth-of-type(2) { left:25%; animation-delay:2s; width: 35px; height: 35px; }
-.bubble:nth-of-type(3) { left:40%; animation-delay:4s; width: 45px; height: 45px; }
-.bubble:nth-of-type(4) { left:60%; animation-delay:1s; width: 38px; height: 38px; }
-.bubble:nth-of-type(5) { left:75%; animation-delay:3s; width: 42px; height: 42px; }
+.bubble:nth-of-type(1) {
+    left: 10%;
+
+    animation-delay: 0s;
+}
+
+.bubble:nth-of-type(2) {
+    left: 25%;
+
+    animation-delay: 2s;
+
+    width: 35px;
+    height: 35px;
+}
+
+.bubble:nth-of-type(3) {
+    left: 40%;
+
+    animation-delay: 4s;
+
+    width: 45px;
+    height: 45px;
+}
+
+.bubble:nth-of-type(4) {
+    left: 60%;
+
+    animation-delay: 1s;
+
+    width: 38px;
+    height: 38px;
+}
+
+.bubble:nth-of-type(5) {
+    left: 75%;
+
+    animation-delay: 3s;
+
+    width: 42px;
+    height: 42px;
+}
+
+
+/* =========================================================
+   FADE IN
+========================================================= */
 
 @keyframes fadeInUp {
-   from { opacity: 0; transform: translateY(20px) }
-   to   { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform: translateY(0);
+    }
 }
 
-.fadein { 
-    animation:    fadeInUp     0.8s       ease         forwards ;
-} 
+.fadein {
+    animation:
+        fadeInUp
+        0.8s
+        ease
+        forwards;
+}
+
+
+/* =========================================================
+   Z-INDEX
+========================================================= */
 
 .top-section {
-  position: relative;
-  z-index: 999;
+    position: relative;
+
+    z-index: 999;
 }
+
+
+/* =========================================================
+   SKILLS
+========================================================= */
 
 .skill-item {
     display: flex;
+
     align-items: center;
+
     justify-content: center;
+
     gap: 12px;
+
     margin-bottom: 18px;
+
     font-size: 17px;
+
+    color: var(--text-main);
 }
 
 .skill-item i {
     font-size: 30px;
+
     width: 35px;
 }
 
 .skill-item span {
     min-width: 130px;
+
     text-align: left;
 }
 
-/* =========================
-   Certificate
-========================== */
+
+/* =========================================================
+   CERTIFICATE
+========================================================= */
 
 .certificate-card {
     display: flex;
+
     align-items: center;
+
     gap: 18px;
 
     padding: 20px;
 
     background: var(--bg-card);
+
     border: 1px solid var(--border);
+
     border-radius: 12px;
 
-    transition: all 0.2s ease;
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        border-color 0.2s ease;
 }
 
 .certificate-card:hover {
     transform: translateY(-3px);
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+
+    box-shadow:
+        0 8px 22px rgba(45, 55, 50, 0.08);
+
+    border-color: #d2dad6;
 }
 
 .certificate-icon {
@@ -131,13 +432,18 @@ h3:hover { transform: translateY(-10px); }
     height: 50px;
 
     display: flex;
+
     align-items: center;
+
     justify-content: center;
 
     background: var(--bg-soft);
+
     border-radius: 10px;
 
     font-size: 22px;
+
+    color: var(--point);
 }
 
 .certificate-info {
@@ -146,34 +452,49 @@ h3:hover { transform: translateY(-10px); }
 
 .certificate-title {
     font-size: 17px;
+
     font-weight: 700;
+
     margin-bottom: 8px;
+
+    color: var(--text-main);
 }
 
 .certificate-meta .badge {
     font-size: 12px;
+
     padding: 6px 10px;
 }
 
-/* =========================
-   Education & Training
-========================== */
+
+/* =========================================================
+   EDUCATION & TRAINING
+========================================================= */
 
 .education-card {
     background: var(--bg-card);
+
     border: 1px solid var(--border);
+
     border-radius: 16px;
+
     padding: 30px;
-    box-shadow: 0 5px 20px rgba(45, 55, 50, 0.06);
+
+    box-shadow:
+        0 5px 20px rgba(45, 55, 50, 0.06);
 }
 
 
-/* 교육 제목 */
+/* =========================================================
+   EDUCATION TOP
+========================================================= */
 
 .education-top {
     display: block !important;
+
     padding-bottom: 25px;
-    border-bottom: 1px solid #eee;
+
+    border-bottom: 1px solid var(--border-light);
 }
 
 .education-title-area {
@@ -184,37 +505,46 @@ h3:hover { transform: translateY(-10px); }
     display: inline-block;
 
     padding: 6px 12px;
+
     margin-bottom: 10px;
 
     border-radius: 20px;
-    background: #f1f3f5;
+
+    background: #e8eeeb;
 
     font-size: 12px;
+
     font-weight: 600;
-    color: #555;
+
+    color: var(--point);
 }
 
 .education-title {
     margin-bottom: 6px;
 
     font-size: 22px;
+
     font-weight: 700;
+
+    color: #303a37;
 }
 
 .education-subtitle {
     margin-bottom: 0;
 
-    color: #777;
+    color: var(--text-muted);
+
     font-size: 14px;
 }
 
 
-/* =========================
-   교육 기간 / 교육기관
-========================== */
+/* =========================================================
+   EDUCATION INFO
+========================================================= */
 
 .education-info {
     display: grid !important;
+
     grid-template-columns: 1fr 1fr;
 
     width: 100%;
@@ -226,6 +556,7 @@ h3:hover { transform: translateY(-10px); }
 
 .education-info-item {
     display: flex !important;
+
     align-items: center;
 
     gap: 14px;
@@ -235,6 +566,7 @@ h3:hover { transform: translateY(-10px); }
     padding: 15px 18px;
 
     background: var(--bg-soft);
+
     border-radius: 10px;
 
     box-sizing: border-box;
@@ -245,20 +577,27 @@ h3:hover { transform: translateY(-10px); }
     height: 42px;
 
     display: flex;
+
     align-items: center;
+
     justify-content: center;
 
     flex-shrink: 0;
 
     background: var(--bg-card);
-    border: 1px solidvar(--border);
+
+    border: 1px solid var(--border);
+
     border-radius: 9px;
 
     font-size: 17px;
+
+    color: var(--point);
 }
 
 .education-info-text {
     display: flex;
+
     flex-direction: column;
 
     min-width: 0;
@@ -267,28 +606,35 @@ h3:hover { transform: translateY(-10px); }
 .education-info-text span {
     margin-bottom: 4px;
 
-    color: #888;
+    color: #858d89;
+
     font-size: 11px;
+
     font-weight: 500;
 }
 
 .education-info-text strong {
-    color: #333;
+    color: var(--text-main);
+
     font-size: 14px;
+
     font-weight: 600;
+
     line-height: 1.5;
 }
 
 
-/* =========================
-   교육 분야
-========================== */
+/* =========================================================
+   EDUCATION SKILLS
+========================================================= */
 
 .education-skills {
     display: grid;
+
     grid-template-columns: repeat(2, 1fr);
 
     gap: 15px;
+
     margin-top: 25px;
 }
 
@@ -296,25 +642,47 @@ h3:hover { transform: translateY(-10px); }
     padding: 18px;
 
     background: var(--bg-soft);
+
+    border: 1px solid rgba(223, 228, 225, 0.7);
+
     border-radius: 12px;
+
+    transition:
+        transform 0.2s ease,
+        background-color 0.2s ease;
+}
+
+.education-skill-box:hover {
+    transform: translateY(-2px);
+
+    background-color: #edf1ef;
 }
 
 .education-skill-title {
     margin-bottom: 12px;
 
     font-size: 15px;
+
     font-weight: 700;
+
+    color: #3b4743;
 }
 
 .education-skill-title i {
     width: 22px;
+
     margin-right: 5px;
+
     text-align: center;
+
+    color: var(--point);
 }
 
 .education-tags {
     display: flex;
+
     flex-wrap: wrap;
+
     gap: 7px;
 }
 
@@ -324,27 +692,33 @@ h3:hover { transform: translateY(-10px); }
     padding: 5px 10px;
 
     background: #fdfcf9;
-    border: 1px solid #dfe4e1;
+
+    border: 1px solid var(--border);
+
     border-radius: 20px;
 
     font-size: 12px;
-    color: #555;
+
+    color: #5c6561;
 }
 
 
-/* =========================
-   프로젝트 경험
-========================== */
+/* =========================================================
+   EDUCATION PROJECT
+========================================================= */
 
 .education-project {
     display: flex;
+
     align-items: center;
+
     gap: 15px;
 
     margin-top: 25px;
+
     padding: 18px;
 
-    border-top: 1px solid #eee;
+    border-top: 1px solid var(--border-light);
 }
 
 .education-project-icon {
@@ -352,33 +726,187 @@ h3:hover { transform: translateY(-10px); }
     height: 42px;
 
     display: flex;
+
     align-items: center;
+
     justify-content: center;
 
     flex-shrink: 0;
 
     border-radius: 10px;
-    background: #f1f3f5;
+
+    background: #e8eeeb;
+
+    color: var(--point);
 
     font-size: 18px;
 }
 
 .education-project strong {
     font-size: 14px;
+
+    color: var(--text-main);
 }
 
 .education-project p {
     margin: 4px 0 0;
 
-    color: #666;
+    color: var(--text-muted);
+
     font-size: 13px;
+
     line-height: 1.6;
 }
 
 
-/* =========================
-   Mobile
-========================== */
+/* =========================================================
+   PORTFOLIO CARD
+========================================================= */
+
+#portfolio .bg-white {
+    background-color: var(--bg-card) !important;
+
+    border: 1px solid rgba(223, 228, 225, 0.8);
+}
+
+#portfolio .bg-white:hover {
+    border-color: #d8dfdc;
+}
+
+
+/* Portfolio title */
+
+#portfolio h4,
+#portfolio h5 {
+    color: var(--text-main);
+}
+
+
+/* Portfolio description */
+
+#portfolio p,
+#portfolio li {
+    color: #555f5b;
+
+    line-height: 1.7;
+}
+
+
+/* Portfolio GitHub button */
+
+#portfolio .btn {
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+#portfolio .btn:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 5px 12px rgba(45, 55, 50, 0.10);
+}
+
+
+/* =========================================================
+   TROUBLESHOOTING
+========================================================= */
+
+section h5 {
+    color: var(--text-main);
+}
+
+section strong {
+    color: #3f504b;
+}
+
+section p,
+section li {
+    color: #555f5b;
+
+    line-height: 1.75;
+}
+
+
+/* Troubleshooting card */
+
+section:not(#home):not(#about):not(#skills):not(#portfolio):not(#contact)
+.container.bg-white {
+    border: 1px solid rgba(223, 228, 225, 0.8);
+}
+
+
+/* =========================================================
+   CONTACT
+========================================================= */
+
+#contact .bg-white {
+    background-color: var(--bg-card) !important;
+
+    border: 1px solid var(--border-light);
+}
+
+#contact h4 {
+    color: var(--text-main);
+}
+
+#contact p {
+    color: var(--text-muted);
+}
+
+#contact a {
+    color: var(--point) !important;
+
+    transition: color 0.2s ease;
+}
+
+#contact a:hover {
+    color: var(--point-dark) !important;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer {
+    color: #7a837f;
+
+    background-color: rgba(238, 241, 239, 0.7);
+
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   SHADOW
+========================================================= */
+
+.shadow-lg {
+    box-shadow:
+        0 8px 25px rgba(45, 55, 50, 0.07) !important;
+}
+
+.shadow {
+    box-shadow:
+        0 5px 18px rgba(45, 55, 50, 0.06) !important;
+}
+
+
+/* =========================================================
+   HORIZONTAL RULE
+========================================================= */
+
+hr {
+    border-color: var(--border);
+
+    opacity: 0.8;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
 
 @media (max-width: 768px) {
 
@@ -390,75 +918,44 @@ h3:hover { transform: translateY(-10px); }
         grid-template-columns: 1fr;
     }
 
+    .education-card {
+        padding: 22px;
+    }
+
+    .skill-item {
+        font-size: 16px;
+    }
+
+    .skill-item i {
+        font-size: 27px;
+    }
+
+    #home {
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
 }
 
-.btn-dark {
-    background-color: var(--point) !important;
-    border-color: var(--point) !important;
-}
 
-.btn-dark:hover {
-    background-color: var(--point-dark) !important;
-    border-color: var(--point-dark) !important;
-}
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
 
-.btn-outline-dark {
-    color: var(--point) !important;
-    border-color: var(--point) !important;
-}
+@media (max-width: 576px) {
 
-.btn-outline-dark:hover {
-    background-color: var(--point) !important;
-    border-color: var(--point) !important;
-    color: #fff !important;
-}
+    .education-title {
+        font-size: 20px;
+    }
 
-.navbar {
-    background-color: rgba(253, 252, 249, 0.92);
-    border-bottom: 1px solid rgba(64, 90, 84, 0.08);
-}
+    .education-project {
+        align-items: flex-start;
+    }
 
-.navbar-brand {
-    color: var(--point) !important;
-}
+    .certificate-card {
+        padding: 16px;
+    }
 
-.nav-link {
-    color: #4f5754 !important;
-}
-
-.nav-link:hover {
-    color: var(--point) !important;
-}
-
-/* =========================
-   전체 컬러 테마
-========================== */
-
-:root {
-    /* 전체 배경 */
-    --bg-main: #eef1ef;
-
-    /* 카드 */
-    --bg-card: #fdfcf9;
-
-    /* 내부 박스 */
-    --bg-soft: #f1f3f1;
-
-    /* 조금 더 진한 내부 배경 */
-    --bg-soft-dark: #e7ebe8;
-
-    /* 기본 글자 */
-    --text-main: #343a40;
-
-    /* 보조 글자 */
-    --text-muted: #6c757d;
-
-    /* 포인트 */
-    --point: #405a54;
-
-    /* 포인트 hover */
-    --point-dark: #304740;
-
-    /* 테두리 */
-    --border: #dfe4e1;
+    .skill-item span {
+        min-width: 120px;
+    }
 }
