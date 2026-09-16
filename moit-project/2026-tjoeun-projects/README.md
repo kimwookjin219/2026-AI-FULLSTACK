@@ -5,9 +5,9 @@ MOIT은 목적형 모임 커뮤니티 플랫폼으로, 기술 스택을 발전�
 | Version | Tech Stack | 주요 내용 | Link |
 | ------- | ---------- | --------- | --------- |
 | **v1** | Spring Framework, JSP, MyBatis, MySQL, Ajax | 기본 기능 구현 (회원) | [📂](https://github.com/kimwookjin219/2026-AI-FULLSTACK/tree/main/moit-project/2026-tjoeun-projects/moit-v1) |
-| **v2** | Spring Boot, Thymeleaf, MyBatis, Oracle, Ajax, Open API | Spring Boot 기반으로 프로젝트 리팩토링 및 기능 고도화 || [📂](https://github.com/kimwookjin219/2026-AI-FULLSTACK/tree/main/moit-project/2026-tjoeun-projects/moit-v2) |
-| **v3** | Spring Boot, Gradle, JPA, MyBatis, Oracle, JWT, Redis, OAuth2, React, Next.js, Ant Design | 회원관리 및 인증·인가 기능 고도화 || [📂](https://github.com/kimwookjin219/2026-AI-FULLSTACK/tree/main/moit-project/2026-tjoeun-projects/moit-v3) |
-| **v4** | (예정) | 추가 기능 개발 || [📂]() |
+| **v2** | Spring Boot, Thymeleaf, MyBatis, Oracle, Ajax, Open API | Spring Boot 기반으로 프로젝트 리팩토링 및 기능 고도화 | [📂](https://github.com/kimwookjin219/2026-AI-FULLSTACK/tree/main/moit-project/2026-tjoeun-projects/moit-v2) |
+| **v3** | Spring Boot, Gradle, JPA, MyBatis, Oracle, JWT, Redis, OAuth2, React, Next.js, Ant Design | 회원관리 및 인증·인가 기능 고도화 | [📂](https://github.com/kimwookjin219/2026-AI-FULLSTACK/tree/main/moit-project/2026-tjoeun-projects/moit-v3) |
+| **v4** | (예정) | 추가 기능 개발 | [📂]() |
 
 ## 📂 Version Details
 
