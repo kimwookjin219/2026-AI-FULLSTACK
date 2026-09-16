@@ -18,7 +18,7 @@ MOIT은 목적형 모임 커뮤니티 플랫폼으로, 기술 스택을 발전�
 - **Features:** 기본 회원관리 및 서비스 기능 구현
 
 <details>
-<summary>📸 MOIT-V1 화면 보기</summary>
+<summary><strong>📸 MOIT-V1 이미지 펼치기</strong></summary>
 
 <br>
 
@@ -55,7 +55,7 @@ MOIT은 목적형 모임 커뮤니티 플랫폼으로, 기술 스택을 발전�
 - **Features:** Spring Boot 기반 프로젝트 구조 개선 및 기존 회원 기능 고도화
 
 <details>
-<summary>📸 MOIT-V2 화면 보기</summary>
+<summary><strong>📸 MOIT-V2 이미지 펼치기</strong></summary>
 
 <br>
 
@@ -140,7 +140,7 @@ MOIT은 목적형 모임 커뮤니티 플랫폼으로, 기술 스택을 발전�
 - 회원 유형별 화면 및 접근 경로 처리
 
 <details>
-<summary>📸 MOIT-V3 화면 보기</summary>
+<summary><strong>📸 MOIT-V3 이미지 펼치기</strong></summary>
 
 <br>
 
