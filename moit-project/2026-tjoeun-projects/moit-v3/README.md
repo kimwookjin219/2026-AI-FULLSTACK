@@ -29,7 +29,7 @@
 
 | 항목 | 내용 |
 | ----- | ------------------------- |
-| 프로젝트명 | MOIT (모잇) [☁](https://moitv3.duckdns.org/) |
+| 프로젝트명 | MOIT (모잇) [🌍](https://moitv3.duckdns.org/) |
 | [1차 개발](https://github.com/kimwookjin219/2026-AI-FULLSTACK/tree/main/moit-project/2026-tjoeun-projects/moit-v1) | 2026.06.16 ~ 2026.06.22<br>**회원가입, 로그인 등 기본 회원관리 기능 구현**  |
 | [2차 개발](https://github.com/kimwookjin219/2026-AI-FULLSTACK/tree/main/moit-project/2026-tjoeun-projects/moit-v2) | 2026.07.02 ~ 2026.07.14<br>**회원정보 관리 및 소셜 로그인 기능 확장**  |
 | 3차 개발 | 2026.08.12 ~ 2026.08.28<br>**JWT·Redis 기반 인증/인가 고도화 및 회원 보안 기능 강화**  |
