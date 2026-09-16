@@ -38,7 +38,14 @@ MOIT은 목적형 모임 커뮤니티 플랫폼으로, 기술 스택을 발전�
 
 - 📁 README: [moit-v1](https://github.com/kimwookjin219/2026-AI-FULLSTACK/tree/main/moit-project/2026-tjoeun-projects/moit-v1)
 - 📖 Notion: [MOIT 프로젝트 Notion](https://app.notion.com/p/MoA-37195798f73380cebe19e12b11b69dad?source=copy_link)
-- 🎬 시연영상: [MOIT 프로젝트-v1 Youtube](https://youtu.be/abWAlZ0a_GY)
+- 🎬 시연영상:
+<a href="https://youtu.be/abWAlZ0a_GY">
+  <img src="https://img.youtube.com/vi/abWAlZ0a_GY/maxresdefault.jpg"
+       alt="MOIT 회원가입 및 로그인 시연"
+       width="500">
+</a>
+
+> 🎬 이미지를 클릭하면 프로젝트 시연 영상을 확인할 수 있습니다.
 
 ---
 
@@ -79,7 +86,14 @@ MOIT은 목적형 모임 커뮤니티 플랫폼으로, 기술 스택을 발전�
 
 - 📁 README: [moit-v2](https://github.com/kimwookjin219/2026-AI-FULLSTACK/tree/main/moit-project/2026-tjoeun-projects/moit-v2)
 - 📖 Notion: [MOIT 프로젝트 Notion](https://app.notion.com/p/MoA-37195798f73380cebe19e12b11b69dad?source=copy_link)
-- 🎬 시연영상: [MOIT 프로젝트-v2 Youtube](https://youtu.be/_hjCvGfciKc)
+- 🎬 시연영상: 
+<a href="https://youtu.be/_hjCvGfciKc">
+  <img src="https://img.youtube.com/vi/_hjCvGfciKc/maxresdefault.jpg"
+       alt="MOIT v2 프로젝트 시연"
+       width="500">
+</a>
+
+> 🎬 이미지를 클릭하면 프로젝트 시연 영상을 확인할 수 있습니다.
 
 ---
 
@@ -172,8 +186,15 @@ MOIT은 목적형 모임 커뮤니티 플랫폼으로, 기술 스택을 발전�
 
 - 📁 README: [moit-v3](https://github.com/kimwookjin219/2026-AI-FULLSTACK/tree/main/moit-project/2026-tjoeun-projects/moit-v3)
 - 📖 Notion: [MOIT 프로젝트 Notion](https://app.notion.com/p/MoA-37195798f73380cebe19e12b11b69dad?source=copy_link)
-- 🎬 시연영상: [MOIT 프로젝트-v3 Youtube](https://youtu.be/qLQ4DsPll1A)
 - ☁ AWS: [MOIT 프로젝트 AWS](https://moitv3.duckdns.org/)
+- 🎬 시연영상: 
+<a href="https://youtu.be/qLQ4DsPll1A">
+  <img src="https://img.youtube.com/vi/qLQ4DsPll1A/maxresdefault.jpg"
+       alt="MOIT v3 프로젝트 시연"
+       width="500">
+</a>
+
+> 🎬 이미지를 클릭하면 프로젝트 시연 영상을 확인할 수 있습니다.
 
 ---
 
