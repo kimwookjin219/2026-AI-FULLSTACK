@@ -129,7 +129,13 @@ Spring MVC 기반의 계층형 웹 애플리케이션 구조를 경험하였습�
 
 ### 회원가입 및 로그인
 
-[![MOIT 회원가입 및 로그인 시연](https://img.youtube.com/vi/abWAlZ0a_GY/maxresdefault.jpg)](https://youtu.be/abWAlZ0a_GY)
+<a href="https://youtu.be/abWAlZ0a_GY">
+  <img src="https://img.youtube.com/vi/abWAlZ0a_GY/maxresdefault.jpg"
+       alt="MOIT 회원가입 및 로그인 시연"
+       width="500">
+</a>
+
+> 🎬 이미지를 클릭하면 프로젝트 시연 영상을 확인할 수 있습니다.
 
 <details>
 <summary>📸 MOIT-V1 화면 보기</summary>
