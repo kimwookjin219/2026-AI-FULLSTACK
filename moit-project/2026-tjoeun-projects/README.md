@@ -1,6 +1,6 @@
 # 🚀 MOIT Project History
 
-![MOIT배너](./images/MOIT배너.png)
+![MOIT배너](./images/배너.png)
 MOIT은 목적형 모임 커뮤니티 플랫폼으로, 기술 스택을 발전시키며 여러 버전으로 개발한 프로젝트입니다.
 
 | Version | Tech Stack | 주요 내용 | Link |
