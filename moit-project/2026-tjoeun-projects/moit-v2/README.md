@@ -130,7 +130,7 @@ OAuth2 인증
 > 🎬 이미지를 클릭하면 프로젝트 시연 영상을 확인할 수 있습니다.
 
 <details>
-<summary>📸 MOIT-V2 화면 보기</summary>
+<summary><strong>📸 MOIT-V2 화면 보기</strong></summary>
 
 <br>
 
