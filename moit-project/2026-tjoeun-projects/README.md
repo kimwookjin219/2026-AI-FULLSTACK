@@ -1,5 +1,6 @@
 # 🚀 MOIT Project History
 
+![MOIT배너](./images/MOIT배너.png)
 MOIT은 목적형 모임 커뮤니티 플랫폼으로, 기술 스택을 발전시키며 여러 버전으로 개발한 프로젝트입니다.
 
 | Version | Tech Stack | 주요 내용 | Link |
@@ -169,6 +170,7 @@ MOIT은 목적형 모임 커뮤니티 플랫폼으로, 기술 스택을 발전�
 
 - 📁 README: [moit-v3](https://github.com/kimwookjin219/2026-AI-FULLSTACK/tree/main/moit-project/2026-tjoeun-projects/moit-v3)
 - 📖 Notion: [MOIT 프로젝트 Notion](https://app.notion.com/p/MoA-37195798f73380cebe19e12b11b69dad?source=copy_link)
+- ☁ AWS: [MOIT 프로젝트 AWS](https://app.notion.com/p/MoA-37195798f73380cebe19e12b11b69dad?source=copy_link)
 
 ---
 
