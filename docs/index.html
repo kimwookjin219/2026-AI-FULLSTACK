@@ -1179,51 +1179,221 @@
             </h3>
 
 
-            <div class="container p-5 bg-white rounded shadow-lg">
+            <!-- =========================
+                SLIDER
+            ========================== -->
 
-                <!-- 버전 네비게이션 -->
-                <div class="d-flex justify-content-between align-items-center mb-4">
+            <div class="troubleshooting-slider-container">
 
-                    <button
-                        type="button"
-                        class="btn btn-outline-secondary"
-                        id="troublePrev"
-                    >
-                        ← 이전
-                    </button>
+                <div class="troubleshooting-slider">
 
-                    <h5
-                        class="fw-bold mb-0"
-                        id="troubleVersion"
-                    >
+
+                    <!-- =========================
                         MOIT v3
-                    </h5>
+                    ========================== -->
+
+                    <div class="troubleshooting-slide active">
+
+                        <div class="container p-5 bg-white rounded shadow-lg">
+
+                            <div class="mb-5">
+
+                                <h5 class="fw-bold">
+                                    01. 소셜 로그인 후 Header 사용자 정보 미반영
+                                </h5>
+
+                                <p>
+                                    소셜 로그인 직후 Header에 사용자 정보가 표시되지 않는 문제가 발생했습니다.
+                                </p>
+
+                                <p>
+                                    로그인 완료 시점과 Redux 상태가 변경되는 시점의 차이를 확인하고,
+                                    로그인 이후 사용자 정보를 다시 조회하여 Redux 상태를 갱신하도록 수정했습니다.
+                                </p>
+
+                                <strong>
+                                    → 로그인 직후에도 사용자 정보가 정상적으로 표시되도록 개선
+                                </strong>
+
+                            </div>
+
+
+                            <div class="mb-5">
+
+                                <h5 class="fw-bold">
+                                    02. 회원정보 수정 후 화면에 변경 내용 미반영
+                                </h5>
+
+                                <p>
+                                    서버에서는 회원정보가 정상적으로 변경되었지만
+                                    Header와 화면에는 기존 정보가 표시되는 문제가 발생했습니다.
+                                </p>
+
+                                <p>
+                                    서버 데이터와 Redux 상태가 동기화되지 않는 것을 확인하고,
+                                    수정 성공 이후 Redux 상태를 갱신하도록 수정했습니다.
+                                </p>
+
+                                <strong>
+                                    → 회원정보 수정 결과가 화면에 즉시 반영되도록 개선
+                                </strong>
+
+                            </div>
+
+
+                            <div>
+
+                                <h5 class="fw-bold">
+                                    03. Next.js Hydration 오류
+                                </h5>
+
+                                <p>
+                                    서버 렌더링 결과와 클라이언트 렌더링 결과가 달라
+                                    Hydration 오류가 발생했습니다.
+                                </p>
+
+                                <p>
+                                    서버와 클라이언트의 렌더링 시점 및 상태 흐름을 확인하고
+                                    클라이언트에서 처리해야 하는 로직을 분리하여 문제를 해결했습니다.
+                                </p>
+
+                                <strong>
+                                    → 정상적인 페이지 렌더링 구현
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- =========================
+                        MOIT v2
+                    ========================== -->
+
+                    <div class="troubleshooting-slide">
+
+                        <div class="container p-5 bg-white rounded shadow-lg">
+
+                            <div>
+
+                                <h5 class="fw-bold">
+                                    01. 소셜 로그인 최초 회원정보 미완성
+                                </h5>
+
+                                <p>
+                                    소셜 로그인 사용자는 이메일·닉네임 등 일부 정보만 제공되기 때문에
+                                    최초 로그인 시 서비스 이용에 필요한 회원정보가 완성되지 않는 문제가 발생했습니다.
+                                </p>
+
+                                <p>
+                                    소셜 로그인 인증 정보와 MOIT에서 요구하는 회원가입 정보의 항목이
+                                    서로 달라 인증 성공만으로는 정상적인 회원 데이터 생성이 어려운 것을 확인했습니다.
+                                </p>
+
+                                <strong>
+                                    → 최초 소셜 로그인 사용자를 추가 회원정보 입력 화면으로 연결하고,
+                                    입력 완료 후 소셜 계정의 인증 정보와 추가 정보를 결합하여 회원 데이터를 저장하도록 개선
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- =========================
+                        MOIT v1
+                    ========================== -->
+
+                    <div class="troubleshooting-slide">
+
+                        <div class="container p-5 bg-white rounded shadow-lg">
+
+                            <div>
+
+                                <h5 class="fw-bold">
+                                    01. 새로고침 후 로그인 상태 초기화
+                                </h5>
+
+                                <p>
+                                    로그인 및 로그아웃 상태에 따라 헤더의 메뉴가 변경되도록 구현하는 과정에서
+                                    페이지를 새로고침하면 로그인 상태가 초기화되어
+                                    헤더가 정상적으로 표시되지 않는 문제가 발생했습니다.
+                                </p>
+
+                                <p>
+                                    로그인 상태를 세션에 저장하고 헤더에서 세션 정보를 확인하는 과정이
+                                    제대로 연결되지 않아 페이지 이동이나 새로고침 시
+                                    로그인 상태를 정상적으로 확인하지 못하는 것이 원인이었습니다.
+                                </p>
+
+                                <strong>
+                                    → 로그인 성공 시 사용자 정보를 Session에 저장하고,
+                                    헤더에서 세션 정보를 확인하여 로그인·로그아웃 상태에 따라
+                                    메뉴가 변경되도록 수정
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+                <!-- =========================
+                    SLIDER BUTTON
+                ========================== -->
+
+                <button
+                    type="button"
+                    class="troubleshooting-arrow troubleshooting-prev"
+                    aria-label="이전 트러블슈팅"
+                >
+                    &#10094;
+                </button>
+
+                <button
+                    type="button"
+                    class="troubleshooting-arrow troubleshooting-next"
+                    aria-label="다음 트러블슈팅"
+                >
+                    &#10095;
+                </button>
+
+
+                <!-- =========================
+                    INDICATOR
+                ========================== -->
+
+                <div class="troubleshooting-indicators">
 
                     <button
                         type="button"
-                        class="btn btn-outline-secondary"
-                        id="troubleNext"
-                    >
-                        다음 →
-                    </button>
+                        class="troubleshooting-dot active"
+                        data-slide="0"
+                        aria-label="MOIT v3"
+                    ></button>
 
-                </div>
+                    <button
+                        type="button"
+                        class="troubleshooting-dot"
+                        data-slide="1"
+                        aria-label="MOIT v2"
+                    ></button>
 
+                    <button
+                        type="button"
+                        class="troubleshooting-dot"
+                        data-slide="2"
+                        aria-label="MOIT v1"
+                    ></button>
 
-                <!-- Troubleshooting 내용 -->
-                <div id="troubleContent">
-
-                    <!-- 내용은 JavaScript에서 출력 -->
-
-                </div>
-
-
-                <!-- 페이지 표시 -->
-                <div
-                    class="text-center mt-4"
-                    id="troubleIndicator"
-                >
-                    03 / 03
                 </div>
 
             </div>
@@ -1232,223 +1402,135 @@
 
     </section>
 
+    <!-- =========================
+        TROUBLESHOOTING JS
+    ========================== -->
 
     <script>
 
-        const troubleshootingData = [
+        const troubleshootingSlides =
+            document.querySelectorAll(".troubleshooting-slide");
 
-            /*
-            ========================================
-            MOIT v3
-            ========================================
-            */
-            {
-                version: "MOIT v3",
-                number: "03",
+        const troubleshootingDots =
+            document.querySelectorAll(".troubleshooting-dot");
 
-                problem:
-                    "소셜 로그인 및 회원정보 수정 후 화면 UI가 즉시 갱신되지 않는 현상",
+        const troubleshootingPrev =
+            document.querySelector(".troubleshooting-prev");
 
-                cause:
-                    "서버 DB 데이터 반영 시점과 프론트엔드 Redux Store 상태 업데이트 간의 비동기 동기화 시점 차이",
-
-                solution:
-                    "인증 성공 및 정보 수정 직후 최신 사용자 정보 패치 API를 재호출하도록 Redux-Saga 액션 Flow를 재설계하여 전역 상태 정합성을 확보",
-
-                result:
-                    "로그인 및 회원정보 수정 결과가 화면에 즉시 반영되도록 개선"
-            },
+        const troubleshootingNext =
+            document.querySelector(".troubleshooting-next");
 
 
-            /*
-            ========================================
-            MOIT v2
-            ========================================
-            */
-            {
-                version: "MOIT v2",
-                number: "02",
-
-                problem:
-                    "소셜 로그인 사용자는 이메일·닉네임 등 일부 정보만 제공되기 때문에 최초 로그인 시 서비스 이용에 필요한 회원정보가 완성되지 않는 문제",
-
-                cause:
-                    "소셜 로그인 인증 정보와 MOIT에서 요구하는 회원가입 정보의 항목이 달라 인증 성공만으로는 정상적인 회원 데이터 생성이 어려움",
-
-                solution:
-                    "최초 소셜 로그인 사용자를 별도로 구분하여 추가 회원정보 입력 화면으로 연결하고, 입력 완료 후 소셜 계정의 인증 정보와 추가 정보를 결합하여 회원 데이터를 저장하도록 구현",
-
-                result:
-                    "소셜 로그인 이후 추가 정보를 입력받아 정상적인 MOIT 회원 데이터가 생성되도록 개선"
-            },
-
-
-            /*
-            ========================================
-            MOIT v1
-            ========================================
-            */
-            {
-                version: "MOIT v1",
-                number: "01",
-
-                problem:
-                    "로그인 및 로그아웃 상태에 따라 헤더의 메뉴가 변경되도록 구현하는 과정에서 페이지를 새로고침하면 로그인 상태가 초기화되어 헤더가 정상적으로 표시되지 않는 문제",
-
-                cause:
-                    "로그인 상태를 세션에 저장하고 헤더에서 세션 정보를 확인하는 과정이 제대로 연결되지 않아 페이지 이동이나 새로고침 시 로그인 상태를 정상적으로 확인하지 못함",
-
-                solution:
-                    "로그인 성공 시 사용자 정보를 Session에 저장하고, 헤더에서 세션에 저장된 로그인 정보를 확인하여 로그인·로그아웃 상태에 따라 메뉴가 변경되도록 수정",
-
-                result:
-                    "페이지 이동 및 새로고침 이후에도 로그인 상태에 따라 헤더 메뉴가 정상적으로 표시되도록 개선"
-            }
-
-        ];
-
-
-        let currentTroubleIndex = 0;
+        let troubleshootingCurrent = 0;
 
 
         /*
-        ========================================
-        Troubleshooting 렌더링
-        ========================================
+        =========================
+        슬라이드 변경
+        =========================
         */
 
-        function renderTroubleshooting() {
+        function showTroubleshooting(index) {
 
-            const data = troubleshootingData[currentTroubleIndex];
+            if (index < 0) {
+                index = troubleshootingSlides.length - 1;
+            }
 
-            document.getElementById("troubleVersion").textContent =
-                data.version;
-
-            document.getElementById("troubleIndicator").textContent =
-                `${data.number} / 03`;
-
-
-            document.getElementById("troubleContent").innerHTML = `
-
-                <div class="mb-5">
-
-                    <h5 class="fw-bold">
-                        문제
-                    </h5>
-
-                    <p>
-                        ${data.problem}
-                    </p>
-
-                </div>
+            if (index >= troubleshootingSlides.length) {
+                index = 0;
+            }
 
 
-                <div class="mb-5">
+            troubleshootingSlides.forEach((slide, i) => {
 
-                    <h5 class="fw-bold">
-                        원인
-                    </h5>
+                slide.classList.toggle(
+                    "active",
+                    i === index
+                );
 
-                    <p>
-                        ${data.cause}
-                    </p>
-
-                </div>
+            });
 
 
-                <div class="mb-5">
+            troubleshootingDots.forEach((dot, i) => {
 
-                    <h5 class="fw-bold">
-                        해결
-                    </h5>
+                dot.classList.toggle(
+                    "active",
+                    i === index
+                );
 
-                    <p>
-                        ${data.solution}
-                    </p>
-
-                </div>
+            });
 
 
-                <div>
-
-                    <strong>
-                        → ${data.result}
-                    </strong>
-
-                </div>
-
-            `;
-
-
-            /*
-            ========================================
-            버튼 상태
-            ========================================
-            */
-
-            document.getElementById("troublePrev").disabled =
-                currentTroubleIndex === troubleshootingData.length - 1;
-
-            document.getElementById("troubleNext").disabled =
-                currentTroubleIndex === 0;
+            troubleshootingCurrent = index;
 
         }
 
 
         /*
-        ========================================
+        =========================
         이전 버튼
-        ========================================
+        =========================
         */
 
-        document.getElementById("troublePrev").addEventListener(
+        troubleshootingPrev.addEventListener(
             "click",
             function () {
 
-                if (
-                    currentTroubleIndex <
-                    troubleshootingData.length - 1
-                ) {
-
-                    currentTroubleIndex++;
-
-                    renderTroubleshooting();
-
-                }
+                showTroubleshooting(
+                    troubleshootingCurrent - 1
+                );
 
             }
         );
 
 
         /*
-        ========================================
+        =========================
         다음 버튼
-        ========================================
+        =========================
         */
 
-        document.getElementById("troubleNext").addEventListener(
+        troubleshootingNext.addEventListener(
             "click",
             function () {
 
-                if (currentTroubleIndex > 0) {
-
-                    currentTroubleIndex--;
-
-                    renderTroubleshooting();
-
-                }
+                showTroubleshooting(
+                    troubleshootingCurrent + 1
+                );
 
             }
         );
 
 
         /*
-        ========================================
-        최초 렌더링
-        ========================================
+        =========================
+        인디케이터 클릭
+        =========================
         */
 
-        renderTroubleshooting();
+        troubleshootingDots.forEach(
+            (dot, index) => {
+
+                dot.addEventListener(
+                    "click",
+                    function () {
+
+                        showTroubleshooting(index);
+
+                    }
+                );
+
+            }
+        );
+
+
+        /*
+        =========================
+        초기 상태
+        =========================
+        */
+
+        showTroubleshooting(0);
 
     </script>
 
