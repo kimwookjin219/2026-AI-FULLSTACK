@@ -134,18 +134,18 @@
 
 - **5개월차**
 
-    - **MOIT-V3 고도화** → 관리자 기능 및 사용자 기능 고도화 → **Spring Boot 기반 REST API와 React/Next.js 프론트엔드 연동**
+    - **MOIT-V3 고도화**[📂](https://github.com/kimwookjin219/2026-AI-FULLSTACK/tree/main/moit-project/2026-tjoeun-projects/moit-v3) → 관리자 기능 및 사용자 기능 고도화 → **Spring Boot 기반 REST API와 React/Next.js 프론트엔드 연동**
     - **UI/UX 개선 프로젝트** → 반응형 디자인 적용, 사용자 경험 최적화 → **사용자 만족도 향상**
     - **AWS EC2 서버 배포** → 클라우드 서버 환경 구축, 보안 그룹 설정 및 자동화 배포 → **실제 서비스 배포 성공**
 
 - **4개월차**
 
-    - **MOIT-V2 기능 확장** → Spring Boot 기반 목적형 소모임 플랫폼 기능 확장
+    - **MOIT-V2 기능 확장**[📂](https://github.com/kimwookjin219/2026-AI-FULLSTACK/tree/main/moit-project/2026-tjoeun-projects/moit-v2) → Spring Boot 기반 목적형 소모임 플랫폼 기능 확장
     - **외부 API 및 부가 기능 연동** → HIBP API, OpenAI 등 외부 API 연동 → **서비스 요구사항에 맞는 API 설계 및 프론트엔드 연동 경험**
 
 - **3개월차**
 
-    - **목적형 소모임 플랫폼 MOIT-V1 웹 서비스 구축** (MyBatis/JPA) → **회원가입·로그인 관련 CRUD 기능 구현, 헤더 세션적용**
+    - **목적형 소모임 플랫폼 MOIT-V1 웹 서비스 구축** (MyBatis/JPA)[📂](https://github.com/kimwookjin219/2026-AI-FULLSTACK/tree/main/moit-project/2026-tjoeun-projects/moit-v1) → **회원가입·로그인 관련 CRUD 기능 구현, 헤더 세션적용**
     - **DB 설계 및 활용** → MySQL 기반 테이블 설계 및 관계 구성 → **MyBatis/JPA를 활용한 데이터 접근 및 CRUD 기능 구현**
 
 - **2개월차**
